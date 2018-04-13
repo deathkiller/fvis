@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+/*
 namespace fVis.Callbacks.Tests
 {
     [TestClass]
@@ -310,3 +311,4 @@ namespace fVis.Callbacks.Tests
         }
     }
 }
+*/

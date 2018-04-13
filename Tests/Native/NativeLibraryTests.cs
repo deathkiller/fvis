@@ -2,6 +2,7 @@
 using fVis.Callbacks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+/*
 namespace fVis.Native.Tests
 {
     [TestClass]
@@ -87,3 +88,4 @@ namespace fVis.Native.Tests
         }
     }
 }
+*/

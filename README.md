@@ -13,6 +13,9 @@
 </div>
 <hr/>
 
+[![Build Status](https://img.shields.io/appveyor/ci/deathkiller/fvis.svg?logo=appveyor)](https://ci.appveyor.com/project/deathkiller/fvis)
+[![License](https://img.shields.io/github/license/deathkiller/fvis.svg)](https://github.com/deathkiller/fvis/blob/master/LICENSE)
+
 
 ## Abstract
 The purpose of this thesis is to visually investigate precision of various 
@@ -35,10 +38,6 @@ jsou spočítané různými algoritmy. Aritmetické výrazy jsou zpracovány pom
 algoritmu shunting-yard. Vizualizace využívá knihovnu MPIR pro výpočty s 
 vysokou přesností. Aplikace je napsaná v jazyce C# a využívá technologii 
 .NET Framework.
-
-
-[![Latest Release](https://img.shields.io/github/release/deathkiller/fvis.svg?logo=dockbit)](https://github.com/deathkiller/fvis/releases)
-[![License](https://img.shields.io/github/license/deathkiller/fvis.svg)](https://github.com/deathkiller/fvis/blob/master/LICENSE)
 
 
 ## License
