@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7AB5A0B7-B52B-477D-BAC5-EE9B53234CDB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>fVis</RootNamespace>
+    <AssemblyName>fVis</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mpir.NET, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mpir.NET.0.4.0\lib\net40\Mpir.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Utils\BigArray.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Extensions\TimeSpanExtensions.cs" />
+    <Compile Include="Native\NativeLibrary.cs" />
+    <Compile Include="Native\NativeLibraryRemoting.cs" />
+    <Compile Include="Native\RemoteCall.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Misc\UI.cs" />
+    <Compile Include="NumericValueSources\ArithmeticExpression.cs" />
+    <Compile Include="NumericValueSources\ArithmeticExpression.Items.cs">
+      <DependentUpon>ArithmeticExpression.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumericValueSources\ArithmeticExpression.Operators.cs">
+      <DependentUpon>ArithmeticExpression.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumericValueSources\FileDataSet.cs" />
+    <Compile Include="NumericValueSources\INumericValueSource.cs" />
+    <Compile Include="Extensions\DoubleExtensions.Format.cs" />
+    <Compile Include="Utils\Disposable.cs" />
+    <Compile Include="Misc\FormattedTextBlock.cs" />
+    <Compile Include="Misc\GdiGraphics.cs" />
+    <Compile Include="Callbacks\NativeOperatorRemotingCallbacks.cs" />
+    <Compile Include="Callbacks\OperatorCallbacks.cs" />
+    <Compile Include="Controls\Graph.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ListView.Item.cs">
+      <DependentUpon>ListView.cs</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Callbacks\DotNetFloatOperatorCallbacks.cs" />
+    <Compile Include="Callbacks\DotNetOperatorCallbacks.cs" />
+    <Compile Include="Callbacks\NativeOperatorCallbacks.cs" />
+    <Compile Include="NumericValueSources\MemoryDataSet.cs" />
+    <Compile Include="Properties\SharedAssemblyInfo.cs" />
+    <Compile Include="Windows\FindDifferencesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\FindDifferencesDialog.Designer.cs">
+      <DependentUpon>FindDifferencesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NumericValueSources\SyntaxException.cs" />
+    <Compile Include="Windows\ProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\ProgressDialog.Designer.cs">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ZoomToValueDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\ZoomToValueDialog.Designer.cs">
+      <DependentUpon>ZoomToValueDialog.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Windows\FindDifferencesDialog.resx">
+      <DependentUpon>FindDifferencesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Windows\ProgressDialog.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ZoomToValueDialog.resx">
+      <DependentUpon>ZoomToValueDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Packages.config" />
+    <None Include="Resources\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomIn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZoomOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="xmpir32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="xmpir64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

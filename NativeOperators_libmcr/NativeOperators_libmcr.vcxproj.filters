@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\libmcr">
+      <UniqueIdentifier>{2944acbd-0da2-487f-8512-cee06979019a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\libmcr">
+      <UniqueIdentifier>{861c8922-59fc-4cf7-81e7-a3626203f10f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libmcr\libmcr.h">
+      <Filter>Header Files\libmcr</Filter>
+    </ClInclude>
+    <ClInclude Include="libmcr\mcr.h">
+      <Filter>Header Files\libmcr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="native_operators.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="extension_info.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_TBL_pio2.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_atan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_cos.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_exp.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_exactsqrt.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mi_log.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mi_rem_pio2.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mm_cos.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mm_exp.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mm_sin.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mx_cos.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mx_exp.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mx_pow.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mx_rem_pio2.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mx_sin.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_mx_tan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_k_rem_pio2m.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_log.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_atan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_cos.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_dtomi.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_exp.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_final.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_format.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_ilogb.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_itomi.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_log.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_mitod.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_pow.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_sin.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mi_tan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_add.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_atan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_div.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_divi.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_ln2.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_mul.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_muli.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_pio2.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_scalbn.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_sqrt.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mm_sub.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_atan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_cos.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_exp.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_check.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_log.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_poly.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_pow.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_sin.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_mx_tan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_pow.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_sin.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_tan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+    <ClCompile Include="libmcr\__libmcr_TBL_atan.c">
+      <Filter>Source Files\libmcr</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="copyright" />
+  </ItemGroup>
+</Project>
