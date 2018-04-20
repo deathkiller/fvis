@@ -33,6 +33,8 @@ namespace fVis.Controls
         private int imageMarginSize;
         private const int imageSize = 8;
 
+        private string emptyText;
+
         private readonly ScrollBar vScrollBar;
         private readonly TextBox labelEdit = new TextBox();
 
@@ -68,6 +70,19 @@ namespace fVis.Controls
         public event EventHandler ItemSelectionChanged;
 
         public Rectangle ClientRectangleInner { get; private set; }
+
+        public string EmptyText
+        {
+            get { return emptyText; }
+            set
+            {
+                if (emptyText == value)
+                    return;
+
+                emptyText = value;
+                Invalidate();
+            }
+        }
 
         public IList<Item> Items
         {
@@ -357,9 +372,8 @@ namespace fVis.Controls
                         e.Graphics.DrawLine(pen, x, ClientRectangleInner.Top, x, ClientRectangleInner.Bottom);
                     }
                 }
-            } else {
-                // TODO: Move this message to variable/field
-                TextRenderer.DrawText(e.Graphics, "Seznam matematických funkcí je prázdný", Font, ClientRectangle,
+            } else if (!string.IsNullOrEmpty(emptyText)) {
+                TextRenderer.DrawText(e.Graphics, emptyText, Font, ClientRectangle,
                     SystemColors.GrayText, TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
 

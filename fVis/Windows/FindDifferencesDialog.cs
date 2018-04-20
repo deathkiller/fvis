@@ -11,6 +11,7 @@ using fVis.Controls;
 using fVis.Extensions;
 using fVis.NumericValueSources;
 using ListView = fVis.Controls.ListView;
+using l10n = fVis.Properties.Resources;
 
 namespace fVis.Windows
 {
@@ -35,6 +36,8 @@ namespace fVis.Windows
             this.graph = graph;
 
             mainInstructionLabel.Font = new Font(mainInstructionLabel.Font, FontStyle.Bold);
+
+            listView.EmptyText = l10n.ListIsEmpty;
 
             Font monospacedFont = new Font("Consolas", 8f);
             startTextBox.Font = monospacedFont;
@@ -110,7 +113,7 @@ namespace fVis.Windows
             if (count < 2) {
                 infoLabel.Text = "";
                 if (!silent) {
-                    MessageBox.Show(this, "Musíte vybrat alespoň dvě matematické funkce.", "Chyba",
+                    MessageBox.Show(this, l10n.ChooseAtLeastTwoFunctions, l10n.ErrorText,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return false;
@@ -120,7 +123,7 @@ namespace fVis.Windows
             if (!double.TryParse(startTextBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out xF_)) {
                 infoLabel.Text = "";
                 if (!silent) {
-                    MessageBox.Show(this, "Hodnotu začátku intervalu nelze převést na číslo.\r\nZkontrolujte, že číslo neobsahuje mezery a je použita desetinná tečka.", "Chyba",
+                    MessageBox.Show(this, l10n.IntervalStartInvalid, l10n.ErrorText,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return false;
@@ -129,7 +132,7 @@ namespace fVis.Windows
             if (!double.TryParse(endTextBox.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out xL_)) {
                 infoLabel.Text = "";
                 if (!silent) {
-                    MessageBox.Show(this, "Hodnotu konce intervalu nelze převést na číslo.\r\nZkontrolujte, že číslo neobsahuje mezery a je použita desetinná tečka.", "Chyba",
+                    MessageBox.Show(this, l10n.IntervalEndInvalid, l10n.ErrorText,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return false;
@@ -138,7 +141,7 @@ namespace fVis.Windows
             if (xF_ >= xL_) {
                 infoLabel.Text = "";
                 if (!silent) {
-                    MessageBox.Show(this, "Chyba při stanovování intervalu pro vyhledávání.", "Chyba",
+                    MessageBox.Show(this, l10n.FindDifferencesInvalidInterval, l10n.ErrorText,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return false;
@@ -147,7 +150,7 @@ namespace fVis.Windows
             if (Math.Sign(xF_) != Math.Sign(xL_)) {
                 infoLabel.Text = "";
                 if (!silent) {
-                    MessageBox.Show(this, "Nelze vyhledat rozdíly v intervalu procházející nulou.\r\nObsahuje příliš mnoho hodnot.", "Chyba",
+                    MessageBox.Show(this, l10n.FindDifferencesIntervalWithZero, l10n.ErrorText,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return false;
@@ -166,7 +169,7 @@ namespace fVis.Windows
             int thresholdPerItem = (Threshold / progressRefreshRate);
             if (distance < thresholdPerItem) {
                 estimatedTime = TimeSpan.MinValue;
-                infoLabel.Text = "Odhadovaný čas: Okamžitě | Počet hodnot: " + distance.ToString("N0");
+                infoLabel.Text = string.Format(l10n.FindDifferencesStatus, l10n.Immediately, distance.ToString("N0"));
                 return true;
             }
 
@@ -205,10 +208,10 @@ namespace fVis.Windows
             ulong secs = ((ulong)(((sw.ElapsedMilliseconds * distance / 1000) / thresholdPerItem) / threadCount) * MultithreadPenalty);
             if (secs > 1000L * 365L * 24L * 60L * 60L) { // 1000 years in seconds
                 estimatedTime = TimeSpan.MaxValue;
-                infoLabel.Text = "Odhadovaný čas: Více než 1000 let | Počet hodnot: " + distance.ToString("N0");
+                infoLabel.Text = string.Format(l10n.FindDifferencesStatus, l10n.MoreThan1000Years, distance.ToString("N0"));
             } else {
                 estimatedTime = TimeSpan.FromSeconds(secs);
-                infoLabel.Text = "Odhadovaný čas: " + estimatedTime.ToTextString() + " | Počet hodnot: " + distance.ToString("N0");
+                infoLabel.Text = string.Format(l10n.FindDifferencesStatus, estimatedTime.ToTextString(), distance.ToString("N0"));
             }
 
             return true;
@@ -227,12 +230,12 @@ namespace fVis.Windows
             if (estimatedTime.TotalMinutes > 0.5) {
                 string timeString;
                 if (estimatedTime == TimeSpan.MaxValue) {
-                    timeString = "Více než 1000 let";
+                    timeString = l10n.MoreThan1000Years;
                 } else {
                     timeString = estimatedTime.ToTextString();
                 }
 
-                if (MessageBox.Show(this, "Počet hodnot v intervalu: " + distance.ToString("N0") + "\r\nNalezení rozdílů v tomto intervalu pravděpodobně bude trvat:\r\n" + timeString + "\r\n\r\nOpravdu si přejete prohledat zadaný interval?", "Varování",
+                if (MessageBox.Show(this, string.Format(l10n.FindDifferencesIntervalTooBig, distance.ToString("N0"), timeString), l10n.WarningText,
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK) {
                     return;
                 }
@@ -253,9 +256,9 @@ namespace fVis.Windows
             SpinLock syncLock = new SpinLock();
 
             ProgressDialog progressDialog = new ProgressDialog {
-                Text = "Vyhledávání rozdílů",
-                MainInstruction = "Vyhledávání rozdílů",
-                Line1 = "Počet zpracovaných hodnot: " + "0" + " / " + distance.ToString("N0"),
+                Text = l10n.FindingDifferences,
+                MainInstruction = l10n.FindingDifferencesDescription,
+                Line1 = string.Format(l10n.FindingDifferencesProgress, "0", distance.ToString("N0")),
                 ShowInTaskbar = false,
                 MinimizeBox = false
             };
@@ -317,8 +320,8 @@ namespace fVis.Windows
                         lastProcessed = currentProcessed;
 
                         BeginInvoke((MethodInvoker)delegate {
-                            progressDialog.Line1 = "Počet zpracovaných hodnot: " + lastProcessed.ToString("N0") + " / " + distance.ToString("N0");
-                            progressDialog.Line2 = "Zbývá přibližně " + remaining.ToTextString() + ".";
+                            progressDialog.Line1 = string.Format(l10n.FindingDifferencesProgress, lastProcessed.ToString("N0"), distance.ToString("N0"));
+                            progressDialog.Line2 = string.Format(l10n.RemainingTime, remaining.ToTextString());
                             progressDialog.Progress = (int)(lastProcessed * 100 / distance);
                         });
 
@@ -339,10 +342,11 @@ namespace fVis.Windows
 
                     if (!progressDialog.IsCancelled) {
                         MessageBox.Show(this,
-                            "Prohledávání bylo dokončeno.\r\n\r\nPočet hodnot v intervalu: " +
-                            distance.ToString("N0") +
-                            "\r\nPočet nalezených rozdílů: " + differencesFound.ToString("N0") + " (" +
-                            (differencesFound * 100 / distance).ToString("N0") + " %)", "Prohledávání dokončeno",
+                            string.Format(l10n.FindingDifferencesCompleteDescription,
+                                distance.ToString("N0"),
+                                differencesFound.ToString("N0"),
+                                (differencesFound * 100 / distance).ToString("N0")),
+                            l10n.FindingDifferencesComplete,
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 });

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using fVis.Extensions;
+using l10n = fVis.Properties.Resources;
 
 namespace fVis.Controls
 {
@@ -414,7 +414,7 @@ namespace fVis.Controls
 
             string info;
             if (highlightDifferences != HighlightDifferencesMode.None) {
-                info = "Počet rozdílů v mezipaměti: " + cachedDifferences.Count.ToString("N0") + " / " + CachedDifferencesThreshold.ToString("N0");
+                info = string.Format(l10n.GraphCachedDifferences, cachedDifferences.Count.ToString("N0"), CachedDifferencesThreshold.ToString("N0"));
             } else {
                 info = "";
             }
@@ -473,7 +473,7 @@ namespace fVis.Controls
                                 e.Graphics.DrawLine(pen, x1i, y1i, x2i, y2i);
                             }
                         } catch {
-                            Debug.WriteLine("Render overflow detected!");
+                            //Debug.WriteLine("Render overflow detected!");
                             item.CheckState = CheckState.Indeterminate;
                         }
                     }
@@ -671,7 +671,7 @@ namespace fVis.Controls
                                 e.Graphics.DrawLine(pen, x2i, y1i, x2i, y2i);
                             }
                         } catch {
-                            Debug.WriteLine("Render overflow detected!");
+                            //Debug.WriteLine("Render overflow detected!");
                             item.CheckState = CheckState.Indeterminate;
                         }
                     }

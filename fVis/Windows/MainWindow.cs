@@ -14,6 +14,7 @@ using fVis.Extensions;
 using fVis.Misc;
 using fVis.NumericValueSources;
 using ListView = fVis.Controls.ListView;
+using l10n = fVis.Properties.Resources;
 
 namespace fVis.Windows
 {
@@ -38,13 +39,15 @@ namespace fVis.Windows
             implementationButton.DropDownButtonWidth += 2;
             highlightDifferencesButton.DropDownButtonWidth += 2;
 
+            listView.EmptyText = l10n.ListIsEmpty;
+
             // Load available implementations
-            ToolStripMenuItem implementationNetButton = new ToolStripMenuItem("Rozhraní .NET (double)");
+            ToolStripMenuItem implementationNetButton = new ToolStripMenuItem(l10n.MathLibraryInternal + " (double)");
             implementationNetButton.Click += OnSetItemCallbacksButtonClick;
             implementationNetButton.Tag = defaultDoubleCallbacks;
             implementationButton.DropDownItems.Add(implementationNetButton);
 
-            ToolStripMenuItem implementationNetFloatButton = new ToolStripMenuItem("Rozhraní .NET (float)");
+            ToolStripMenuItem implementationNetFloatButton = new ToolStripMenuItem(l10n.MathLibraryInternal + " (float)");
             implementationNetFloatButton.Click += OnSetItemCallbacksButtonClick;
             implementationNetFloatButton.Tag = defaultFloatCallbacks;
             implementationButton.DropDownItems.Add(implementationNetFloatButton);
@@ -55,25 +58,25 @@ namespace fVis.Windows
 
             implementationButton.DropDownItems.Add(new ToolStripSeparator());
 
-            ToolStripMenuItem implementationAddButton = new ToolStripMenuItem("Přidat...");
+            ToolStripMenuItem implementationAddButton = new ToolStripMenuItem(l10n.Add);
             implementationAddButton.Click += OnImplementationAddButtonClick;
             implementationButton.DropDownItems.Add(implementationAddButton);
 
             // Add available highlight differences modes
-            ToolStripMenuItem highlightOffButton = new ToolStripMenuItem("Vypnuto");
+            ToolStripMenuItem highlightOffButton = new ToolStripMenuItem(l10n.Disabled);
             highlightOffButton.Checked = true;
             highlightOffButton.Click += OnHighlightOffButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightOffButton);
 
-            ToolStripMenuItem highlightConstantButton = new ToolStripMenuItem("Obyčejně");
+            ToolStripMenuItem highlightConstantButton = new ToolStripMenuItem(l10n.Plain);
             highlightConstantButton.Click += OnHighlightConstantButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightConstantButton);
 
-            ToolStripMenuItem highlightDynamicButton = new ToolStripMenuItem("Dynamicky");
+            ToolStripMenuItem highlightDynamicButton = new ToolStripMenuItem(l10n.Dynamic);
             highlightDynamicButton.Click += OnHighlightDynamicButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightDynamicButton);
 
-            ToolStripMenuItem averageButton = new ToolStripMenuItem("Pouze rozdíly");
+            ToolStripMenuItem averageButton = new ToolStripMenuItem(l10n.OnlyDifferences);
             averageButton.Click += OnAverageButtonClick;
             highlightDifferencesButton.DropDownItems.Add(averageButton);
 
@@ -105,7 +108,7 @@ namespace fVis.Windows
 
                         string missingCallbacks = ConvertMissingCallbacksToString(callbacks);
                         if (!string.IsNullOrEmpty(missingCallbacks)) {
-                            item.ToolTipText = "Chybějící funkce: " + missingCallbacks;
+                            item.ToolTipText = l10n.MissingCallbacks + missingCallbacks;
                         }
 
                         items.Add(item);
@@ -132,7 +135,7 @@ namespace fVis.Windows
 
                             string missingCallbacks = ConvertMissingCallbacksToString(callbacks);
                             if (!string.IsNullOrEmpty(missingCallbacks)) {
-                                item.ToolTipText = "Chybějící funkce: " + missingCallbacks;
+                                item.ToolTipText = l10n.MissingCallbacks + missingCallbacks;
                             }
 
                             items.Add(item);
@@ -222,7 +225,7 @@ namespace fVis.Windows
                 ListView.Item item = (ListView.Item)sender;
                 if (string.IsNullOrEmpty(item.Text)) {
                     item.NumericValueSource = null;
-                    item.TextDisplay = "\f[0x999999]Zadejte aritmetický výraz…";
+                    item.TextDisplay = "\f[0x999999]" + l10n.EnterArithmeticExpression;
                 } else {
                     try {
                         ArithmeticExpression ae = ArithmeticExpression.Parse(item.Text);
@@ -326,15 +329,15 @@ namespace fVis.Windows
                                 break;
                             case SyntaxException.Type.InvalidNumber:
                                 sb.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]");
-                                sb.Append("Číslo nelze zpracovat");
+                                sb.Append(l10n.InvalidNumber);
                                 break;
                             case SyntaxException.Type.DistinctVariableCountExceeded:
                                 sb.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]");
-                                sb.Append("Ve výrazu se může vyskytovat pouze jedna proměnná");
+                                sb.Append(l10n.DistinctVariableCountExceeded);
                                 break;
                             case SyntaxException.Type.ParenthesesCountMismatch:
                                 sb.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]");
-                                sb.Append("Chybný počet závorek");
+                                sb.Append(l10n.ParenthesesCountMismatch);
                                 break;
                         }
 
@@ -404,7 +407,7 @@ namespace fVis.Windows
                 NativeOperatorRemotingCallbacks proxyCallbacks = item.OperatorCallbacks as NativeOperatorRemotingCallbacks;
                 if (proxyCallbacks != null) {
                     iconAppended = true;
-                    text.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]x86 Remoting");
+                    text.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]" + l10n.X86Remoting);
 
                     missingCallbacks = proxyCallbacks.MissingCallbacks;
                     if (missingCallbacks.Length == 0) {
@@ -427,9 +430,9 @@ namespace fVis.Windows
                 if (isFirst) {
                     isFirst = false;
                     if (iconAppended) {
-                        text.Append(" \f[0x999999]|\f[0xaa6400] Chybějící funkce: ");
+                        text.Append(" \f[0x999999]|\f[0xaa6400] " + l10n.MissingCallbacks);
                     } else {
-                        text.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]Chybějící funkce: ");
+                        text.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]" + l10n.MissingCallbacks);
                     }
                 } else {
                     text.Append(", ");
@@ -509,7 +512,7 @@ namespace fVis.Windows
                 CheckState = CheckState.Checked,
                 CheckEnabled = false,
                 ImageResourceCallback = OnImageResourceCallback,
-                TextDisplay = "\f[0x999999]Zadejte aritmetický výraz…"
+                TextDisplay = "\f[0x999999]" + l10n.EnterArithmeticExpression
             };
 
             OnItemPropertyChanged(item, new PropertyChangedEventArgs("OperatorCallbacks"));
@@ -596,10 +599,10 @@ namespace fVis.Windows
 
             using (OpenFileDialog dialog = new OpenFileDialog()) {
                 dialog.CheckFileExists = true;
-                dialog.Filter = "Knihovna (*.dll)|*.dll";
+                dialog.Filter = l10n.Library + " (*.dll)|*.dll";
                 dialog.FilterIndex = 0;
                 dialog.RestoreDirectory = true;
-                dialog.Title = "Otevřít knihovnu s matematickými funkcemi...";
+                dialog.Title = l10n.LoadMathLibrary;
 
                 if (dialog.ShowDialog(this) != DialogResult.OK)
                     return;
@@ -616,7 +619,7 @@ namespace fVis.Windows
 
                     string missingCallbacks = ConvertMissingCallbacksToString(callbacks);
                     if (!string.IsNullOrEmpty(missingCallbacks)) {
-                        item.ToolTipText = "Chybějící funkce: " + missingCallbacks;
+                        item.ToolTipText = l10n.MissingCallbacks + missingCallbacks;
                     }
 
                     implementationButton.DropDownItems.Add(item);
@@ -634,24 +637,24 @@ namespace fVis.Windows
 
                             string missingCallbacks = ConvertMissingCallbacksToString(callbacks);
                             if (!string.IsNullOrEmpty(missingCallbacks)) {
-                                item.ToolTipText = "Chybějící funkce: " + missingCallbacks;
+                                item.ToolTipText = l10n.MissingCallbacks + missingCallbacks;
                             }
 
                             implementationButton.DropDownItems.Add(item);
 
                             OnSetItemCallbacksButtonClick(item, EventArgs.Empty);
                         } catch (InvalidOperationException) {
-                            MessageBox.Show(this, "Vybraná knihovna neobsahuje matematické funkce.", "Chyba při přidávání knihovny", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, l10n.MathLibraryNotValid, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         } catch (Exception ex) {
-                            MessageBox.Show(this, ex.Message, "Chyba při přidávání knihovny", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, ex.Message, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     } else {
-                        MessageBox.Show(this, "Vybraná knihovna byla pravděpodobně sestavena pro jiný typ procesoru než x86.", "Chyba při přidávání knihovny", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, l10n.MathLibraryPlatformMismatch, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 } catch (InvalidOperationException) {
-                    MessageBox.Show(this, "Vybraná knihovna neobsahuje matematické funkce.", "Chyba při přidávání knihovny", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, l10n.MathLibraryNotValid, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } catch (Exception ex) {
-                    MessageBox.Show(this, ex.Message, "Chyba při přidávání knihovny", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, ex.Message, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -763,10 +766,10 @@ namespace fVis.Windows
                 const string ext = ".fvis-values";
 
                 dialog.CheckFileExists = true;
-                dialog.Filter = "Soubor s uloženými hodnotami (*" + ext + ")|*" + ext;
+                dialog.Filter = l10n.DataSet + " (*" + ext + ")|*" + ext;
                 dialog.FilterIndex = 0;
                 dialog.RestoreDirectory = true;
-                dialog.Title = "Otevřít soubor hodnot...";
+                dialog.Title = l10n.LoadDataSet;
 
                 if (dialog.ShowDialog(this) != DialogResult.OK)
                     return;
@@ -776,7 +779,7 @@ namespace fVis.Windows
                 using (BinaryReader br = new BinaryReader(s)) {
                     byte[] header = br.ReadBytes(4);
                     if (header[0] != 'f' || header[1] != 'V' || header[2] != 'i' || header[3] != 's') {
-                        MessageBox.Show(this, "Vybraný soubor neobsahuje uložené hodnoty nebo je poškozený.", "Chyba při načítání", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(this, l10n.DataSetNotValid, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
@@ -789,7 +792,7 @@ namespace fVis.Windows
 
                     ulong count = br.ReadUInt64();
                     if (count <= 0) {
-                        MessageBox.Show(this, "Vybraný soubor neobsahuje uložené hodnoty nebo je poškozený.", "Chyba při načítání", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(this, l10n.DataSetNotValid, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
@@ -802,7 +805,7 @@ namespace fVis.Windows
 
                     // Add item to ListView
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("\f[I]\f[0x888888]Část funkce  \f[Rc]\f[I]");
+                    sb.Append("\f[I]\f[0x888888]" + l10n.PartOfFunction + "  \f[Rc]\f[I]");
 
                     int i = description.IndexOf('#');
                     if (i != -1) {
@@ -854,7 +857,7 @@ namespace fVis.Windows
 
             ArithmeticExpression ae = selected.NumericValueSource as ArithmeticExpression;
             if (ae == null) {
-                MessageBox.Show(this, "Tento druh položky není podporován. Je možné uložit pouze hodnoty aritmetického výrazu.", "Chyba při ukládání", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, l10n.SaveDataSetUnsupportedItem, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -865,13 +868,13 @@ namespace fVis.Windows
                 double xL_ = graph.MaxVisibleX;
 
                 if (xF_ >= xL_) {
-                    MessageBox.Show(this, "Chyba při stanovování intervalu pro uložení.", "Chyba",
+                    MessageBox.Show(this, l10n.CannotDetermineInterval, l10n.ErrorText,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (Math.Sign(xF_) != Math.Sign(xL_)) {
-                    MessageBox.Show(this, "Nelze uložit interval čísel procházející nulou.\r\nObsahoval by příliš mnoho hodnot.", "Chyba",
+                    MessageBox.Show(this, l10n.SaveDataSetIntervalWithZero, l10n.ErrorText,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -887,7 +890,7 @@ namespace fVis.Windows
                 distance = (xLi - xFi);
 
                 if (distance < 0) {
-                    MessageBox.Show(this, "Interval je pro uložení příliš velký.", "Chyba",
+                    MessageBox.Show(this, l10n.SaveDataSetIntervalTooBig, l10n.ErrorText,
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -901,7 +904,7 @@ namespace fVis.Windows
                         sizeString = sizeInMB.ToString("N0") + " MB";
                     }
 
-                    if (MessageBox.Show(this, "Uložení tohoto intervalu pravděpodobně zabere velké množství místa.\r\n\r\nPočet hodnot v intervalu: " + distance.ToString("N0") + "\r\nOdhadovaná velikost souboru: " + sizeString + "\r\n\r\nOpravdu si přejete uložit zvolený interval funkce do souboru?", "Varování",
+                    if (MessageBox.Show(this, string.Format(l10n.FileTooBigToSave, distance.ToString("N0"), sizeString), l10n.WarningText,
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK) {
                         return;
                     }
@@ -911,10 +914,10 @@ namespace fVis.Windows
             using (SaveFileDialog dialog = new SaveFileDialog()) {
                 const string ext = ".fvis-values";
 
-                dialog.Filter = "Soubor s uloženými hodnotami (*" + ext + ")|*" + ext;
+                dialog.Filter = l10n.DataSet + " (*" + ext + ")|*" + ext;
                 dialog.FilterIndex = 0;
                 dialog.RestoreDirectory = true;
-                dialog.Title = "Uložit soubor hodnot...";
+                dialog.Title = l10n.SaveDataSet;
 
                 string filename = selected.Text;
                 char[] invalidChars = Path.GetInvalidFileNameChars();
@@ -930,9 +933,9 @@ namespace fVis.Windows
                 filename = dialog.FileName;
 
                 ProgressDialog progressDialog = new ProgressDialog();
-                progressDialog.Text = "Ukládání hodnot";
-                progressDialog.MainInstruction = "Ukládání hodnot do souboru";
-                progressDialog.Line1 = "Počet uložených hodnot: " + "0" + " / " + (xLi - xFi).ToString("N0");
+                progressDialog.Text = l10n.SavingDataSet;
+                progressDialog.MainInstruction = l10n.SavingDataSetDescription;
+                progressDialog.Line1 = string.Format(l10n.SavingDataSetProgress, "0", (xLi - xFi).ToString("N0"));
                 progressDialog.Show(this);
 
                 ThreadPool.UnsafeQueueUserWorkItem(delegate {
@@ -993,8 +996,8 @@ namespace fVis.Windows
                                     lastProcessed = xi;
 
                                     BeginInvoke((MethodInvoker)delegate {
-                                        progressDialog.Line1 = "Počet uložených hodnot: " + (lastProcessed - xFi).ToString("N0") + " / " + (xLi - xFi).ToString("N0");
-                                        progressDialog.Line2 = "Zbývá přibližně " + remaining.ToTextString() + ".";
+                                        progressDialog.Line1 = string.Format(l10n.SavingDataSetProgress, (lastProcessed - xFi).ToString("N0"), (xLi - xFi).ToString("N0"));
+                                        progressDialog.Line2 = string.Format(l10n.RemainingTime, remaining.ToTextString());
                                         progressDialog.Progress = (int)((lastProcessed - xFi) * 100 / (xLi - xFi));
                                     });
 

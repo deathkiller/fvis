@@ -26,7 +26,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: AssemblyCompany("Daniel Rajf")]
-[assembly: AssemblyProduct("Detail function visualization")]
+[assembly: AssemblyProduct("Detail Function Visualization")]
 [assembly: AssemblyCopyright("© 2016-2017 Daniel Rajf")]
 //[assembly: AssemblyTrademark("")]
 //[assembly: AssemblyCulture("")]

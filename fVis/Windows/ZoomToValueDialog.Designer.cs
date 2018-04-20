@@ -40,10 +40,10 @@
             this.mainInstructionLabel.AutoSize = true;
             this.mainInstructionLabel.Location = new System.Drawing.Point(10, 11);
             this.mainInstructionLabel.Name = "mainInstructionLabel";
-            this.mainInstructionLabel.Size = new System.Drawing.Size(407, 13);
+            this.mainInstructionLabel.Size = new System.Drawing.Size(412, 13);
             this.mainInstructionLabel.TabIndex = 14;
-            this.mainInstructionLabel.Text = "Zadejte hodnotu x a vyberte funkci. Aplikace automaticky přibliží k vybranému bod" +
-    "u.";
+            this.mainInstructionLabel.Text = "Enter a value of x and select a function. The application will zoom to the desire" +
+    "d point.";
             // 
             // findButton
             // 
@@ -53,7 +53,7 @@
             this.findButton.Name = "findButton";
             this.findButton.Size = new System.Drawing.Size(75, 24);
             this.findButton.TabIndex = 13;
-            this.findButton.Text = "Přiblížit";
+            this.findButton.Text = "Zoom";
             this.findButton.UseVisualStyleBackColor = true;
             this.findButton.Click += new System.EventHandler(this.OnFindButtonClick);
             // 
@@ -66,7 +66,7 @@
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 24);
             this.closeButton.TabIndex = 12;
-            this.closeButton.Text = "Zavřít";
+            this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             // 
             // listView
@@ -97,9 +97,9 @@
             this.startLabel.AutoSize = true;
             this.startLabel.Location = new System.Drawing.Point(10, 46);
             this.startLabel.Name = "startLabel";
-            this.startLabel.Size = new System.Drawing.Size(59, 13);
+            this.startLabel.Size = new System.Drawing.Size(57, 13);
             this.startLabel.TabIndex = 9;
-            this.startLabel.Text = "Hodnota x:";
+            this.startLabel.Text = "Value of x:";
             // 
             // ZoomToValueDialog
             // 
@@ -117,7 +117,7 @@
             this.Name = "ZoomToValueDialog";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Přiblížit k hodnotě";
+            this.Text = "Zoom To Value";
             this.ResumeLayout(false);
             this.PerformLayout();
 

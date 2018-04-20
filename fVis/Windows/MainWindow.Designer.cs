@@ -140,8 +140,8 @@ namespace fVis.Windows
             // addButton
             // 
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(42, 22);
-            this.addButton.Text = "Přidat";
+            this.addButton.Size = new System.Drawing.Size(33, 22);
+            this.addButton.Text = "Add";
             this.addButton.ToolTipText = "Přidat nový aritmetický výraz";
             this.addButton.Click += new System.EventHandler(this.OnAddButtonClick);
             // 
@@ -151,15 +151,15 @@ namespace fVis.Windows
             this.removeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(54, 22);
-            this.removeButton.Text = "Odebrat";
+            this.removeButton.Text = "Remove";
             this.removeButton.ToolTipText = "Odebrat vybranou položku";
             this.removeButton.Click += new System.EventHandler(this.OnRemoveButtonClick);
             // 
             // duplicateButton
             // 
             this.duplicateButton.Name = "duplicateButton";
-            this.duplicateButton.Size = new System.Drawing.Size(68, 22);
-            this.duplicateButton.Text = "Duplikovat";
+            this.duplicateButton.Size = new System.Drawing.Size(61, 22);
+            this.duplicateButton.Text = "Duplicate";
             this.duplicateButton.ToolTipText = "Duplikovat vybranou položku";
             this.duplicateButton.Click += new System.EventHandler(this.OnDuplicateButtonClick);
             // 
@@ -192,24 +192,24 @@ namespace fVis.Windows
             // implementationButton
             // 
             this.implementationButton.Name = "implementationButton";
-            this.implementationButton.Size = new System.Drawing.Size(99, 22);
-            this.implementationButton.Text = "Implementace";
+            this.implementationButton.Size = new System.Drawing.Size(108, 22);
+            this.implementationButton.Text = "Implementation";
             this.implementationButton.ToolTipText = "Výběr implementace";
             this.implementationButton.ButtonClick += new System.EventHandler(this.OnImplementationButtonClick);
             // 
             // highlightDifferencesButton
             // 
             this.highlightDifferencesButton.Name = "highlightDifferencesButton";
-            this.highlightDifferencesButton.Size = new System.Drawing.Size(109, 22);
-            this.highlightDifferencesButton.Text = "Zvýraznit rozdíly";
+            this.highlightDifferencesButton.Size = new System.Drawing.Size(73, 22);
+            this.highlightDifferencesButton.Text = "Highlight";
             this.highlightDifferencesButton.ToolTipText = "Režim zvýrazňování rozdílů";
             this.highlightDifferencesButton.ButtonClick += new System.EventHandler(this.OnHighlightDifferencesButtonClick);
             // 
             // analyzeButton
             // 
             this.analyzeButton.Name = "analyzeButton";
-            this.analyzeButton.Size = new System.Drawing.Size(57, 22);
-            this.analyzeButton.Text = "Vyhledat";
+            this.analyzeButton.Size = new System.Drawing.Size(34, 22);
+            this.analyzeButton.Text = "Find";
             this.analyzeButton.ToolTipText = "Vyhledat rozdíly na zvoleném intervalu";
             this.analyzeButton.Click += new System.EventHandler(this.OnAnalyzeButtonClick);
             // 
@@ -255,8 +255,8 @@ namespace fVis.Windows
             // zoomToValueButton
             // 
             this.zoomToValueButton.Name = "zoomToValueButton";
-            this.zoomToValueButton.Size = new System.Drawing.Size(59, 22);
-            this.zoomToValueButton.Text = "Přiblížit k";
+            this.zoomToValueButton.Size = new System.Drawing.Size(60, 22);
+            this.zoomToValueButton.Text = "Zoom To";
             this.zoomToValueButton.Click += new System.EventHandler(this.OnZoomToValueButtonClick);
             // 
             // MainWindow

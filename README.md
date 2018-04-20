@@ -1,5 +1,5 @@
 <h1 align="center">
-    Detail function visualization
+    Detail Function Visualization
 </h1>
 
 <div align="center">
@@ -43,8 +43,8 @@ vysokou přesností. Aplikace je napsaná v jazyce C# a využívá technologii
 ## License
 This project is licensed under the terms of the [GNU General Public License v3.0](./LICENSE).
 
-Uses [Mpir.NET](http://wezeku.github.io/Mpir.NET/) licensed under the terms of the GNU Lesser General Public License v3.0.
+Uses [Mpir.NET](http://wezeku.github.io/Mpir.NET/) licensed under the terms of the [GNU Lesser General Public License v3.0](https://github.com/wezeku/Mpir.NET/blob/master/LICENSE.txt).
 
-Uses [LegacyWrapper](https://github.com/CodefoundryDE/LegacyWrapper) licensed under the terms of the MIT License.
+Uses [LegacyWrapper](https://github.com/CodefoundryDE/LegacyWrapper) licensed under the terms of the [MIT License](https://github.com/CodefoundryDE/LegacyWrapper/blob/master/LICENSE).
 
 Some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/), licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/).

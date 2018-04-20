@@ -1,4 +1,5 @@
 ﻿using System;
+using l10n = fVis.Properties.Resources;
 
 namespace fVis.Extensions
 {
@@ -17,21 +18,21 @@ namespace fVis.Extensions
                     int days = (time.Days % 365);
 
                     if (years == 1) {
-                        return "1 rok a " + days.ToString("N0") + " dní";
+                        return string.Format(l10n.TimeOneYearAndDays, days.ToString("N0"));
                     } else if (years < 5) {
-                        return years.ToString("N0") + " roky a " + days.ToString("N0") + " dní";
+                        return string.Format(l10n.TimeFewYearsAndDays, years.ToString("N0"), days.ToString("N0"));
                     } else {
-                        return years.ToString("N0") + " let a " + days.ToString("N0") + " dní";
+                        return string.Format(l10n.TimeYearsAndDays, years.ToString("N0"), days.ToString("N0"));
                     }
                 } else {
-                    return time.Days.ToString("N0") + " dní a " + time.Hours.ToString("N0") + " hodin";
+                    return string.Format(l10n.TimeDaysAndHours, time.Days.ToString("N0"), time.Hours.ToString("N0"));
                 }
             } else if (time.Hours > 0) {
-                return time.Hours.ToString("N0") + " hodin a " + time.Minutes.ToString("N0") + " minut";
+                return string.Format(l10n.TimeHoursAndMinutes, time.Hours.ToString("N0"), time.Minutes.ToString("N0"));
             } else if (time.Minutes > 0) {
-                return time.Minutes.ToString("N0") + " minut a " + time.Seconds.ToString("N0") + " sekund";
+                return string.Format(l10n.TimeMinutesAndSeconds, time.Minutes.ToString("N0"), time.Seconds.ToString("N0"));
             } else {
-                return time.Seconds.ToString("N0") + " sekund";
+                return string.Format(l10n.TimeSeconds, time.Seconds.ToString("N0"));
             }
         }
     }

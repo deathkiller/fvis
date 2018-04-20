@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using fVis.Controls;
 using fVis.Extensions;
 using ListView = fVis.Controls.ListView;
+using l10n = fVis.Properties.Resources;
 
 namespace fVis.Windows
 {
@@ -21,6 +22,8 @@ namespace fVis.Windows
             this.graph = graph;
 
             mainInstructionLabel.Font = new Font(mainInstructionLabel.Font, FontStyle.Bold);
+
+            listView.EmptyText = l10n.ListIsEmpty;
 
             Font monospacedFont = new Font("Consolas", 8f);
             valueTextBox.Font = monospacedFont;
