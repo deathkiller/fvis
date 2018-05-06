@@ -14,6 +14,8 @@
 <hr/>
 
 [![Build Status](https://img.shields.io/appveyor/ci/deathkiller/fvis.svg?logo=appveyor)](https://ci.appveyor.com/project/deathkiller/fvis)
+[![Tests](https://img.shields.io/appveyor/tests/deathkiller/fvis.svg)](https://ci.appveyor.com/project/deathkiller/fvis/build/tests)
+[![Coverage](https://img.shields.io/codecov/c/github/deathkiller/fvis.svg)](https://codecov.io/gh/deathkiller/fvis)
 [![License](https://img.shields.io/github/license/deathkiller/fvis.svg)](https://github.com/deathkiller/fvis/blob/master/LICENSE)
 
 
