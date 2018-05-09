@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+/*
 namespace fVis.Extensions.Tests
 {
     [TestClass]
@@ -77,3 +78,4 @@ namespace fVis.Extensions.Tests
         }
     }
 }
+*/
