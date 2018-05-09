@@ -71,6 +71,7 @@
     <Compile Include="NumericValueSources\FileDataSet.cs" />
     <Compile Include="NumericValueSources\INumericValueSource.cs" />
     <Compile Include="Extensions\DoubleExtensions.Format.cs" />
+    <Compile Include="Utils\Tx\DateTimeInterval.cs" />
     <Compile Include="Utils\Disposable.cs" />
     <Compile Include="Misc\FormattedTextBlock.cs" />
     <Compile Include="Misc\GdiGraphics.cs" />
@@ -91,6 +92,8 @@
     <Compile Include="Callbacks\NativeOperatorCallbacks.cs" />
     <Compile Include="NumericValueSources\MemoryDataSet.cs" />
     <Compile Include="Properties\SharedAssemblyInfo.cs" />
+    <Compile Include="Utils\Tx\Tx.cs" />
+    <Compile Include="Utils\Tx\TxWinForms.cs" />
     <Compile Include="Windows\FindDifferencesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +148,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Dictionary.txd" />
     <None Include="Packages.config" />
     <None Include="Resources\Warning.png" />
   </ItemGroup>
@@ -155,6 +159,7 @@
     <None Include="Resources\ZoomOut.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Help.png" />
     <Content Include="xmpir32.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

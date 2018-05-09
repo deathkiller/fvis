@@ -6,8 +6,8 @@ using System.Globalization;
 using System.Windows.Forms;
 using fVis.Controls;
 using fVis.Extensions;
+using Unclassified.TxLib;
 using ListView = fVis.Controls.ListView;
-using l10n = fVis.Properties.Resources;
 
 namespace fVis.Windows
 {
@@ -19,11 +19,13 @@ namespace fVis.Windows
         {
             InitializeComponent();
 
+            TxDictionaryBinding.AddTextBindings(this);
+
             this.graph = graph;
 
             mainInstructionLabel.Font = new Font(mainInstructionLabel.Font, FontStyle.Bold);
 
-            listView.EmptyText = l10n.ListIsEmpty;
+            listView.EmptyText = Tx.T("main.list is empty");
 
             Font monospacedFont = new Font("Consolas", 8f);
             valueTextBox.Font = monospacedFont;

@@ -22,6 +22,21 @@ namespace fVis
             }
         }
 
+        public static string AssemblyCopyright
+        {
+            get
+            {
+                object[] attributes = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+                if (attributes.Length > 0) {
+                    AssemblyCopyrightAttribute titleAttribute = (AssemblyCopyrightAttribute)attributes[0];
+                    if (!string.IsNullOrEmpty(titleAttribute.Copyright)) {
+                        return titleAttribute.Copyright;
+                    }
+                }
+                return "";
+            }
+        }
+
         [STAThread]
         public static void Main(string[] args)
         {

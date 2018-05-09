@@ -40,10 +40,9 @@
             this.mainInstructionLabel.AutoSize = true;
             this.mainInstructionLabel.Location = new System.Drawing.Point(10, 11);
             this.mainInstructionLabel.Name = "mainInstructionLabel";
-            this.mainInstructionLabel.Size = new System.Drawing.Size(412, 13);
+            this.mainInstructionLabel.Size = new System.Drawing.Size(104, 13);
             this.mainInstructionLabel.TabIndex = 14;
-            this.mainInstructionLabel.Text = "Enter a value of x and select a function. The application will zoom to the desire" +
-    "d point.";
+            this.mainInstructionLabel.Text = "[zoom to.description]";
             // 
             // findButton
             // 
@@ -53,7 +52,7 @@
             this.findButton.Name = "findButton";
             this.findButton.Size = new System.Drawing.Size(75, 24);
             this.findButton.TabIndex = 13;
-            this.findButton.Text = "Zoom";
+            this.findButton.Text = "[zoom to.ok]";
             this.findButton.UseVisualStyleBackColor = true;
             this.findButton.Click += new System.EventHandler(this.OnFindButtonClick);
             // 
@@ -66,7 +65,7 @@
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 24);
             this.closeButton.TabIndex = 12;
-            this.closeButton.Text = "Close";
+            this.closeButton.Text = "[main.close]";
             this.closeButton.UseVisualStyleBackColor = true;
             // 
             // listView
@@ -74,6 +73,7 @@
             this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView.EmptyText = null;
             this.listView.FocusedItem = null;
             this.listView.Location = new System.Drawing.Point(7, 73);
             this.listView.Name = "listView";
@@ -97,9 +97,9 @@
             this.startLabel.AutoSize = true;
             this.startLabel.Location = new System.Drawing.Point(10, 46);
             this.startLabel.Name = "startLabel";
-            this.startLabel.Size = new System.Drawing.Size(57, 13);
+            this.startLabel.Size = new System.Drawing.Size(79, 13);
             this.startLabel.TabIndex = 9;
-            this.startLabel.Text = "Value of x:";
+            this.startLabel.Text = "[zoom to.value]";
             // 
             // ZoomToValueDialog
             // 
@@ -117,7 +117,7 @@
             this.Name = "ZoomToValueDialog";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Zoom To Value";
+            this.Text = "[zoom to.title]";
             this.ResumeLayout(false);
             this.PerformLayout();
 

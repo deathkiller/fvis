@@ -8,7 +8,7 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 using fVis.Extensions;
-using l10n = fVis.Properties.Resources;
+using Unclassified.TxLib;
 
 namespace fVis.Controls
 {
@@ -414,7 +414,7 @@ namespace fVis.Controls
 
             string info;
             if (highlightDifferences != HighlightDifferencesMode.None) {
-                info = string.Format(l10n.GraphCachedDifferences, cachedDifferences.Count.ToString("N0"), CachedDifferencesThreshold.ToString("N0"));
+                info = string.Format(Tx.T("main.cached diffs"), cachedDifferences.Count.ToString("N0"), CachedDifferencesThreshold.ToString("N0"));
             } else {
                 info = "";
             }

@@ -51,6 +51,10 @@ namespace fVis.Windows
             this.zoomInButton = new System.Windows.Forms.ToolStripButton();
             this.resetButton = new System.Windows.Forms.ToolStripButton();
             this.zoomToValueButton = new System.Windows.Forms.ToolStripButton();
+            this.helpDropDown = new System.Windows.Forms.ToolStripDropDownButton();
+            this.langMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -94,6 +98,7 @@ namespace fVis.Windows
             // listView
             // 
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.EmptyText = null;
             this.listView.FocusedItem = null;
             this.listView.Location = new System.Drawing.Point(0, 0);
             this.listView.Name = "listView";
@@ -124,7 +129,8 @@ namespace fVis.Windows
             this.scaleFactorBox,
             this.zoomInButton,
             this.resetButton,
-            this.zoomToValueButton});
+            this.zoomToValueButton,
+            this.helpDropDown});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(870, 25);
@@ -140,9 +146,9 @@ namespace fVis.Windows
             // addButton
             // 
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(33, 22);
-            this.addButton.Text = "Add";
-            this.addButton.ToolTipText = "Přidat nový aritmetický výraz";
+            this.addButton.Size = new System.Drawing.Size(69, 22);
+            this.addButton.Text = "[main.add]";
+            this.addButton.ToolTipText = "[main.tooltips.add]";
             this.addButton.Click += new System.EventHandler(this.OnAddButtonClick);
             // 
             // removeButton
@@ -150,17 +156,17 @@ namespace fVis.Windows
             this.removeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.removeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(54, 22);
-            this.removeButton.Text = "Remove";
-            this.removeButton.ToolTipText = "Odebrat vybranou položku";
+            this.removeButton.Size = new System.Drawing.Size(89, 22);
+            this.removeButton.Text = "[main.remove]";
+            this.removeButton.ToolTipText = "[main.tooltips.remove]";
             this.removeButton.Click += new System.EventHandler(this.OnRemoveButtonClick);
             // 
             // duplicateButton
             // 
             this.duplicateButton.Name = "duplicateButton";
-            this.duplicateButton.Size = new System.Drawing.Size(61, 22);
-            this.duplicateButton.Text = "Duplicate";
-            this.duplicateButton.ToolTipText = "Duplikovat vybranou položku";
+            this.duplicateButton.Size = new System.Drawing.Size(98, 22);
+            this.duplicateButton.Text = "[main.duplicate]";
+            this.duplicateButton.ToolTipText = "[main.tooltips.duplicate]";
             this.duplicateButton.Click += new System.EventHandler(this.OnDuplicateButtonClick);
             // 
             // toolStripSeparator1
@@ -171,17 +177,17 @@ namespace fVis.Windows
             // importButton
             // 
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(47, 22);
-            this.importButton.Text = "Import";
-            this.importButton.ToolTipText = "Importovat hodnoty ze souboru";
+            this.importButton.Size = new System.Drawing.Size(85, 22);
+            this.importButton.Text = "[main.import]";
+            this.importButton.ToolTipText = "[main.tooltips.import]";
             this.importButton.Click += new System.EventHandler(this.OnImportButtonClick);
             // 
             // exportButton
             // 
             this.exportButton.Name = "exportButton";
-            this.exportButton.Size = new System.Drawing.Size(44, 22);
-            this.exportButton.Text = "Export";
-            this.exportButton.ToolTipText = "Exportovat hodnoty do souboru";
+            this.exportButton.Size = new System.Drawing.Size(82, 22);
+            this.exportButton.Text = "[main.export]";
+            this.exportButton.ToolTipText = "[main.tooltips.export]";
             this.exportButton.Click += new System.EventHandler(this.OnExportSelectedButtonClick);
             // 
             // toolStripSeparator4
@@ -192,25 +198,25 @@ namespace fVis.Windows
             // implementationButton
             // 
             this.implementationButton.Name = "implementationButton";
-            this.implementationButton.Size = new System.Drawing.Size(108, 22);
-            this.implementationButton.Text = "Implementation";
-            this.implementationButton.ToolTipText = "Výběr implementace";
+            this.implementationButton.Size = new System.Drawing.Size(95, 22);
+            this.implementationButton.Text = "[mathlib.title]";
+            this.implementationButton.ToolTipText = "[mathlib.tooltip]";
             this.implementationButton.ButtonClick += new System.EventHandler(this.OnImplementationButtonClick);
             // 
             // highlightDifferencesButton
             // 
             this.highlightDifferencesButton.Name = "highlightDifferencesButton";
-            this.highlightDifferencesButton.Size = new System.Drawing.Size(73, 22);
-            this.highlightDifferencesButton.Text = "Highlight";
-            this.highlightDifferencesButton.ToolTipText = "Režim zvýrazňování rozdílů";
+            this.highlightDifferencesButton.Size = new System.Drawing.Size(102, 22);
+            this.highlightDifferencesButton.Text = "[highlight.title]";
+            this.highlightDifferencesButton.ToolTipText = "[highlight.tooltip]";
             this.highlightDifferencesButton.ButtonClick += new System.EventHandler(this.OnHighlightDifferencesButtonClick);
             // 
             // analyzeButton
             // 
             this.analyzeButton.Name = "analyzeButton";
-            this.analyzeButton.Size = new System.Drawing.Size(34, 22);
-            this.analyzeButton.Text = "Find";
-            this.analyzeButton.ToolTipText = "Vyhledat rozdíly na zvoleném intervalu";
+            this.analyzeButton.Size = new System.Drawing.Size(70, 22);
+            this.analyzeButton.Text = "[main.find]";
+            this.analyzeButton.ToolTipText = "[main.tooltips.find]";
             this.analyzeButton.Click += new System.EventHandler(this.OnAnalyzeButtonClick);
             // 
             // toolStripSeparator2
@@ -225,13 +231,14 @@ namespace fVis.Windows
             this.zoomOutButton.Name = "zoomOutButton";
             this.zoomOutButton.Size = new System.Drawing.Size(23, 22);
             this.zoomOutButton.Text = "Oddálit";
+            this.zoomOutButton.ToolTipText = "[main.tooltips.zoom out]";
             this.zoomOutButton.Click += new System.EventHandler(this.OnZoomOutButtonClick);
             // 
             // scaleFactorBox
             // 
             this.scaleFactorBox.MaxLength = 200;
             this.scaleFactorBox.Name = "scaleFactorBox";
-            this.scaleFactorBox.Size = new System.Drawing.Size(160, 25);
+            this.scaleFactorBox.Size = new System.Drawing.Size(160, 23);
             this.scaleFactorBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.scaleFactorBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnScaleFactorBoxKeyDown);
             // 
@@ -240,24 +247,57 @@ namespace fVis.Windows
             this.zoomInButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.zoomInButton.Image = global::fVis.Properties.Resources.ZoomIn;
             this.zoomInButton.Name = "zoomInButton";
-            this.zoomInButton.Size = new System.Drawing.Size(23, 22);
+            this.zoomInButton.Size = new System.Drawing.Size(23, 20);
             this.zoomInButton.Text = "Přiblížit";
+            this.zoomInButton.ToolTipText = "[main.tooltips.zoom in]";
             this.zoomInButton.Click += new System.EventHandler(this.OnZoomInButtonClick);
             // 
             // resetButton
             // 
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(39, 22);
-            this.resetButton.Text = "Reset";
-            this.resetButton.ToolTipText = "Oddálit a přesunout na střed";
+            this.resetButton.Size = new System.Drawing.Size(101, 19);
+            this.resetButton.Text = "[main.reset view]";
+            this.resetButton.ToolTipText = "[main.tooltips.reset view]";
             this.resetButton.Click += new System.EventHandler(this.OnResetButtonClick);
             // 
             // zoomToValueButton
             // 
             this.zoomToValueButton.Name = "zoomToValueButton";
-            this.zoomToValueButton.Size = new System.Drawing.Size(60, 22);
-            this.zoomToValueButton.Text = "Zoom To";
+            this.zoomToValueButton.Size = new System.Drawing.Size(93, 19);
+            this.zoomToValueButton.Text = "[main.zoom to]";
+            this.zoomToValueButton.ToolTipText = "[main.tooltips.zoom to]";
             this.zoomToValueButton.Click += new System.EventHandler(this.OnZoomToValueButtonClick);
+            // 
+            // helpDropDown
+            // 
+            this.helpDropDown.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.helpDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.helpDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.langMenuItem,
+            this.toolStripSeparator5,
+            this.aboutMenuItem});
+            this.helpDropDown.Image = global::fVis.Properties.Resources.Help;
+            this.helpDropDown.Name = "helpDropDown";
+            this.helpDropDown.Size = new System.Drawing.Size(29, 20);
+            this.helpDropDown.Text = "[main.help]";
+            // 
+            // langMenuItem
+            // 
+            this.langMenuItem.Name = "langMenuItem";
+            this.langMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.langMenuItem.Text = "[main.language]";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            // 
+            // aboutMenuItem
+            // 
+            this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutMenuItem.Text = "[main.about]";
+            this.aboutMenuItem.Click += new System.EventHandler(this.OnAboutMenuItemClick);
             // 
             // MainWindow
             // 
@@ -303,6 +343,10 @@ namespace fVis.Windows
         private System.Windows.Forms.ToolStripSplitButton highlightDifferencesButton;
         private System.Windows.Forms.ToolStripButton analyzeButton;
         private System.Windows.Forms.ToolStripButton zoomToValueButton;
+        private System.Windows.Forms.ToolStripDropDownButton helpDropDown;
+        private System.Windows.Forms.ToolStripMenuItem langMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
     }
 }
 

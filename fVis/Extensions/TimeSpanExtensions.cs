@@ -1,5 +1,5 @@
 ﻿using System;
-using l10n = fVis.Properties.Resources;
+using Unclassified.TxLib;
 
 namespace fVis.Extensions
 {
@@ -18,21 +18,21 @@ namespace fVis.Extensions
                     int days = (time.Days % 365);
 
                     if (years == 1) {
-                        return string.Format(l10n.TimeOneYearAndDays, days.ToString("N0"));
+                        return Tx.T("time.yr days", days.ToString("N0"));
                     } else if (years < 5) {
-                        return string.Format(l10n.TimeFewYearsAndDays, years.ToString("N0"), days.ToString("N0"));
+                        return Tx.T("time.few yrs days", years.ToString("N0"), days.ToString("N0"));
                     } else {
-                        return string.Format(l10n.TimeYearsAndDays, years.ToString("N0"), days.ToString("N0"));
+                        return Tx.T("time.yrs days", years.ToString("N0"), days.ToString("N0"));
                     }
                 } else {
-                    return string.Format(l10n.TimeDaysAndHours, time.Days.ToString("N0"), time.Hours.ToString("N0"));
+                    return Tx.T("time.days hrs", time.Days.ToString("N0"), time.Hours.ToString("N0"));
                 }
             } else if (time.Hours > 0) {
-                return string.Format(l10n.TimeHoursAndMinutes, time.Hours.ToString("N0"), time.Minutes.ToString("N0"));
+                return Tx.T("time.hrs mins", time.Hours.ToString("N0"), time.Minutes.ToString("N0"));
             } else if (time.Minutes > 0) {
-                return string.Format(l10n.TimeMinutesAndSeconds, time.Minutes.ToString("N0"), time.Seconds.ToString("N0"));
+                return Tx.T("time.mins secs", time.Minutes.ToString("N0"), time.Seconds.ToString("N0"));
             } else {
-                return string.Format(l10n.TimeSeconds, time.Seconds.ToString("N0"));
+                return Tx.T("time.secs", time.Seconds.ToString("N0"));
             }
         }
     }

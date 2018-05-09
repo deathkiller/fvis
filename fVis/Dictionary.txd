@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- TxTranslation dictionary file. Use TxEditor to edit this file. http://unclassified.software/txtranslation -->
+<translation xml:space="preserve">
+	<culture name="cs-CZ">
+		<text key="dataset.errors.cannot determine interval">Chyba při stanovování intervalu pro uložení.</text>
+		<text key="dataset.errors.file not valid">Vybraný soubor neobsahuje uložené hodnoty nebo je poškozený.</text>
+		<text key="dataset.errors.file too big">Uložení tohoto intervalu pravděpodobně zabere velké množství místa.
+
+Počet hodnot v intervalu: {0}
+Odhadovaná velikost souboru: {1}
+
+Opravdu si přejete uložit zvolený interval funkce do souboru?</text>
+		<text key="dataset.errors.interval too big">Interval je pro uložení příliš velký.</text>
+		<text key="dataset.errors.interval with zero">Nelze uložit interval čísel procházející nulou.
+Obsahoval by příliš mnoho hodnot.</text>
+		<text key="dataset.errors.item not supported">Tento druh položky není podporován. Je možné uložit pouze hodnoty aritmetického výrazu.</text>
+		<text key="dataset.filetype">Soubor s uloženými hodnotami</text>
+		<text key="dataset.load">Otevřít soubor hodnot…</text>
+		<text key="dataset.part of function">Část funkce</text>
+		<text key="dataset.save">Uložit soubor hodnot…</text>
+		<text key="dataset.saving.description">Ukládání hodnot do souboru</text>
+		<text key="dataset.saving.progress">Počet uložených hodnot: {0} / {1}</text>
+		<text key="dataset.saving.title">Ukládání hodnot</text>
+		<text key="expression.errors.distinct variable count exceeded">Ve výrazu se může vyskytovat pouze jedna proměnná</text>
+		<text key="expression.errors.invalid number">Číslo nelze zpracovat</text>
+		<text key="expression.errors.parentheses count mismatch">Chybný počet závorek</text>
+		<text key="find diffs.complete.description">Prohledávání bylo dokončeno.
+
+Počet hodnot v intervalu: {0}
+Počet nalezených rozdílů: {1} ({2} %)</text>
+		<text key="find diffs.complete.title">Prohledávání dokončeno</text>
+		<text key="find diffs.description">Zvolte interval a zaškrtněte funkce, které se budou porovnávat.</text>
+		<text key="find diffs.errors.interval too big">Počet hodnot v intervalu: {0}
+Nalezení rozdílů v tomto intervalu pravděpodobně bude trvat:
+{1}
+
+Opravdu si přejete prohledat zadaný interval?</text>
+		<text key="find diffs.errors.interval with zero">Nelze vyhledat rozdíly v intervalu procházející nulou.
+Obsahuje příliš mnoho hodnot.</text>
+		<text key="find diffs.errors.invalid end">Hodnotu konce intervalu nelze převést na číslo.
+Zkontrolujte, že číslo neobsahuje mezery a je použita desetinná tečka.</text>
+		<text key="find diffs.errors.invalid interval">Chyba při stanovování intervalu pro vyhledávání.</text>
+		<text key="find diffs.errors.invalid selection">Zkontrolujte, že jsou vybrány alespoň dvě matematické funkce.</text>
+		<text key="find diffs.errors.invalid start">Hodnotu začátku intervalu nelze převést na číslo.
+Zkontrolujte, že číslo neobsahuje mezery a je použita desetinná tečka.</text>
+		<text key="find diffs.finding.description">Vyhledávání rozdílů</text>
+		<text key="find diffs.finding.progress">Počet zpracovaných hodnot: {0} / {1}</text>
+		<text key="find diffs.finding.title">Vyhledávání rozdílů</text>
+		<text key="find diffs.interval end">Konec intervalu:</text>
+		<text key="find diffs.interval start">Začátek intervalu:</text>
+		<text key="find diffs.status">Odhadovaný čas: {0} | Počet hodnot: {1}</text>
+		<text key="find diffs.title">Vyhledat rozdíly</text>
+		<text key="highlight.constant">Obyčejně</text>
+		<text key="highlight.disabled">Vypnuto</text>
+		<text key="highlight.dynamic">Dynamicky</text>
+		<text key="highlight.only diff">Pouze rozdíly</text>
+		<text key="highlight.title">Zvýraznění</text>
+		<text key="highlight.tooltip">Režim zvýrazňování rozdílů</text>
+		<text key="main.about">O aplikaci…</text>
+		<text key="main.about.description">{0}
+
+{1}
+This project is licensed under the terms of the GNU General Public License v3.0.
+
+GitHub: {2}</text>
+		<text key="main.add">Přidat</text>
+		<text key="main.cached diffs">Počet rozdílů v mezipaměti: {0} / {1}</text>
+		<text key="main.cancel">Zrušit</text>
+		<text key="main.close">Zavřít</text>
+		<text key="main.duplicate">Duplikovat</text>
+		<text key="main.enter expression">Zadejte aritmetický výraz…</text>
+		<text key="main.error">Chyba</text>
+		<text key="main.export">Export</text>
+		<text key="main.find">Najít</text>
+		<text key="main.help">Nápověda</text>
+		<text key="main.import">Import</text>
+		<text key="main.language">Jazyk</text>
+		<text key="main.list is empty">Seznam je prázdný</text>
+		<text key="main.remaining time">Zbývá přibližně {0}.</text>
+		<text key="main.remove">Odebrat</text>
+		<text key="main.reset view">Reset</text>
+		<text key="main.run">Spustit</text>
+		<text key="main.tooltips.add">Přidat nový aritmetický výraz</text>
+		<text key="main.tooltips.duplicate">Duplikovat vybranou položku</text>
+		<text key="main.tooltips.export">Exportovat hodnoty do souboru</text>
+		<text key="main.tooltips.find">Vyhledat rozdíly na zvoleném intervalu</text>
+		<text key="main.tooltips.import">Importovat hodnoty ze souboru</text>
+		<text key="main.tooltips.remove">Odebrat vybranou položku</text>
+		<text key="main.tooltips.reset view">Oddálit a přesunout na střed</text>
+		<text key="main.tooltips.zoom in">Přiblížit</text>
+		<text key="main.tooltips.zoom out">Oddálit</text>
+		<text key="main.tooltips.zoom to">Přiblížit k zadanému bodu</text>
+		<text key="main.warning">Varování</text>
+		<text key="main.zoom to">Přiblížit k</text>
+		<text key="mathlib.add">Přidat…</text>
+		<text key="mathlib.errors.not valid">Vybraná knihovna neobsahuje matematické funkce.</text>
+		<text key="mathlib.errors.platform mismatch">Vybraná knihovna byla pravděpodobně sestavena pro jiný typ procesoru než x86.</text>
+		<text key="mathlib.errors.title">Chyba při přidávání knihovny</text>
+		<text key="mathlib.filetype">Knihovna</text>
+		<text key="mathlib.internal">Rozhraní .NET</text>
+		<text key="mathlib.load">Otevřít knihovnu s matematickými funkcemi…</text>
+		<text key="mathlib.missing callbacks">Chybějící funkce: </text>
+		<text key="mathlib.remoting">x86 Remoting</text>
+		<text key="mathlib.title">Implementace</text>
+		<text key="mathlib.tooltip">Výběr implementace pro vybraný výraz</text>
+		<text key="time.days hrs">{0} dní a {1} hodin</text>
+		<text key="time.few yrs days">{0} roky a {1} dní</text>
+		<text key="time.hrs mins">{0} hodin a {1} minut</text>
+		<text key="time.immediately">Okamžitě</text>
+		<text key="time.infinitely">Více než 1000 let</text>
+		<text key="time.mins secs">{0} minut a {1} sekund</text>
+		<text key="time.secs">{0} sekund</text>
+		<text key="time.yr days">1 rok a {0} dní</text>
+		<text key="time.yrs days">{0} let a {1} dní</text>
+		<text key="zoom to.description">Zadejte hodnotu x a vyberte funkci. Aplikace automaticky přibliží k vybranému bodu.</text>
+		<text key="zoom to.ok">Přiblížit</text>
+		<text key="zoom to.title">Přiblížit k hodnotě</text>
+		<text key="zoom to.value">Hodnota x:</text>
+	</culture>
+	<culture name="en" primary="true">
+		<text key="dataset.errors.cannot determine interval">Cannot determite span of values to save.</text>
+		<text key="dataset.errors.file not valid">Selected file does not contain any values or is corrupted.</text>
+		<text key="dataset.errors.file too big">Saving this span is likely to take up a lot of space.
+
+Number of values in the span: {0}
+Estimated file size: {1}
+
+Do you really want to save the selected span to a file?</text>
+		<text key="dataset.errors.interval too big">Span is too big to be saved.</text>
+		<text key="dataset.errors.interval with zero">Cannot save a span that go through zero.
+It contains too much values.</text>
+		<text key="dataset.errors.item not supported">This type of item is not supported. Only values of arithmetic expression can be saved.</text>
+		<text key="dataset.filetype">Dataset</text>
+		<text key="dataset.load">Open dataset…</text>
+		<text key="dataset.part of function">Part of function</text>
+		<text key="dataset.save">Save dataset…</text>
+		<text key="dataset.saving.description">Saving values to dataset</text>
+		<text key="dataset.saving.progress">Already saved: {0} / {1}</text>
+		<text key="dataset.saving.title">Saving dataset</text>
+		<text key="expression.errors.distinct variable count exceeded">Only one variable is allowed</text>
+		<text key="expression.errors.invalid number">Number not valid</text>
+		<text key="expression.errors.parentheses count mismatch">Parentheses count mismatch</text>
+		<text key="find diffs.complete.description">Operation was successful.
+
+Number of values in span: {0}
+Number of differences: {1} ({2} %)</text>
+		<text key="find diffs.complete.title">Search complete</text>
+		<text key="find diffs.description">Enter a span and select functions which will be compared.</text>
+		<text key="find diffs.errors.interval too big">Number of values in the span: {0}
+This operation is likely to take: {1}
+
+Do you really want to search the selected span?</text>
+		<text key="find diffs.errors.interval with zero">Cannot find differences in a span that go through zero.
+It contains too many values.</text>
+		<text key="find diffs.errors.invalid end">The end value of the span can not be converted to a number.
+Make sure that the number is not empty and the decimal point is used.</text>
+		<text key="find diffs.errors.invalid interval">Cannot determine the selected span.</text>
+		<text key="find diffs.errors.invalid selection">Make sure at least two math functions are selected.</text>
+		<text key="find diffs.errors.invalid start">The start value of the span can not be converted to a number.
+Make sure that the number is not empty and the decimal point is used.</text>
+		<text key="find diffs.finding.description">Finding differences</text>
+		<text key="find diffs.finding.progress">Number of processed values: {0} / {1}</text>
+		<text key="find diffs.finding.title">Finding differences</text>
+		<text key="find diffs.interval end">End of span:</text>
+		<text key="find diffs.interval start">Start of span:</text>
+		<text key="find diffs.status">Estimated time: {0} | Values: {1}</text>
+		<text key="find diffs.title">Find Differences</text>
+		<text key="highlight.constant">Plain</text>
+		<text key="highlight.disabled">Disabled</text>
+		<text key="highlight.dynamic">Dynamic</text>
+		<text key="highlight.only diff">Only differences</text>
+		<text key="highlight.title">Highlight</text>
+		<text key="highlight.tooltip">Differences highlight mode</text>
+		<text key="main.about">About…</text>
+		<text key="main.about.description">{0}
+
+{1}
+This project is licensed under the terms of the GNU General Public License v3.0.
+
+GitHub: {2}</text>
+		<text key="main.add">Add</text>
+		<text key="main.cached diffs">Diffs in cache: {0} / {1}</text>
+		<text key="main.cancel">Cancel</text>
+		<text key="main.close">Close</text>
+		<text key="main.duplicate">Duplicate</text>
+		<text key="main.enter expression">Enter arithmetic expression…</text>
+		<text key="main.error">Error</text>
+		<text key="main.export">Export</text>
+		<text key="main.find">Find</text>
+		<text key="main.help">Help</text>
+		<text key="main.import">Import</text>
+		<text key="main.language">Language</text>
+		<text key="main.list is empty">List is empty</text>
+		<text key="main.remaining time">{0} remaining.</text>
+		<text key="main.remove">Remove</text>
+		<text key="main.reset view">Reset</text>
+		<text key="main.run">Run</text>
+		<text key="main.tooltips.add">Add new arithmetic expression</text>
+		<text key="main.tooltips.duplicate">Duplicate selected item</text>
+		<text key="main.tooltips.export">Export values to dataset</text>
+		<text key="main.tooltips.find">Find differences in a span</text>
+		<text key="main.tooltips.import">Inport values from dataset</text>
+		<text key="main.tooltips.remove">Remove selected item</text>
+		<text key="main.tooltips.reset view">Reset view to default state</text>
+		<text key="main.tooltips.zoom in">Zoom in</text>
+		<text key="main.tooltips.zoom out">Zoom out</text>
+		<text key="main.tooltips.zoom to">Zoom to specified value</text>
+		<text key="main.warning">Warning</text>
+		<text key="main.zoom to">Zoom To</text>
+		<text key="mathlib.add">Add…</text>
+		<text key="mathlib.errors.not valid">Selected library contains no math functions.</text>
+		<text key="mathlib.errors.platform mismatch">Selected library was probably built for different CPU architecture than x86.</text>
+		<text key="mathlib.errors.title">Error while loading of library</text>
+		<text key="mathlib.filetype">Library</text>
+		<text key="mathlib.internal">.NET</text>
+		<text key="mathlib.load">Open math library…</text>
+		<text key="mathlib.missing callbacks">Missing callbacks: </text>
+		<text key="mathlib.remoting">x86 Remoting</text>
+		<text key="mathlib.title">Implementation</text>
+		<text key="mathlib.tooltip">Select math library for selected expression</text>
+		<text key="time.days hrs">{0} days and {1} hours</text>
+		<text key="time.few yrs days">{0} years and {1} days</text>
+		<text key="time.hrs mins">{0} hours and {1} minutes</text>
+		<text key="time.immediately">Immediately</text>
+		<text key="time.infinitely">More than 1000 years</text>
+		<text key="time.mins secs">{0} minutes and {1} seconds</text>
+		<text key="time.secs">{0} seconds</text>
+		<text key="time.yr days">a year and {0} days</text>
+		<text key="time.yrs days">{0} years and {1} days</text>
+		<text key="Tx:byte unit" comment="Default: B" />
+		<text key="Tx:colon" comment="Can be used to insert additional spacing like for French." />
+		<text key="Tx:date.day" comment="Default: %d" />
+		<text key="Tx:date.day.tab" comment="Default: dd" />
+		<text key="Tx:date.dow with date" comment="Combines a day of week with a date. Default: {dow}, {date}" />
+		<text key="Tx:date.month.abbr" comment="Default: MMM" />
+		<text key="Tx:date.month.long" comment="Default: MMMM" />
+		<text key="Tx:date.month day" comment="Default: MM-dd">d/M</text>
+		<text key="Tx:date.month day.abbr" comment="Default: d MMM">d MMM</text>
+		<text key="Tx:date.month day.long" comment="Default: M">d MMMM</text>
+		<text key="Tx:date.month day.tab" comment="Default: MM-dd">dd/MM</text>
+		<text key="Tx:date.year" comment="Default: yyyy" />
+		<text key="Tx:date.year month" comment="Default: yyyy-MM">M/yyyy</text>
+		<text key="Tx:date.year month.abbr" comment="Default: MMM yyyy">MMM yyyy</text>
+		<text key="Tx:date.year month.long" comment="Default: Y" />
+		<text key="Tx:date.year month.tab" comment="Default: yyyy-MM">MM/yyyy</text>
+		<text key="Tx:date.year month day" comment="Default: d">d/M/yyyy</text>
+		<text key="Tx:date.year month day.abbr" comment="Default: d MMM yyyy">d MMM yyyy</text>
+		<text key="Tx:date.year month day.long" comment="Default: d MMMM yyyy">d MMMM yyyy</text>
+		<text key="Tx:date.year month day.tab" comment="Default: d">dd/MM/yyyy</text>
+		<text key="Tx:enum.and.combiner">, </text>
+		<text key="Tx:enum.and.last combiner"> and </text>
+		<text key="Tx:enum.or.combiner">, </text>
+		<text key="Tx:enum.or.last combiner"> or </text>
+		<text key="Tx:number.group separator" comment="Number thousands group separator. International recommendation is a narrow non-breaking space."> </text>
+		<text key="Tx:number.group separator threshold" comment="The minimum value for thousands group separators to be used at all.">1</text>
+		<text key="Tx:number.negative" comment="Negative number prefix.">−</text>
+		<text key="Tx:number.ordinal" comment="Ordinal numbers, male or default.">{#}th</text>
+		<text key="Tx:number.ordinal" count="1" mod="10">{#}st</text>
+		<text key="Tx:number.ordinal" count="2" mod="10">{#}nd</text>
+		<text key="Tx:number.ordinal" count="3" mod="10">{#}rd</text>
+		<text key="Tx:number.ordinal" count="11" mod="100">{#}th</text>
+		<text key="Tx:number.ordinal" count="12" mod="100">{#}th</text>
+		<text key="Tx:number.ordinal" count="13" mod="100">{#}th</text>
+		<text key="Tx:number.ordinal f" comment="Ordinal numbers, female if special." />
+		<text key="Tx:number.unit separator" comment="Separator between a number and its unit. Should be a non-breaking space. Should only be used for relatively short unit symbols, not longer names."> </text>
+		<text key="Tx:percent" comment="Default: {value}%">{value}%</text>
+		<text key="Tx:quote begin" comment="Opening regular quotation mark.">“</text>
+		<text key="Tx:quote end" comment="Closing regular quotation mark.">”</text>
+		<text key="Tx:quote nested begin" comment="Opening nested/secondary quotation mark.">‘</text>
+		<text key="Tx:quote nested end" comment="Closing nested/secondary quotation mark.">’</text>
+		<text key="Tx:time.am" comment="a.m. (ante meridiem), used for 12-hour clocks.">am</text>
+		<text key="Tx:time.hour" comment="Default: %H">h tt</text>
+		<text key="Tx:time.hour.tab" comment="Default: HH">hh tt</text>
+		<text key="Tx:time.hour minute" comment="Default: t">h:mm tt</text>
+		<text key="Tx:time.hour minute.tab" comment="Default: t">HH:mm</text>
+		<text key="Tx:time.hour minute second" comment="Default: T">h:mm:ss tt</text>
+		<text key="Tx:time.hour minute second.tab" comment="Default: T">HH:mm:ss</text>
+		<text key="Tx:time.hour minute second ms" comment="Default: H:mm:ss.fff">h:mm:ss.fff tt</text>
+		<text key="Tx:time.hour minute second ms.tab" comment="Default: HH:mm:ss.fff">HH:mm:ss.fff</text>
+		<text key="Tx:time.never" comment="No point in time.">never</text>
+		<text key="Tx:time.now" comment="At the current time.">now</text>
+		<text key="Tx:time.pm" comment="p.m. (post meridiem), used for 12-hour clocks.">pm</text>
+		<text key="Tx:time.relative" comment="A point in time in the future.">in {interval}</text>
+		<text key="Tx:time.relative.days">{#} days</text>
+		<text key="Tx:time.relative.days" count="1">{#} day</text>
+		<text key="Tx:time.relative.days.single">{#} days</text>
+		<text key="Tx:time.relative.days.single" count="1">a day</text>
+		<text key="Tx:time.relative.hours">{#} hours</text>
+		<text key="Tx:time.relative.hours" count="1">{#} hour</text>
+		<text key="Tx:time.relative.hours.single">{#} hours</text>
+		<text key="Tx:time.relative.hours.single" count="1">an hour</text>
+		<text key="Tx:time.relative.minutes">{#} minutes</text>
+		<text key="Tx:time.relative.minutes" count="1">{#} minute</text>
+		<text key="Tx:time.relative.minutes.single">{#} minutes</text>
+		<text key="Tx:time.relative.minutes.single" count="1">a minute</text>
+		<text key="Tx:time.relative.months">{#} months</text>
+		<text key="Tx:time.relative.months" count="1">{#} month</text>
+		<text key="Tx:time.relative.months.single">{#} months</text>
+		<text key="Tx:time.relative.months.single" count="1">a month</text>
+		<text key="Tx:time.relative.seconds">{#} seconds</text>
+		<text key="Tx:time.relative.seconds" count="1">{#} second</text>
+		<text key="Tx:time.relative.seconds.single">{#} seconds</text>
+		<text key="Tx:time.relative.seconds.single" count="1">a second</text>
+		<text key="Tx:time.relative.years">{#} years</text>
+		<text key="Tx:time.relative.years" count="1">{#} year</text>
+		<text key="Tx:time.relative.years.single">{#} years</text>
+		<text key="Tx:time.relative.years.single" count="1">a year</text>
+		<text key="Tx:time.relative neg" comment="A point in time in the past.">{interval} ago</text>
+		<text key="Tx:time.relative neg.days">{#} days</text>
+		<text key="Tx:time.relative neg.days" count="1">{#} day</text>
+		<text key="Tx:time.relative neg.days.single">{#} days</text>
+		<text key="Tx:time.relative neg.days.single" count="1">a day</text>
+		<text key="Tx:time.relative neg.hours">{#} hours</text>
+		<text key="Tx:time.relative neg.hours" count="1">{#} hour</text>
+		<text key="Tx:time.relative neg.hours.single">{#} hours</text>
+		<text key="Tx:time.relative neg.hours.single" count="1">an hour</text>
+		<text key="Tx:time.relative neg.minutes">{#} minutes</text>
+		<text key="Tx:time.relative neg.minutes" count="1">{#} minute</text>
+		<text key="Tx:time.relative neg.minutes.single">{#} minutes</text>
+		<text key="Tx:time.relative neg.minutes.single" count="1">a minute</text>
+		<text key="Tx:time.relative neg.months">{#} months</text>
+		<text key="Tx:time.relative neg.months" count="1">{#} month</text>
+		<text key="Tx:time.relative neg.months.single">{#} months</text>
+		<text key="Tx:time.relative neg.months.single" count="1">a month</text>
+		<text key="Tx:time.relative neg.seconds">{#} seconds</text>
+		<text key="Tx:time.relative neg.seconds" count="1">{#} second</text>
+		<text key="Tx:time.relative neg.seconds.single">{#} seconds</text>
+		<text key="Tx:time.relative neg.seconds.single" count="1">a second</text>
+		<text key="Tx:time.relative neg.years">{#} years</text>
+		<text key="Tx:time.relative neg.years" count="1">{#} year</text>
+		<text key="Tx:time.relative neg.years.single">{#} years</text>
+		<text key="Tx:time.relative neg.years.single" count="1">a year</text>
+		<text key="Tx:time.relative span" comment="A point in time after another unspecified time.">{interval} later</text>
+		<text key="Tx:time.relative span.days">{#} days</text>
+		<text key="Tx:time.relative span.days" count="1">{#} day</text>
+		<text key="Tx:time.relative span.days.single">{#} days</text>
+		<text key="Tx:time.relative span.days.single" count="1">a day</text>
+		<text key="Tx:time.relative span.hours">{#} hours</text>
+		<text key="Tx:time.relative span.hours" count="1">{#} hour</text>
+		<text key="Tx:time.relative span.hours.single">{#} hours</text>
+		<text key="Tx:time.relative span.hours.single" count="1">an hour</text>
+		<text key="Tx:time.relative span.minutes">{#} minutes</text>
+		<text key="Tx:time.relative span.minutes" count="1">{#} minute</text>
+		<text key="Tx:time.relative span.minutes.single">{#} minutes</text>
+		<text key="Tx:time.relative span.minutes.single" count="1">a minute</text>
+		<text key="Tx:time.relative span.months">{#} months</text>
+		<text key="Tx:time.relative span.months" count="1">{#} month</text>
+		<text key="Tx:time.relative span.months.single">{#} months</text>
+		<text key="Tx:time.relative span.months.single" count="1">a month</text>
+		<text key="Tx:time.relative span.seconds">{#} seconds</text>
+		<text key="Tx:time.relative span.seconds" count="1">{#} second</text>
+		<text key="Tx:time.relative span.seconds.single">{#} seconds</text>
+		<text key="Tx:time.relative span.seconds.single" count="1">a second</text>
+		<text key="Tx:time.relative span.years">{#} years</text>
+		<text key="Tx:time.relative span.years" count="1">{#} year</text>
+		<text key="Tx:time.relative span.years.single">{#} years</text>
+		<text key="Tx:time.relative span.years.single" count="1">a year</text>
+		<text key="Tx:time.relative span neg" comment="A point in time before another unspecified time.">{interval} before</text>
+		<text key="Tx:time.relative span neg.days">{#} days</text>
+		<text key="Tx:time.relative span neg.days" count="1">{#} day</text>
+		<text key="Tx:time.relative span neg.days.single">{#} days</text>
+		<text key="Tx:time.relative span neg.days.single" count="1">a day</text>
+		<text key="Tx:time.relative span neg.hours">{#} hours</text>
+		<text key="Tx:time.relative span neg.hours" count="1">{#} hour</text>
+		<text key="Tx:time.relative span neg.hours.single">{#} hours</text>
+		<text key="Tx:time.relative span neg.hours.single" count="1">an hour</text>
+		<text key="Tx:time.relative span neg.minutes">{#} minutes</text>
+		<text key="Tx:time.relative span neg.minutes" count="1">{#} minute</text>
+		<text key="Tx:time.relative span neg.minutes.single">{#} minutes</text>
+		<text key="Tx:time.relative span neg.minutes.single" count="1">a minute</text>
+		<text key="Tx:time.relative span neg.months">{#} months</text>
+		<text key="Tx:time.relative span neg.months" count="1">{#} month</text>
+		<text key="Tx:time.relative span neg.months.single">{#} months</text>
+		<text key="Tx:time.relative span neg.months.single" count="1">a month</text>
+		<text key="Tx:time.relative span neg.seconds">{#} seconds</text>
+		<text key="Tx:time.relative span neg.seconds" count="1">{#} second</text>
+		<text key="Tx:time.relative span neg.seconds.single">{#} seconds</text>
+		<text key="Tx:time.relative span neg.seconds.single" count="1">a second</text>
+		<text key="Tx:time.relative span neg.years">{#} years</text>
+		<text key="Tx:time.relative span neg.years" count="1">{#} year</text>
+		<text key="Tx:time.relative span neg.years.single">{#} years</text>
+		<text key="Tx:time.relative span neg.years.single" count="1">a year</text>
+		<text key="Tx:time.span" comment="A time span from now on into the future or based at an unspecified time.">for {interval}</text>
+		<text key="Tx:time.span.days">{#} days</text>
+		<text key="Tx:time.span.days" count="1">{#} day</text>
+		<text key="Tx:time.span.days.single">{#} days</text>
+		<text key="Tx:time.span.days.single" count="1">a day</text>
+		<text key="Tx:time.span.hours">{#} hours</text>
+		<text key="Tx:time.span.hours" count="1">{#} hour</text>
+		<text key="Tx:time.span.hours.single">{#} hours</text>
+		<text key="Tx:time.span.hours.single" count="1">an hour</text>
+		<text key="Tx:time.span.minutes">{#} minutes</text>
+		<text key="Tx:time.span.minutes" count="1">{#} minute</text>
+		<text key="Tx:time.span.minutes.single">{#} minutes</text>
+		<text key="Tx:time.span.minutes.single" count="1">a minute</text>
+		<text key="Tx:time.span.months">{#} months</text>
+		<text key="Tx:time.span.months" count="1">{#} month</text>
+		<text key="Tx:time.span.months.single">{#} months</text>
+		<text key="Tx:time.span.months.single" count="1">a month</text>
+		<text key="Tx:time.span.seconds">{#} seconds</text>
+		<text key="Tx:time.span.seconds" count="1">{#} second</text>
+		<text key="Tx:time.span.seconds.single">{#} seconds</text>
+		<text key="Tx:time.span.seconds.single" count="1">a second</text>
+		<text key="Tx:time.span.years">{#} years</text>
+		<text key="Tx:time.span.years" count="1">{#} year</text>
+		<text key="Tx:time.span.years.single">{#} years</text>
+		<text key="Tx:time.span.years.single" count="1">a year</text>
+		<text key="Tx:time.span neg" comment="A time span from the past until now.">for {interval}</text>
+		<text key="Tx:time.span neg.days">{#} days</text>
+		<text key="Tx:time.span neg.days" count="1">{#} day</text>
+		<text key="Tx:time.span neg.days.single">{#} days</text>
+		<text key="Tx:time.span neg.days.single" count="1">a day</text>
+		<text key="Tx:time.span neg.hours">{#} hours</text>
+		<text key="Tx:time.span neg.hours" count="1">{#} hour</text>
+		<text key="Tx:time.span neg.hours.single">{#} hours</text>
+		<text key="Tx:time.span neg.hours.single" count="1">an hour</text>
+		<text key="Tx:time.span neg.minutes">{#} minutes</text>
+		<text key="Tx:time.span neg.minutes" count="1">{#} minute</text>
+		<text key="Tx:time.span neg.minutes.single">{#} minutes</text>
+		<text key="Tx:time.span neg.minutes.single" count="1">a minute</text>
+		<text key="Tx:time.span neg.months">{#} months</text>
+		<text key="Tx:time.span neg.months" count="1">{#} month</text>
+		<text key="Tx:time.span neg.months.single">{#} months</text>
+		<text key="Tx:time.span neg.months.single" count="1">a month</text>
+		<text key="Tx:time.span neg.seconds">{#} seconds</text>
+		<text key="Tx:time.span neg.seconds" count="1">{#} second</text>
+		<text key="Tx:time.span neg.seconds.single">{#} seconds</text>
+		<text key="Tx:time.span neg.seconds.single" count="1">a second</text>
+		<text key="Tx:time.span neg.years">{#} years</text>
+		<text key="Tx:time.span neg.years" count="1">{#} year</text>
+		<text key="Tx:time.span neg.years.single">{#} years</text>
+		<text key="Tx:time.span neg.years.single" count="1">a year</text>
+		<text key="zoom to.description">Enter a value of x and select a function. The application will zoom to the desired point.</text>
+		<text key="zoom to.ok">Zoom</text>
+		<text key="zoom to.title">Zoom To Value</text>
+		<text key="zoom to.value">Value of x:</text>
+	</culture>
+</translation>

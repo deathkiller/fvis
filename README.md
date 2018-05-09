@@ -49,4 +49,6 @@ Uses [Mpir.NET](http://wezeku.github.io/Mpir.NET/) licensed under the terms of t
 
 Uses [LegacyWrapper](https://github.com/CodefoundryDE/LegacyWrapper) licensed under the terms of the [MIT License](https://github.com/CodefoundryDE/LegacyWrapper/blob/master/LICENSE).
 
+Uses [TxTranslation](https://github.com/ygoe/TxTranslation) licensed under the terms of the [GNU Lesser General Public License v3.0](https://github.com/ygoe/TxTranslation/blob/master/LICENSE-LGPL).
+
 Some icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/), licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/).

@@ -11,10 +11,9 @@ using System.Windows.Forms;
 using fVis.Callbacks;
 using fVis.Controls;
 using fVis.Extensions;
-using fVis.Misc;
 using fVis.NumericValueSources;
+using Unclassified.TxLib;
 using ListView = fVis.Controls.ListView;
-using l10n = fVis.Properties.Resources;
 
 namespace fVis.Windows
 {
@@ -30,7 +29,18 @@ namespace fVis.Windows
 
         public MainWindow()
         {
+            //Tx.PrimaryCulture = "en";
+            Tx.SetCulture("en");
+            Tx.LoadFromEmbeddedResource("fVis.Dictionary.txd");
+#if DEBUG
+            Tx.UseFileSystemWatcher = true;
+#endif
+            Tx.LoadDirectory("Langs");
+            
+
             InitializeComponent();
+
+            TxDictionaryBinding.AddTextBindings(this);
 
             Text = App.AssemblyTitle;
 
@@ -39,15 +49,25 @@ namespace fVis.Windows
             implementationButton.DropDownButtonWidth += 2;
             highlightDifferencesButton.DropDownButtonWidth += 2;
 
-            listView.EmptyText = l10n.ListIsEmpty;
+            listView.EmptyText = Tx.T("main.list is empty");
+
+            // Create Languages menu
+            string currentCulture = Tx.GetCultureName();
+            foreach (CultureInfo culture in Tx.AvailableCultures) {
+                ToolStripMenuItem item = new ToolStripMenuItem(culture.DisplayName, null, OnLanguageMenuItemClick);
+                item.Tag = culture.Name;
+                if (culture.Name == currentCulture) item.Checked = true;
+                langMenuItem.DropDownItems.Add(item);
+            }
+
 
             // Load available implementations
-            ToolStripMenuItem implementationNetButton = new ToolStripMenuItem(l10n.MathLibraryInternal + " (double)");
+            ToolStripMenuItem implementationNetButton = new ToolStripMenuItem(Tx.T("mathlib.internal") + "(double)");
             implementationNetButton.Click += OnSetItemCallbacksButtonClick;
             implementationNetButton.Tag = defaultDoubleCallbacks;
             implementationButton.DropDownItems.Add(implementationNetButton);
 
-            ToolStripMenuItem implementationNetFloatButton = new ToolStripMenuItem(l10n.MathLibraryInternal + " (float)");
+            ToolStripMenuItem implementationNetFloatButton = new ToolStripMenuItem(Tx.T("mathlib.internal") + " (float)");
             implementationNetFloatButton.Click += OnSetItemCallbacksButtonClick;
             implementationNetFloatButton.Tag = defaultFloatCallbacks;
             implementationButton.DropDownItems.Add(implementationNetFloatButton);
@@ -58,25 +78,25 @@ namespace fVis.Windows
 
             implementationButton.DropDownItems.Add(new ToolStripSeparator());
 
-            ToolStripMenuItem implementationAddButton = new ToolStripMenuItem(l10n.Add);
+            ToolStripMenuItem implementationAddButton = new ToolStripMenuItem(Tx.T("mathlib.add"));
             implementationAddButton.Click += OnImplementationAddButtonClick;
             implementationButton.DropDownItems.Add(implementationAddButton);
 
             // Add available highlight differences modes
-            ToolStripMenuItem highlightOffButton = new ToolStripMenuItem(l10n.Disabled);
+            ToolStripMenuItem highlightOffButton = new ToolStripMenuItem(Tx.T("highlight.disabled"));
             highlightOffButton.Checked = true;
             highlightOffButton.Click += OnHighlightOffButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightOffButton);
 
-            ToolStripMenuItem highlightConstantButton = new ToolStripMenuItem(l10n.Plain);
+            ToolStripMenuItem highlightConstantButton = new ToolStripMenuItem(Tx.T("highlight.constant"));
             highlightConstantButton.Click += OnHighlightConstantButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightConstantButton);
 
-            ToolStripMenuItem highlightDynamicButton = new ToolStripMenuItem(l10n.Dynamic);
+            ToolStripMenuItem highlightDynamicButton = new ToolStripMenuItem(Tx.T("highlight.dynamic"));
             highlightDynamicButton.Click += OnHighlightDynamicButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightDynamicButton);
 
-            ToolStripMenuItem averageButton = new ToolStripMenuItem(l10n.OnlyDifferences);
+            ToolStripMenuItem averageButton = new ToolStripMenuItem(Tx.T("highlight.only diff"));
             averageButton.Click += OnAverageButtonClick;
             highlightDifferencesButton.DropDownItems.Add(averageButton);
 
@@ -108,7 +128,7 @@ namespace fVis.Windows
 
                         string missingCallbacks = ConvertMissingCallbacksToString(callbacks);
                         if (!string.IsNullOrEmpty(missingCallbacks)) {
-                            item.ToolTipText = l10n.MissingCallbacks + missingCallbacks;
+                            item.ToolTipText = Tx.T("mathlib.missing callbacks") + missingCallbacks;
                         }
 
                         items.Add(item);
@@ -135,7 +155,7 @@ namespace fVis.Windows
 
                             string missingCallbacks = ConvertMissingCallbacksToString(callbacks);
                             if (!string.IsNullOrEmpty(missingCallbacks)) {
-                                item.ToolTipText = l10n.MissingCallbacks + missingCallbacks;
+                                item.ToolTipText = Tx.T("mathlib.missing callbacks") + missingCallbacks;
                             }
 
                             items.Add(item);
@@ -225,7 +245,7 @@ namespace fVis.Windows
                 ListView.Item item = (ListView.Item)sender;
                 if (string.IsNullOrEmpty(item.Text)) {
                     item.NumericValueSource = null;
-                    item.TextDisplay = "\f[0x999999]" + l10n.EnterArithmeticExpression;
+                    item.TextDisplay = "\f[0x999999]" + Tx.T("main.enter expression");
                 } else {
                     try {
                         ArithmeticExpression ae = ArithmeticExpression.Parse(item.Text);
@@ -329,15 +349,15 @@ namespace fVis.Windows
                                 break;
                             case SyntaxException.Type.InvalidNumber:
                                 sb.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]");
-                                sb.Append(l10n.InvalidNumber);
+                                sb.Append(Tx.T("expression.errors.invalid number"));
                                 break;
                             case SyntaxException.Type.DistinctVariableCountExceeded:
                                 sb.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]");
-                                sb.Append(l10n.DistinctVariableCountExceeded);
+                                sb.Append(Tx.T("expression.errors.distinct variable count exceeded"));
                                 break;
                             case SyntaxException.Type.ParenthesesCountMismatch:
                                 sb.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]");
-                                sb.Append(l10n.ParenthesesCountMismatch);
+                                sb.Append(Tx.T("expression.errors.parentheses count mismatch"));
                                 break;
                         }
 
@@ -407,7 +427,7 @@ namespace fVis.Windows
                 NativeOperatorRemotingCallbacks proxyCallbacks = item.OperatorCallbacks as NativeOperatorRemotingCallbacks;
                 if (proxyCallbacks != null) {
                     iconAppended = true;
-                    text.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]" + l10n.X86Remoting);
+                    text.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]" + Tx.T("mathlib.remoting"));
 
                     missingCallbacks = proxyCallbacks.MissingCallbacks;
                     if (missingCallbacks.Length == 0) {
@@ -430,9 +450,9 @@ namespace fVis.Windows
                 if (isFirst) {
                     isFirst = false;
                     if (iconAppended) {
-                        text.Append(" \f[0x999999]|\f[0xaa6400] " + l10n.MissingCallbacks);
+                        text.Append(" \f[0x999999]|\f[0xaa6400] " + Tx.T("mathlib.missing callbacks"));
                     } else {
-                        text.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]" + l10n.MissingCallbacks);
+                        text.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]" + Tx.T("mathlib.missing callbacks"));
                     }
                 } else {
                     text.Append(", ");
@@ -512,7 +532,7 @@ namespace fVis.Windows
                 CheckState = CheckState.Checked,
                 CheckEnabled = false,
                 ImageResourceCallback = OnImageResourceCallback,
-                TextDisplay = "\f[0x999999]" + l10n.EnterArithmeticExpression
+                TextDisplay = "\f[0x999999]" + Tx.T("main.enter expression")
             };
 
             OnItemPropertyChanged(item, new PropertyChangedEventArgs("OperatorCallbacks"));
@@ -599,10 +619,10 @@ namespace fVis.Windows
 
             using (OpenFileDialog dialog = new OpenFileDialog()) {
                 dialog.CheckFileExists = true;
-                dialog.Filter = l10n.Library + " (*.dll)|*.dll";
+                dialog.Filter = Tx.T("mathlib.filetype") + " (*.dll)|*.dll";
                 dialog.FilterIndex = 0;
                 dialog.RestoreDirectory = true;
-                dialog.Title = l10n.LoadMathLibrary;
+                dialog.Title = Tx.T("mathlib.load");
 
                 if (dialog.ShowDialog(this) != DialogResult.OK)
                     return;
@@ -619,7 +639,7 @@ namespace fVis.Windows
 
                     string missingCallbacks = ConvertMissingCallbacksToString(callbacks);
                     if (!string.IsNullOrEmpty(missingCallbacks)) {
-                        item.ToolTipText = l10n.MissingCallbacks + missingCallbacks;
+                        item.ToolTipText = Tx.T("mathlib.missing callbacks") + missingCallbacks;
                     }
 
                     implementationButton.DropDownItems.Add(item);
@@ -637,24 +657,24 @@ namespace fVis.Windows
 
                             string missingCallbacks = ConvertMissingCallbacksToString(callbacks);
                             if (!string.IsNullOrEmpty(missingCallbacks)) {
-                                item.ToolTipText = l10n.MissingCallbacks + missingCallbacks;
+                                item.ToolTipText = Tx.T("mathlib.missing callbacks") + missingCallbacks;
                             }
 
                             implementationButton.DropDownItems.Add(item);
 
                             OnSetItemCallbacksButtonClick(item, EventArgs.Empty);
                         } catch (InvalidOperationException) {
-                            MessageBox.Show(this, l10n.MathLibraryNotValid, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Tx.T("mathlib.errors.not valid"), Tx.T("mathlib.errors.title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         } catch (Exception ex) {
-                            MessageBox.Show(this, ex.Message, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, ex.Message, Tx.T("mathlib.errors.title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     } else {
-                        MessageBox.Show(this, l10n.MathLibraryPlatformMismatch, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, Tx.T("mathlib.errors.platform mismatch"), Tx.T("mathlib.errors.title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 } catch (InvalidOperationException) {
-                    MessageBox.Show(this, l10n.MathLibraryNotValid, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, Tx.T("mathlib.errors.not valid"), Tx.T("mathlib.errors.title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } catch (Exception ex) {
-                    MessageBox.Show(this, ex.Message, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, ex.Message, Tx.T("mathlib.errors.title"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -766,10 +786,10 @@ namespace fVis.Windows
                 const string ext = ".fvis-values";
 
                 dialog.CheckFileExists = true;
-                dialog.Filter = l10n.DataSet + " (*" + ext + ")|*" + ext;
+                dialog.Filter = Tx.T("dataset.filetype") + " (*" + ext + ")|*" + ext;
                 dialog.FilterIndex = 0;
                 dialog.RestoreDirectory = true;
-                dialog.Title = l10n.LoadDataSet;
+                dialog.Title = Tx.T("dataset.load");
 
                 if (dialog.ShowDialog(this) != DialogResult.OK)
                     return;
@@ -779,7 +799,7 @@ namespace fVis.Windows
                 using (BinaryReader br = new BinaryReader(s)) {
                     byte[] header = br.ReadBytes(4);
                     if (header[0] != 'f' || header[1] != 'V' || header[2] != 'i' || header[3] != 's') {
-                        MessageBox.Show(this, l10n.DataSetNotValid, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(this, Tx.T("dataset.errors.file not valid"), Tx.T("main.error"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
@@ -792,7 +812,7 @@ namespace fVis.Windows
 
                     ulong count = br.ReadUInt64();
                     if (count <= 0) {
-                        MessageBox.Show(this, l10n.DataSetNotValid, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(this, Tx.T("dataset.errors.file not valid"), Tx.T("main.error"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
@@ -805,7 +825,7 @@ namespace fVis.Windows
 
                     // Add item to ListView
                     StringBuilder sb = new StringBuilder();
-                    sb.Append("\f[I]\f[0x888888]" + l10n.PartOfFunction + "  \f[Rc]\f[I]");
+                    sb.Append("\f[I]\f[0x888888]" + Tx.T("dataset.part of function") + "  \f[Rc]\f[I]");
 
                     int i = description.IndexOf('#');
                     if (i != -1) {
@@ -857,7 +877,7 @@ namespace fVis.Windows
 
             ArithmeticExpression ae = selected.NumericValueSource as ArithmeticExpression;
             if (ae == null) {
-                MessageBox.Show(this, l10n.SaveDataSetUnsupportedItem, l10n.ErrorText, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, Tx.T("dataset.errors.item not supported"), Tx.T("main.error"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -868,13 +888,13 @@ namespace fVis.Windows
                 double xL_ = graph.MaxVisibleX;
 
                 if (xF_ >= xL_) {
-                    MessageBox.Show(this, l10n.CannotDetermineInterval, l10n.ErrorText,
+                    MessageBox.Show(this, Tx.T("dataset.errors.cannot determine interval"), Tx.T("main.error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (Math.Sign(xF_) != Math.Sign(xL_)) {
-                    MessageBox.Show(this, l10n.SaveDataSetIntervalWithZero, l10n.ErrorText,
+                    MessageBox.Show(this, Tx.T("dataset.errors.interval with zero"), Tx.T("main.error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -890,7 +910,7 @@ namespace fVis.Windows
                 distance = (xLi - xFi);
 
                 if (distance < 0) {
-                    MessageBox.Show(this, l10n.SaveDataSetIntervalTooBig, l10n.ErrorText,
+                    MessageBox.Show(this, Tx.T("dataset.errors.interval too big"), Tx.T("main.error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -904,7 +924,7 @@ namespace fVis.Windows
                         sizeString = sizeInMB.ToString("N0") + " MB";
                     }
 
-                    if (MessageBox.Show(this, string.Format(l10n.FileTooBigToSave, distance.ToString("N0"), sizeString), l10n.WarningText,
+                    if (MessageBox.Show(this, Tx.T("dataset.errors.file too big", distance.ToString("N0"), sizeString), Tx.T("main.warning"),
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK) {
                         return;
                     }
@@ -914,10 +934,10 @@ namespace fVis.Windows
             using (SaveFileDialog dialog = new SaveFileDialog()) {
                 const string ext = ".fvis-values";
 
-                dialog.Filter = l10n.DataSet + " (*" + ext + ")|*" + ext;
+                dialog.Filter = Tx.T("dataset.filetype") + " (*" + ext + ")|*" + ext;
                 dialog.FilterIndex = 0;
                 dialog.RestoreDirectory = true;
-                dialog.Title = l10n.SaveDataSet;
+                dialog.Title = Tx.T("dataset.save");
 
                 string filename = selected.Text;
                 char[] invalidChars = Path.GetInvalidFileNameChars();
@@ -933,9 +953,9 @@ namespace fVis.Windows
                 filename = dialog.FileName;
 
                 ProgressDialog progressDialog = new ProgressDialog();
-                progressDialog.Text = l10n.SavingDataSet;
-                progressDialog.MainInstruction = l10n.SavingDataSetDescription;
-                progressDialog.Line1 = string.Format(l10n.SavingDataSetProgress, "0", (xLi - xFi).ToString("N0"));
+                progressDialog.Text = Tx.T("dataset.saving.title");
+                progressDialog.MainInstruction = Tx.T("dataset.saving.description");
+                progressDialog.Line1 = Tx.T("dataset.saving.progress", "0", (xLi - xFi).ToString("N0"));
                 progressDialog.Show(this);
 
                 ThreadPool.UnsafeQueueUserWorkItem(delegate {
@@ -996,8 +1016,8 @@ namespace fVis.Windows
                                     lastProcessed = xi;
 
                                     BeginInvoke((MethodInvoker)delegate {
-                                        progressDialog.Line1 = string.Format(l10n.SavingDataSetProgress, (lastProcessed - xFi).ToString("N0"), (xLi - xFi).ToString("N0"));
-                                        progressDialog.Line2 = string.Format(l10n.RemainingTime, remaining.ToTextString());
+                                        progressDialog.Line1 = Tx.T("dataset.saving.progress", (lastProcessed - xFi).ToString("N0"), (xLi - xFi).ToString("N0"));
+                                        progressDialog.Line2 = Tx.T("main.remaining time", remaining.ToTextString());
                                         progressDialog.Progress = (int)((lastProcessed - xFi) * 100 / (xLi - xFi));
                                     });
 
@@ -1037,6 +1057,27 @@ namespace fVis.Windows
                 new ZoomToValueDialog(graph, listView.Items, (graph.MinVisibleX + graph.MaxVisibleX) * 0.5)) {
                 dialog.ShowDialog(this);
             }
+        }
+
+        public void OnLanguageMenuItemClick(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (item == null) {
+                return;
+            }
+
+            foreach (ToolStripMenuItem current in langMenuItem.DropDownItems) {
+                current.Checked = false;
+            }
+            item.Checked = true;
+
+            Tx.SetCulture(item.Tag as string);
+        }
+
+        private void OnAboutMenuItemClick(object sender, EventArgs e)
+        {
+            MessageBox.Show(this, Tx.T("main.about.description", App.AssemblyTitle, App.AssemblyCopyright, "https://github.com/deathkiller/fvis"),
+                Tx.T("main.about"), MessageBoxButtons.OK, MessageBoxIcon.None);
         }
     }
 }

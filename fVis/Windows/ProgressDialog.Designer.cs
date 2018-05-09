@@ -39,7 +39,7 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 24);
             this.cancelButton.TabIndex = 0;
-            this.cancelButton.Text = "Close";
+            this.cancelButton.Text = "[main.cancel]";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.OnCancelButtonClick);
             // 

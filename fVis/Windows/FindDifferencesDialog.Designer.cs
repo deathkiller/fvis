@@ -43,18 +43,18 @@
             this.startLabel.AutoSize = true;
             this.startLabel.Location = new System.Drawing.Point(10, 51);
             this.startLabel.Name = "startLabel";
-            this.startLabel.Size = new System.Drawing.Size(74, 13);
+            this.startLabel.Size = new System.Drawing.Size(112, 13);
             this.startLabel.TabIndex = 0;
-            this.startLabel.Text = "Start of range:";
+            this.startLabel.Text = "[find diffs.interval start]";
             // 
             // endLabel
             // 
             this.endLabel.AutoSize = true;
             this.endLabel.Location = new System.Drawing.Point(10, 80);
             this.endLabel.Name = "endLabel";
-            this.endLabel.Size = new System.Drawing.Size(71, 13);
+            this.endLabel.Size = new System.Drawing.Size(110, 13);
             this.endLabel.TabIndex = 1;
-            this.endLabel.Text = "End of range:";
+            this.endLabel.Text = "[find diffs.interval end]";
             // 
             // startTextBox
             // 
@@ -96,7 +96,7 @@
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 24);
             this.closeButton.TabIndex = 6;
-            this.closeButton.Text = "Close";
+            this.closeButton.Text = "[main.close]";
             this.closeButton.UseVisualStyleBackColor = true;
             // 
             // runButton
@@ -107,7 +107,7 @@
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(75, 24);
             this.runButton.TabIndex = 7;
-            this.runButton.Text = "Run";
+            this.runButton.Text = "[main.run]";
             this.runButton.UseVisualStyleBackColor = true;
             this.runButton.Click += new System.EventHandler(this.OnRunButtonClick);
             // 
@@ -116,15 +116,16 @@
             this.mainInstructionLabel.AutoSize = true;
             this.mainInstructionLabel.Location = new System.Drawing.Point(10, 16);
             this.mainInstructionLabel.Name = "mainInstructionLabel";
-            this.mainInstructionLabel.Size = new System.Drawing.Size(285, 13);
+            this.mainInstructionLabel.Size = new System.Drawing.Size(106, 13);
             this.mainInstructionLabel.TabIndex = 8;
-            this.mainInstructionLabel.Text = "Enter a range and select functions which will be compared.";
+            this.mainInstructionLabel.Text = "[find diffs.description]";
             // 
             // listView
             // 
             this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView.EmptyText = null;
             this.listView.FocusedItem = null;
             this.listView.Location = new System.Drawing.Point(7, 108);
             this.listView.Name = "listView";
@@ -154,7 +155,7 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Find Differences";
+            this.Text = "[find diffs.title]";
             this.ResumeLayout(false);
             this.PerformLayout();
 
