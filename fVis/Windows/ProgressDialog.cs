@@ -1,10 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using fVis.Misc;
 using Unclassified.TxLib;
 
@@ -85,23 +82,11 @@ namespace fVis.Windows
         {
             InitializeComponent();
 
-            TxDictionaryBinding.AddTextBindings(this);
+            TxWinForms.Bind(this);
 
             DoubleBuffered = true;
 
-            // Font for main instruction
-            try {
-                VisualStyleRenderer renderer = new VisualStyleRenderer("TEXTSTYLE", 0x1, 0x0);
-
-                LOGFONT lFont;
-                if (GetThemeFont(renderer.Handle, IntPtr.Zero, 0x1 /*TEXT_MAININSTRUCTION*/, 0, 0xD2 /*TMT_FONT*/, out lFont) != 0)
-                    throw new InvalidOperationException(); // Fallback to SystemFonts.CaptionFont
-
-                mainInstructionFont = new Font(lFont.lfFaceName, Math.Abs(lFont.lfHeight), FontStyle.Regular, GraphicsUnit.Pixel);
-            } catch {
-                mainInstructionFont = SystemFonts.CaptionFont;
-            }
-
+            mainInstructionFont = UI.GetMainInstructionFont();
             line1.Font = Font;
             line2.Font = Font;
         }
@@ -128,7 +113,7 @@ namespace fVis.Windows
                 e.Graphics.DrawLine(pen, 0, cancelButton.Top - 10, clientSize.Width, cancelButton.Top - 10);
             }
 
-            PaintDirtGradient(e.Graphics, 1, 1, clientSize.Width - 1, 39 - 2, 360);
+            UI.PaintDirtGradient(e.Graphics, 1, 1, clientSize.Width - 1, 39 - 2, 360);
 
             using (GdiGraphics g = GdiGraphics.FromGraphics(e.Graphics)) {
                 if (!string.IsNullOrEmpty(mainInstruction)) {
@@ -174,55 +159,5 @@ namespace fVis.Windows
             SetVisibleCore(false);
             Close();
         }
-
-        private static void PaintDirtGradient(Graphics g, int x, int y, int width, int height, int gradientSize)
-        {
-            Region oldClip = g.Clip;
-            g.SetClip(new Rectangle(x, y, width, height), CombineMode.Intersect);
-
-            PixelOffsetMode oldPixelOffsetMode = g.PixelOffsetMode;
-            g.PixelOffsetMode = PixelOffsetMode.Half;
-
-            SmoothingMode oldSmoothingMode = g.SmoothingMode;
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-
-            for (int i = 0; i < gradientSize; i += 3) {
-                double curve = (Math.Sin((1.5 + ((double)i / gradientSize)) * Math.PI) + 1) / 2;
-                using (Pen pen = new Pen(Color.FromArgb((int)((1 - curve) * 60), 0x55, 0x44, 0x44))) {
-                    g.DrawLine(pen, width, i, width - gradientSize, i - gradientSize);
-                }
-            }
-
-            g.Clip = oldClip;
-            g.PixelOffsetMode = oldPixelOffsetMode;
-            g.SmoothingMode = oldSmoothingMode;
-        }
-
-        #region Native Methods
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        private struct LOGFONT
-        {
-            public const int LF_FACESIZE = 32;
-
-            public int lfHeight;
-            public int lfWidth;
-            public int lfEscapement;
-            public int lfOrientation;
-            public int lfWeight;
-            public byte lfItalic;
-            public byte lfUnderline;
-            public byte lfStrikeOut;
-            public byte lfCharSet;
-            public byte lfOutPrecision;
-            public byte lfClipPrecision;
-            public byte lfQuality;
-            public byte lfPitchAndFamily;
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LF_FACESIZE)]
-            public string lfFaceName;
-        }
-
-        [DllImport("uxtheme", ExactSpelling = true, CharSet = CharSet.Unicode)]
-        private static extern int GetThemeFont(IntPtr hTheme, IntPtr hdc, int iPartId, int iStateId, int iPropId, out LOGFONT pFont);
-        #endregion
     }
 }

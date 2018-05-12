@@ -1,4 +1,5 @@
 ﻿using System;
+using fVis.Callbacks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace fVis.NumericValueSources.Tests
@@ -322,6 +323,25 @@ namespace fVis.NumericValueSources.Tests
             Assert.AreEqual(6.0, result);
             Assert.AreEqual("z", ae.VariableName);
             Assert.IsFalse(ae.IsSimpleConstantOnly);
+        }
+
+        [TestMethod]
+        public void Evaluate_Callbacks()
+        {
+            ArithmeticExpression ae = ArithmeticExpression.Parse("(+1) * (-2) * 3");
+            DotNetOperatorCallbacks callbacks = new DotNetOperatorCallbacks();
+
+            ae.Callbacks = callbacks;
+
+            double result = ae.Evaluate(0);
+            Assert.AreEqual((+1) * (-2) * 3, result);
+            Assert.AreEqual(callbacks, ae.Callbacks);
+
+            Assert.IsFalse(callbacks.IsDisposed);
+
+            callbacks.Dispose();
+
+            Assert.IsTrue(callbacks.IsDisposed);
         }
     }
 }

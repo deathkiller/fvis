@@ -2,7 +2,7 @@
 // © Yves Goergen, Made in Germany
 // Website: http://unclassified.software/source/txtranslation
 //
-// © 2018 Dan R.
+// © 2018 Daniel Rajf
 //
 // This library is free software: you can redistribute it and/or modify it under the terms of
 // the GNU Lesser General Public License as published by the Free Software Foundation, version 3.
@@ -25,7 +25,7 @@ namespace Unclassified.TxLib
     /// <summary>
     /// Provides data binding of Windows Forms controls to translated texts.
     /// </summary>
-    public class TxDictionaryBinding
+    public class TxWinForms
     {
         public enum BindingType
         {
@@ -73,7 +73,7 @@ namespace Unclassified.TxLib
         /// its child controls.
         /// </summary>
         /// <param name="control">Control or Form to start with.</param>
-        public static void AddTextBindings(Control control)
+        public static void Bind(Control control)
         {
             // Check whether the control's Text property has a value that looks like a text key,
             // then add the binding for it
@@ -84,32 +84,12 @@ namespace Unclassified.TxLib
 
             // Recurse to all child controls
             foreach (Control child in control.Controls) {
-                AddTextBindings(child);
+                Bind(child);
             }
 
             ToolStrip toolStrip = control as ToolStrip;
             if (toolStrip != null) {
                 AddToolStripBindings(toolStrip.Items);
-            }
-        }
-
-        private static void AddToolStripBindings(ToolStripItemCollection items)
-        {
-            foreach (ToolStripItem item in items) {
-                if (item.Text != null && item.Text.Length > 2 && item.Text.StartsWith("[") && item.Text.EndsWith("]")) {
-                    string key = item.Text.Substring(1, item.Text.Length - 2);
-                    AddBinding(item, BindingType.Text, key);
-                }
-
-                if (item.ToolTipText != null && item.ToolTipText.Length > 2 && item.ToolTipText.StartsWith("[") && item.ToolTipText.EndsWith("]")) {
-                    string key = item.ToolTipText.Substring(1, item.ToolTipText.Length - 2);
-                    AddBinding(item, BindingType.ToolTip, key);
-                }
-
-                ToolStripDropDownItem dropDown = item as ToolStripDropDownItem;
-                if (dropDown != null) {
-                    AddToolStripBindings(dropDown.DropDownItems);
-                }
             }
         }
 
@@ -146,6 +126,26 @@ namespace Unclassified.TxLib
 
                 if (controls.Add(item)) {
                     item.Disposed += OnControlDisposed;
+                }
+            }
+        }
+
+        private static void AddToolStripBindings(ToolStripItemCollection items)
+        {
+            foreach (ToolStripItem item in items) {
+                if (item.Text != null && item.Text.Length > 2 && item.Text.StartsWith("[") && item.Text.EndsWith("]")) {
+                    string key = item.Text.Substring(1, item.Text.Length - 2);
+                    AddBinding(item, BindingType.Text, key);
+                }
+
+                if (item.ToolTipText != null && item.ToolTipText.Length > 2 && item.ToolTipText.StartsWith("[") && item.ToolTipText.EndsWith("]")) {
+                    string key = item.ToolTipText.Substring(1, item.ToolTipText.Length - 2);
+                    AddBinding(item, BindingType.ToolTip, key);
+                }
+
+                ToolStripDropDownItem dropDown = item as ToolStripDropDownItem;
+                if (dropDown != null) {
+                    AddToolStripBindings(dropDown.DropDownItems);
                 }
             }
         }

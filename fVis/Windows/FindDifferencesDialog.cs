@@ -33,7 +33,7 @@ namespace fVis.Windows
         {
             InitializeComponent();
 
-            TxDictionaryBinding.AddTextBindings(this);
+            TxWinForms.Bind(this);
 
             this.graph = graph;
 

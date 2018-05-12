@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using Unclassified.TxLib;
 
 namespace fVis
 {
@@ -40,6 +41,14 @@ namespace fVis
         [STAThread]
         public static void Main(string[] args)
         {
+            // Enable translation
+            Tx.LoadFromEmbeddedResource("fVis.Dictionary.txd");
+#if DEBUG
+            Tx.UseFileSystemWatcher = true;
+#endif
+            string path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            Tx.LoadDirectory(path, "fVis");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Windows.MainWindow());

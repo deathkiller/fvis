@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\LinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Utils\BigArray.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
@@ -94,6 +97,12 @@
     <Compile Include="Properties\SharedAssemblyInfo.cs" />
     <Compile Include="Utils\Tx\Tx.cs" />
     <Compile Include="Utils\Tx\TxWinForms.cs" />
+    <Compile Include="Windows\AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\FindDifferencesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +130,9 @@
     <Compile Include="Windows\ZoomToValueDialog.Designer.cs">
       <DependentUpon>ZoomToValueDialog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Windows\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\FindDifferencesDialog.resx">
       <DependentUpon>FindDifferencesDialog.cs</DependentUpon>
     </EmbeddedResource>

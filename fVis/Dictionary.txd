@@ -57,12 +57,7 @@ Zkontrolujte, že číslo neobsahuje mezery a je použita desetinná tečka.</te
 		<text key="highlight.title">Zvýraznění</text>
 		<text key="highlight.tooltip">Režim zvýrazňování rozdílů</text>
 		<text key="main.about">O aplikaci…</text>
-		<text key="main.about.description">{0}
-
-{1}
-This project is licensed under the terms of the GNU General Public License v3.0.
-
-GitHub: {2}</text>
+		<text key="main.about.description">Detailní vizualizace průběhu funkce</text>
 		<text key="main.add">Přidat</text>
 		<text key="main.cached diffs">Počet rozdílů v mezipaměti: {0} / {1}</text>
 		<text key="main.cancel">Zrušit</text>
@@ -172,12 +167,7 @@ Make sure that the number is not empty and the decimal point is used.</text>
 		<text key="highlight.title">Highlight</text>
 		<text key="highlight.tooltip">Differences highlight mode</text>
 		<text key="main.about">About…</text>
-		<text key="main.about.description">{0}
-
-{1}
-This project is licensed under the terms of the GNU General Public License v3.0.
-
-GitHub: {2}</text>
+		<text key="main.about.description">Detailní vizualizace průběhu funkce</text>
 		<text key="main.add">Add</text>
 		<text key="main.cached diffs">Diffs in cache: {0} / {1}</text>
 		<text key="main.cancel">Cancel</text>

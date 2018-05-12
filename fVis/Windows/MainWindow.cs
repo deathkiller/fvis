@@ -29,21 +29,13 @@ namespace fVis.Windows
 
         public MainWindow()
         {
-            //Tx.PrimaryCulture = "en";
-            Tx.SetCulture("en");
-            Tx.LoadFromEmbeddedResource("fVis.Dictionary.txd");
-#if DEBUG
-            Tx.UseFileSystemWatcher = true;
-#endif
-            Tx.LoadDirectory("Langs");
-            
-
             InitializeComponent();
 
-            TxDictionaryBinding.AddTextBindings(this);
+            TxWinForms.Bind(this);
 
             Text = App.AssemblyTitle;
 
+            BackColor = Color.FromArgb(0xFA, 0xFA, 0xFA);
             toolStrip.BackColor = Color.White;
 
             implementationButton.DropDownButtonWidth += 2;
@@ -1076,8 +1068,12 @@ namespace fVis.Windows
 
         private void OnAboutMenuItemClick(object sender, EventArgs e)
         {
-            MessageBox.Show(this, Tx.T("main.about.description", App.AssemblyTitle, App.AssemblyCopyright, "https://github.com/deathkiller/fvis"),
-                Tx.T("main.about"), MessageBoxButtons.OK, MessageBoxIcon.None);
+            //MessageBox.Show(this, Tx.T("main.about.description", App.AssemblyTitle, App.AssemblyCopyright, "https://github.com/deathkiller/fvis"),
+            //    Tx.T("main.about"), MessageBoxButtons.OK, MessageBoxIcon.None);
+
+            using (AboutDialog dialog = new AboutDialog()) {
+                dialog.ShowDialog(this);
+            }
         }
     }
 }
