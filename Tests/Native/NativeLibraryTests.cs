@@ -2,7 +2,6 @@
 using fVis.Callbacks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-/*
 namespace fVis.Native.Tests
 {
     [TestClass]
@@ -11,7 +10,7 @@ namespace fVis.Native.Tests
         [TestMethod]
         public void Resolve_NotExists()
         {
-            NativeLibrary library = new NativeLibrary("libmcr.dll");
+            NativeLibrary library = new NativeLibrary("math_msvc14.dll");
 
             OperatorCallbacks.OperatorFunction result = library.Resolve<OperatorCallbacks.OperatorFunction>("_not_exists_");
 
@@ -21,7 +20,7 @@ namespace fVis.Native.Tests
         [TestMethod]
         public void Resolve_NotExists_2()
         {
-            NativeLibrary library = new NativeLibrary("libmcr.dll");
+            NativeLibrary library = new NativeLibrary("math_msvc14.dll");
 
             Delegate result = library.Resolve("_not_exists_", typeof(OperatorCallbacks.OperatorFunction));
 
@@ -31,7 +30,7 @@ namespace fVis.Native.Tests
         [TestMethod]
         public void Resolve_Pow()
         {
-            NativeLibrary library = new NativeLibrary("libmcr.dll");
+            NativeLibrary library = new NativeLibrary("math_msvc14.dll");
 
             OperatorCallbacks.OperatorFunction pow = library.Resolve<OperatorCallbacks.OperatorFunction>("operator_pow");
             double result = pow(2, 3);
@@ -42,7 +41,7 @@ namespace fVis.Native.Tests
         [TestMethod]
         public void Resolve_Pow_2()
         {
-            NativeLibrary library = new NativeLibrary("libmcr.dll");
+            NativeLibrary library = new NativeLibrary("math_msvc14.dll");
 
             Delegate pow = library.Resolve("operator_pow", typeof(OperatorCallbacks.OperatorFunction));
             double result = (double)pow.DynamicInvoke(new object[] { 2.0, 3.0 });
@@ -53,7 +52,7 @@ namespace fVis.Native.Tests
         [TestMethod, ExpectedException(typeof(InvalidOperationException))]
         public void Resolve_NotDelegate()
         {
-            NativeLibrary library = new NativeLibrary("libmcr.dll");
+            NativeLibrary library = new NativeLibrary("math_msvc14.dll");
 
             NativeLibrary pow = library.Resolve<NativeLibrary>("operator_pow");
         }
@@ -61,7 +60,7 @@ namespace fVis.Native.Tests
         [TestMethod, ExpectedException(typeof(InvalidOperationException))]
         public void Resolve_NotDelegate_2()
         {
-            NativeLibrary library = new NativeLibrary("libmcr.dll");
+            NativeLibrary library = new NativeLibrary("math_msvc14.dll");
 
             Delegate pow = library.Resolve("operator_pow", typeof(NativeLibrary));
         }
@@ -70,7 +69,7 @@ namespace fVis.Native.Tests
         [TestMethod]
         public void ProcedureExists()
         {
-            NativeLibrary library = new NativeLibrary("libmcr.dll");
+            NativeLibrary library = new NativeLibrary("math_msvc14.dll");
 
             bool result = library.ProcedureExists("operator_pow");
 
@@ -80,7 +79,7 @@ namespace fVis.Native.Tests
         [TestMethod]
         public void ProcedureExists_2()
         {
-            NativeLibrary library = new NativeLibrary("libmcr.dll");
+            NativeLibrary library = new NativeLibrary("math_msvc14.dll");
 
             bool result = library.ProcedureExists("_not_exists_");
 
@@ -88,4 +87,3 @@ namespace fVis.Native.Tests
         }
     }
 }
-*/

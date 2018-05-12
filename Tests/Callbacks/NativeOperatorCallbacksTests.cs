@@ -2,7 +2,6 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-/*
 namespace fVis.Callbacks.Tests
 {
     [TestClass]
@@ -13,7 +12,7 @@ namespace fVis.Callbacks.Tests
         {
             double x = 1;
             double y = 2;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Add(x, y);
 
@@ -25,7 +24,7 @@ namespace fVis.Callbacks.Tests
         {
             double x = 1;
             double y = 2;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Subtract(x, y);
 
@@ -37,7 +36,7 @@ namespace fVis.Callbacks.Tests
         {
             double x = 1;
             double y = 2;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Multiply(x, y);
 
@@ -49,7 +48,7 @@ namespace fVis.Callbacks.Tests
         {
             double x = 1;
             double y = 2;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Divide(x, y);
 
@@ -61,7 +60,7 @@ namespace fVis.Callbacks.Tests
         {
             double x = 1;
             double y = 2;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Pow(x, y);
 
@@ -73,7 +72,7 @@ namespace fVis.Callbacks.Tests
         {
             double x = 1;
             double y = 2;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Remainder(x, y);
 
@@ -84,7 +83,7 @@ namespace fVis.Callbacks.Tests
         public void Abs()
         {
             double x = -1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Abs(x);
 
@@ -95,7 +94,7 @@ namespace fVis.Callbacks.Tests
         public void Sqrt()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Sqrt(x);
 
@@ -106,7 +105,7 @@ namespace fVis.Callbacks.Tests
         public void Exp()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Exp(x);
 
@@ -117,7 +116,7 @@ namespace fVis.Callbacks.Tests
         public void Ln()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Ln(x);
 
@@ -128,7 +127,7 @@ namespace fVis.Callbacks.Tests
         public void Log()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Log(x);
 
@@ -139,7 +138,7 @@ namespace fVis.Callbacks.Tests
         public void Sin()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Sin(x);
 
@@ -150,7 +149,7 @@ namespace fVis.Callbacks.Tests
         public void Cos()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Cos(x);
 
@@ -161,7 +160,7 @@ namespace fVis.Callbacks.Tests
         public void Tan()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Tan(x);
 
@@ -172,7 +171,7 @@ namespace fVis.Callbacks.Tests
         public void Asin()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Asin(x);
 
@@ -183,7 +182,7 @@ namespace fVis.Callbacks.Tests
         public void Acos()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Acos(x);
 
@@ -194,7 +193,7 @@ namespace fVis.Callbacks.Tests
         public void Atan()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Atan(x);
 
@@ -205,7 +204,7 @@ namespace fVis.Callbacks.Tests
         public void Sinh()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Sinh(x);
 
@@ -216,7 +215,7 @@ namespace fVis.Callbacks.Tests
         public void Cosh()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Cosh(x);
 
@@ -227,7 +226,7 @@ namespace fVis.Callbacks.Tests
         public void Tanh()
         {
             double x = 1;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Tanh(x);
 
@@ -238,7 +237,7 @@ namespace fVis.Callbacks.Tests
         public void Round()
         {
             double x = 1.5;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Round(x);
 
@@ -249,7 +248,7 @@ namespace fVis.Callbacks.Tests
         public void Floor()
         {
             double x = 1.5;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Floor(x);
 
@@ -260,7 +259,7 @@ namespace fVis.Callbacks.Tests
         public void Ceil()
         {
             double x = 1.5;
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
             double result = callbacks.Ceil(x);
 
@@ -270,45 +269,44 @@ namespace fVis.Callbacks.Tests
         [TestMethod]
         public void ImplementationName()
         {
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
-            Assert.AreEqual("Sun libmcr v0.9", callbacks.ImplementationName);
+            Assert.AreEqual("MSVC v19.0 [SSE2]", callbacks.ImplementationName);
         }
 
         [TestMethod]
         public void MissingCallbacks()
         {
-            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("libmcr.dll");
+            NativeOperatorCallbacks callbacks = new NativeOperatorCallbacks("math_msvc14.dll");
 
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("constant_e"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("constant_pi"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("constant_e"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("constant_pi"));
 
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_add"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_subtract"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_multiply"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_divide"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_add"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_subtract"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_multiply"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_divide"));
             Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_pow"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_remainder"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_remainder"));
 
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_abs"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_sqrt"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_abs"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_sqrt"));
             Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_exp"));
             Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_ln"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_log"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_log"));
             Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_sin"));
             Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_cos"));
             Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_tan"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_asin"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_acos"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_asin"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_acos"));
             Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_atan"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_sinh"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_cosh"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_tanh"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_sinh"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_cosh"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_tanh"));
 
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_round"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_floor"));
-            Assert.IsTrue(callbacks.MissingCallbacks.Contains("operator_ceil"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_round"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_floor"));
+            Assert.IsFalse(callbacks.MissingCallbacks.Contains("operator_ceil"));
         }
     }
 }
-*/
