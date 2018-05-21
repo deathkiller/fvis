@@ -414,7 +414,7 @@ namespace fVis.Controls
 
             string info;
             if (highlightDifferences != HighlightDifferencesMode.None) {
-                info = string.Format(Tx.T("main.cached diffs"), cachedDifferences.Count.ToString("N0"), CachedDifferencesThreshold.ToString("N0"));
+                info = string.Format(Tx.T("main.cached diffs"), Tx.N(cachedDifferences.Count), Tx.N(CachedDifferencesThreshold));
             } else {
                 info = "";
             }

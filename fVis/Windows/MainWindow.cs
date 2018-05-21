@@ -31,8 +31,6 @@ namespace fVis.Windows
         {
             InitializeComponent();
 
-            TxWinForms.Bind(this);
-
             Text = App.AssemblyTitle;
 
             BackColor = Color.FromArgb(0xFA, 0xFA, 0xFA);
@@ -54,12 +52,12 @@ namespace fVis.Windows
 
 
             // Load available implementations
-            ToolStripMenuItem implementationNetButton = new ToolStripMenuItem(Tx.T("mathlib.internal") + "(double)");
+            ToolStripMenuItem implementationNetButton = new ToolStripMenuItem("[mathlib.internal.double]");
             implementationNetButton.Click += OnSetItemCallbacksButtonClick;
             implementationNetButton.Tag = defaultDoubleCallbacks;
             implementationButton.DropDownItems.Add(implementationNetButton);
 
-            ToolStripMenuItem implementationNetFloatButton = new ToolStripMenuItem(Tx.T("mathlib.internal") + " (float)");
+            ToolStripMenuItem implementationNetFloatButton = new ToolStripMenuItem("[mathlib.internal.float]");
             implementationNetFloatButton.Click += OnSetItemCallbacksButtonClick;
             implementationNetFloatButton.Tag = defaultFloatCallbacks;
             implementationButton.DropDownItems.Add(implementationNetFloatButton);
@@ -70,27 +68,30 @@ namespace fVis.Windows
 
             implementationButton.DropDownItems.Add(new ToolStripSeparator());
 
-            ToolStripMenuItem implementationAddButton = new ToolStripMenuItem(Tx.T("mathlib.add"));
+            ToolStripMenuItem implementationAddButton = new ToolStripMenuItem("[mathlib.add]");
             implementationAddButton.Click += OnImplementationAddButtonClick;
             implementationButton.DropDownItems.Add(implementationAddButton);
 
             // Add available highlight differences modes
-            ToolStripMenuItem highlightOffButton = new ToolStripMenuItem(Tx.T("highlight.disabled"));
+            ToolStripMenuItem highlightOffButton = new ToolStripMenuItem("[highlight.disabled]");
             highlightOffButton.Checked = true;
             highlightOffButton.Click += OnHighlightOffButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightOffButton);
 
-            ToolStripMenuItem highlightConstantButton = new ToolStripMenuItem(Tx.T("highlight.constant"));
+            ToolStripMenuItem highlightConstantButton = new ToolStripMenuItem("[highlight.constant]");
             highlightConstantButton.Click += OnHighlightConstantButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightConstantButton);
 
-            ToolStripMenuItem highlightDynamicButton = new ToolStripMenuItem(Tx.T("highlight.dynamic"));
+            ToolStripMenuItem highlightDynamicButton = new ToolStripMenuItem("[highlight.dynamic]");
             highlightDynamicButton.Click += OnHighlightDynamicButtonClick;
             highlightDifferencesButton.DropDownItems.Add(highlightDynamicButton);
 
-            ToolStripMenuItem averageButton = new ToolStripMenuItem(Tx.T("highlight.only diff"));
+            ToolStripMenuItem averageButton = new ToolStripMenuItem("[highlight.only diff]");
             averageButton.Click += OnAverageButtonClick;
             highlightDifferencesButton.DropDownItems.Add(averageButton);
+
+            TxWinForms.Bind(this);
+            Tx.DictionaryChanged += OnTxDictionaryChanged;
 
             // Setup graph
             graph.DataSource = listView.Items;
@@ -98,6 +99,18 @@ namespace fVis.Windows
             OnScaleFactorChanged();
 
             RefreshToolStrip();
+        }
+
+        protected override void DestroyHandle()
+        {
+            Tx.DictionaryChanged -= OnTxDictionaryChanged;
+
+            base.DestroyHandle();
+        }
+
+        private void OnTxDictionaryChanged(object sender, EventArgs e)
+        {
+            listView.EmptyText = Tx.T("main.list is empty");
         }
 
         /// <summary>
@@ -911,12 +924,12 @@ namespace fVis.Windows
                     long sizeInMB = (distance * 8 * 2 / 1024 / 1024);
                     string sizeString;
                     if (sizeInMB > 100L * 1024L) {
-                        sizeString = (sizeInMB / 1024).ToString("N0") + " GB";
+                        sizeString = Tx.N(sizeInMB / 1024) + " GB";
                     } else {
-                        sizeString = sizeInMB.ToString("N0") + " MB";
+                        sizeString = Tx.N(sizeInMB) + " MB";
                     }
 
-                    if (MessageBox.Show(this, Tx.T("dataset.errors.file too big", distance.ToString("N0"), sizeString), Tx.T("main.warning"),
+                    if (MessageBox.Show(this, Tx.T("dataset.errors.file too big", Tx.N(distance), sizeString), Tx.T("main.warning"),
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK) {
                         return;
                     }
@@ -947,7 +960,7 @@ namespace fVis.Windows
                 ProgressDialog progressDialog = new ProgressDialog();
                 progressDialog.Text = Tx.T("dataset.saving.title");
                 progressDialog.MainInstruction = Tx.T("dataset.saving.description");
-                progressDialog.Line1 = Tx.T("dataset.saving.progress", "0", (xLi - xFi).ToString("N0"));
+                progressDialog.Line1 = Tx.T("dataset.saving.progress", "0", Tx.N(xLi - xFi));
                 progressDialog.Show(this);
 
                 ThreadPool.UnsafeQueueUserWorkItem(delegate {
@@ -1008,7 +1021,7 @@ namespace fVis.Windows
                                     lastProcessed = xi;
 
                                     BeginInvoke((MethodInvoker)delegate {
-                                        progressDialog.Line1 = Tx.T("dataset.saving.progress", (lastProcessed - xFi).ToString("N0"), (xLi - xFi).ToString("N0"));
+                                        progressDialog.Line1 = Tx.T("dataset.saving.progress", Tx.N(lastProcessed - xFi), Tx.N(xLi - xFi));
                                         progressDialog.Line2 = Tx.T("main.remaining time", remaining.ToTextString());
                                         progressDialog.Progress = (int)((lastProcessed - xFi) * 100 / (xLi - xFi));
                                     });

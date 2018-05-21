@@ -93,6 +93,8 @@ Zkontrolujte, že číslo neobsahuje mezery a je použita desetinná tečka.</te
 		<text key="mathlib.errors.title">Chyba při přidávání knihovny</text>
 		<text key="mathlib.filetype">Knihovna</text>
 		<text key="mathlib.internal">Rozhraní .NET</text>
+		<text key="mathlib.internal.double">{=mathlib.internal} (double)</text>
+		<text key="mathlib.internal.float">{=mathlib.internal} (float)</text>
 		<text key="mathlib.load">Otevřít knihovnu s matematickými funkcemi…</text>
 		<text key="mathlib.missing callbacks">Chybějící funkce: </text>
 		<text key="mathlib.remoting">x86 Remoting</text>
@@ -189,7 +191,7 @@ Make sure that the number is not empty and the decimal point is used.</text>
 		<text key="main.tooltips.duplicate">Duplicate selected item</text>
 		<text key="main.tooltips.export">Export values to dataset</text>
 		<text key="main.tooltips.find">Find differences in a span</text>
-		<text key="main.tooltips.import">Inport values from dataset</text>
+		<text key="main.tooltips.import">Import values from dataset</text>
 		<text key="main.tooltips.remove">Remove selected item</text>
 		<text key="main.tooltips.reset view">Reset view to default state</text>
 		<text key="main.tooltips.zoom in">Zoom in</text>
@@ -203,6 +205,8 @@ Make sure that the number is not empty and the decimal point is used.</text>
 		<text key="mathlib.errors.title">Error while loading of library</text>
 		<text key="mathlib.filetype">Library</text>
 		<text key="mathlib.internal">.NET</text>
+		<text key="mathlib.internal.double">{=mathlib.internal} (double)</text>
+		<text key="mathlib.internal.float">{=mathlib.internal} (float)</text>
 		<text key="mathlib.load">Open math library…</text>
 		<text key="mathlib.missing callbacks">Missing callbacks: </text>
 		<text key="mathlib.remoting">x86 Remoting</text>
@@ -423,6 +427,6 @@ Make sure that the number is not empty and the decimal point is used.</text>
 		<text key="zoom to.description">Enter a value of x and select a function. The application will zoom to the desired point.</text>
 		<text key="zoom to.ok">Zoom</text>
 		<text key="zoom to.title">Zoom To Value</text>
-		<text key="zoom to.value">Value of x:</text>
+		<text key="zoom to.value">Value to find:</text>
 	</culture>
 </translation>

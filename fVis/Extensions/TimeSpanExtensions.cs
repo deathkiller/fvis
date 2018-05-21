@@ -18,21 +18,21 @@ namespace fVis.Extensions
                     int days = (time.Days % 365);
 
                     if (years == 1) {
-                        return Tx.T("time.yr days", days.ToString("N0"));
+                        return Tx.T("time.yr days", Tx.N(days));
                     } else if (years < 5) {
-                        return Tx.T("time.few yrs days", years.ToString("N0"), days.ToString("N0"));
+                        return Tx.T("time.few yrs days", Tx.N(years), Tx.N(days));
                     } else {
-                        return Tx.T("time.yrs days", years.ToString("N0"), days.ToString("N0"));
+                        return Tx.T("time.yrs days", Tx.N(years), Tx.N(days));
                     }
                 } else {
-                    return Tx.T("time.days hrs", time.Days.ToString("N0"), time.Hours.ToString("N0"));
+                    return Tx.T("time.days hrs", Tx.N(time.Days), Tx.N(time.Hours));
                 }
             } else if (time.Hours > 0) {
-                return Tx.T("time.hrs mins", time.Hours.ToString("N0"), time.Minutes.ToString("N0"));
+                return Tx.T("time.hrs mins", Tx.N(time.Hours), Tx.N(time.Minutes));
             } else if (time.Minutes > 0) {
-                return Tx.T("time.mins secs", time.Minutes.ToString("N0"), time.Seconds.ToString("N0"));
+                return Tx.T("time.mins secs", Tx.N(time.Minutes), Tx.N(time.Seconds));
             } else {
-                return Tx.T("time.secs", time.Seconds.ToString("N0"));
+                return Tx.T("time.secs", Tx.N(time.Seconds));
             }
         }
     }

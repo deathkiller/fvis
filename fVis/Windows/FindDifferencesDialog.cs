@@ -171,7 +171,7 @@ namespace fVis.Windows
             int thresholdPerItem = (Threshold / progressRefreshRate);
             if (distance < thresholdPerItem) {
                 estimatedTime = TimeSpan.MinValue;
-                infoLabel.Text = Tx.T("find diffs.status", Tx.T("time.immediately"), distance.ToString("N0"));
+                infoLabel.Text = Tx.T("find diffs.status", Tx.T("time.immediately"), Tx.N(distance));
                 return true;
             }
 
@@ -210,10 +210,10 @@ namespace fVis.Windows
             ulong secs = ((ulong)(((sw.ElapsedMilliseconds * distance / 1000) / thresholdPerItem) / threadCount) * MultithreadPenalty);
             if (secs > 1000L * 365L * 24L * 60L * 60L) { // 1000 years in seconds
                 estimatedTime = TimeSpan.MaxValue;
-                infoLabel.Text = Tx.T("find diffs.status", Tx.T("time.infinitely"), distance.ToString("N0"));
+                infoLabel.Text = Tx.T("find diffs.status", Tx.T("time.infinitely"), Tx.N(distance));
             } else {
                 estimatedTime = TimeSpan.FromSeconds(secs);
-                infoLabel.Text = Tx.T("find diffs.status", estimatedTime.ToTextString(), distance.ToString("N0"));
+                infoLabel.Text = Tx.T("find diffs.status", estimatedTime.ToTextString(), Tx.N(distance));
             }
 
             return true;
@@ -237,7 +237,7 @@ namespace fVis.Windows
                     timeString = estimatedTime.ToTextString();
                 }
 
-                if (MessageBox.Show(this, Tx.T("find diffs.errors.interval too big", distance.ToString("N0"), timeString), Tx.T("main.warning"),
+                if (MessageBox.Show(this, Tx.T("find diffs.errors.interval too big", Tx.N(distance), timeString), Tx.T("main.warning"),
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) != DialogResult.OK) {
                     return;
                 }
@@ -260,7 +260,7 @@ namespace fVis.Windows
             ProgressDialog progressDialog = new ProgressDialog {
                 Text = Tx.T("find diffs.finding.title"),
                 MainInstruction = Tx.T("find diffs.finding.description"),
-                Line1 = Tx.T("find diffs.finding.progress", "0", distance.ToString("N0")),
+                Line1 = Tx.T("find diffs.finding.progress", "0", Tx.N(distance)),
                 ShowInTaskbar = false,
                 MinimizeBox = false
             };
@@ -322,7 +322,7 @@ namespace fVis.Windows
                         lastProcessed = currentProcessed;
 
                         BeginInvoke((MethodInvoker)delegate {
-                            progressDialog.Line1 = Tx.T("find diffs.finding.progress", lastProcessed.ToString("N0"), distance.ToString("N0"));
+                            progressDialog.Line1 = Tx.T("find diffs.finding.progress", Tx.N(lastProcessed), Tx.N(distance));
                             progressDialog.Line2 = Tx.T("main.remaining time", remaining.ToTextString());
                             progressDialog.Progress = (int)(lastProcessed * 100 / distance);
                         });
@@ -345,9 +345,9 @@ namespace fVis.Windows
                     if (!progressDialog.IsCancelled) {
                         MessageBox.Show(this,
                             Tx.T("find diffs.complete.description",
-                                distance.ToString("N0"),
-                                differencesFound.ToString("N0"),
-                                (differencesFound * 100 / distance).ToString("N0")),
+                                Tx.N(distance),
+                                Tx.N(differencesFound),
+                                Tx.N(differencesFound * 100 / distance)),
                             Tx.T("find diffs.complete.title"),
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
