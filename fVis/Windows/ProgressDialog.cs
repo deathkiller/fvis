@@ -13,6 +13,8 @@ namespace fVis.Windows
     public partial class ProgressDialog : Form
     {
         private Font mainInstructionFont;
+        private Timer animationTimer;
+        private int animationTime, animationValue;
 
         private string mainInstruction;
         private FormattedTextBlock line1 = new FormattedTextBlock();
@@ -89,6 +91,17 @@ namespace fVis.Windows
             mainInstructionFont = UI.GetMainInstructionFont();
             line1.Font = Font;
             line2.Font = Font;
+
+            animationTimer = new Timer();
+            animationTimer.Interval = 100;
+            animationTimer.Tick += OnAnimationTimer;
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            animationTimer.Start();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -98,7 +111,17 @@ namespace fVis.Windows
                 CancelTask();
             }
 
+            animationTimer.Stop();
+
             base.OnClosing(e);
+        }
+
+        private void OnAnimationTimer(object sender, EventArgs e)
+        {
+            animationTime = unchecked(animationTime + 1);
+            animationValue = 280 + (int)(Math.Sin(animationTime * 0.06f) * 150);
+
+            Invalidate(false);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -113,7 +136,7 @@ namespace fVis.Windows
                 e.Graphics.DrawLine(pen, 0, cancelButton.Top - 10, clientSize.Width, cancelButton.Top - 10);
             }
 
-            UI.PaintDirtGradient(e.Graphics, 1, 1, clientSize.Width - 1, 39 - 2, 360);
+            UI.PaintDirtGradient(e.Graphics, 1, 1, clientSize.Width - 1, 39 - 2, animationValue + 60, animationValue);
 
             using (GdiGraphics g = GdiGraphics.FromGraphics(e.Graphics)) {
                 if (!string.IsNullOrEmpty(mainInstruction)) {

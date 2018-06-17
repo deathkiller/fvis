@@ -45,7 +45,7 @@ namespace fVis.Misc
             }
         }
 
-        public static void PaintDirtGradient(Graphics g, int x, int y, int width, int height, int gradientSize)
+        public static void PaintDirtGradient(Graphics g, int x, int y, int width, int height, int gradientSize, int alpha)
         {
             Region oldClip = g.Clip;
             g.SetClip(new Rectangle(x, y, width, height), CombineMode.Intersect);
@@ -58,7 +58,7 @@ namespace fVis.Misc
 
             for (int i = 0; i < gradientSize; i += 3) {
                 double curve = (Math.Sin((1.5 + ((double)i / gradientSize)) * Math.PI) + 1) / 2;
-                using (Pen pen = new Pen(Color.FromArgb((int)((1 - curve) * 60), 0x55, 0x44, 0x44))) {
+                using (Pen pen = new Pen(Color.FromArgb((int)((1 - curve) * 60) * alpha / 255, 0x55, 0x44, 0x44))) {
                     g.DrawLine(pen, width, i, width - gradientSize, i - gradientSize);
                 }
             }
