@@ -41,7 +41,7 @@ namespace fVis.Windows
 
         private void OnAnimationTimer(object sender, EventArgs e)
         {
-            animationValue += 18;
+            animationValue += 20;
 
             if (animationValue >= 255) {
                 animationValue = 255;

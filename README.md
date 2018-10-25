@@ -17,6 +17,7 @@
 [![Tests](https://img.shields.io/appveyor/tests/deathkiller/fvis.svg)](https://ci.appveyor.com/project/deathkiller/fvis/build/tests)
 [![Coverage](https://img.shields.io/codecov/c/github/deathkiller/fvis.svg)](https://codecov.io/gh/deathkiller/fvis)
 [![License](https://img.shields.io/github/license/deathkiller/fvis.svg)](https://github.com/deathkiller/fvis/blob/master/LICENSE)
+[![Lines of Code](https://tokei.rs/b1/github/deathkiller/fvis)](https://github.com/deathkiller/fvis)
 
 
 ## Abstract
