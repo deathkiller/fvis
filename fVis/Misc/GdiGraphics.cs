@@ -36,8 +36,9 @@ namespace fVis.Misc
         {
             get
             {
-                if (g == null)
+                if (g == null) {
                     throw new InvalidOperationException();
+                }
 
                 ReleaseHdc();
                 return g;
@@ -50,8 +51,9 @@ namespace fVis.Misc
         /// <param name="g"></param>
         private GdiGraphics(Graphics g)
         {
-            if (g == null)
+            if (g == null) {
                 throw new ArgumentNullException(nameof(g));
+            }
 
             this.g = g;
         }

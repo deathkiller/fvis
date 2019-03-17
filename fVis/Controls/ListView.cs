@@ -423,10 +423,11 @@ namespace fVis.Controls
 
             if (columnSizingState == ColumnSizingState.Active) {
                 int newWidth = ClientRectangleInner.Width - e.X + (columnSizingOffset - 6 + 2);
-                if (newWidth > descriptionMaxWidth)
+                if (newWidth > descriptionMaxWidth) {
                     newWidth = descriptionMaxWidth;
-                else if (newWidth < descriptionMinWidth)
+                } else if (newWidth < descriptionMinWidth) {
                     newWidth = descriptionMinWidth;
+                }
 
                 if (descriptionWidth != newWidth) {
                     descriptionWidth = newWidth;

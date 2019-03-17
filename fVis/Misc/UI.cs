@@ -36,8 +36,9 @@ namespace fVis.Misc
                 VisualStyleRenderer renderer = new VisualStyleRenderer("TEXTSTYLE", 0x1, 0x0);
 
                 LOGFONT lFont;
-                if (GetThemeFont(renderer.Handle, IntPtr.Zero, 0x1 /*TEXT_MAININSTRUCTION*/, 0, 0xD2 /*TMT_FONT*/, out lFont) != 0)
+                if (GetThemeFont(renderer.Handle, IntPtr.Zero, 0x1 /*TEXT_MAININSTRUCTION*/, 0, 0xD2 /*TMT_FONT*/, out lFont) != 0) {
                     throw new InvalidOperationException(); // Fallback to SystemFonts.CaptionFont
+                }
 
                 return new Font(lFont.lfFaceName, Math.Abs(lFont.lfHeight), FontStyle.Regular, GraphicsUnit.Pixel);
             } catch {

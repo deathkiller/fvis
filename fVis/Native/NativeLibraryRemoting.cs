@@ -109,14 +109,6 @@ namespace fVis.Native
         /// <returns>Return value</returns>
         public TResult Invoke<T, TResult>(string procedureName, params object[] args) where T : class
         {
-            //if (IsDisposed) {
-            //    throw new ObjectDisposedException(nameof(NativeLibraryRemoting));
-            //}
-
-            //if (!typeof(T).IsSubclassOf(typeof(Delegate))) {
-            //    throw new ArgumentException("Supplied type must be a delegate type", nameof(T));
-            //}
-
             RemoteCall info = new RemoteCall {
                 Type = RemoteCallType.Invoke,
                 Name = procedureName,

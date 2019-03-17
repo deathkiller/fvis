@@ -211,12 +211,6 @@ namespace fVis.NumericValueSources
                             Value = number
                         });
 
-                        // Allow expressions without parentheses, e.g. "sin 2"
-                        //if (preceding == PrecedingItem.OperatorUnary) {
-                        //    PostfixItem item = operatorsStack.Pop();
-                        //    postfixStack.Push(item);
-                        //}
-
                         preceding = PrecedingItem.Number;
                     } else if (char.IsLetter(ptr[i])) {
                         // Function/constant/variable

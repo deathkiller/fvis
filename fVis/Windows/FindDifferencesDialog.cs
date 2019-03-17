@@ -183,17 +183,20 @@ namespace fVis.Windows
                 double x = *(double*)&xi;
 
                 bool isFirst = true;
-                double computedMinY = double.MaxValue, computedMaxY = double.MinValue;
+                double computedMinY = double.MaxValue;
+                double computedMaxY = double.MinValue;
 
                 foreach (ListView.Item item in listView.Items) {
-                    if (item.NumericValueSource == null || item.CheckState != CheckState.Checked)
+                    if (item.NumericValueSource == null || item.CheckState != CheckState.Checked) {
                         continue;
+                    }
 
                     double y = item.NumericValueSource.Evaluate(x);
 
                     if (isFirst) {
                         isFirst = false;
-                        computedMinY = computedMaxY = y;
+                        computedMinY = y;
+                        computedMaxY = y;
                     } else {
                         if (y > computedMaxY) {
                             computedMaxY = y;
@@ -281,8 +284,9 @@ namespace fVis.Windows
                     double computedMinY = double.MaxValue, computedMaxY = double.MinValue;
 
                     foreach (ListView.Item item in listView.Items) {
-                        if (item.NumericValueSource == null || item.CheckState != CheckState.Checked)
+                        if (item.NumericValueSource == null || item.CheckState != CheckState.Checked) {
                             continue;
+                        }
 
                         double y = item.NumericValueSource.Evaluate(x);
 

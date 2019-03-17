@@ -27,8 +27,9 @@ namespace Death.Controls
             }
             set
             {
-                if (base.Text == value)
+                if (base.Text == value) {
                     return;
+                }
 
                 base.Text = value;
                 RefreshTextRect();

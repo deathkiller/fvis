@@ -368,7 +368,7 @@ namespace fVis.Windows
                                 sb.Append(Tx.T("expression.errors.parentheses count mismatch"));
                                 break;
                             default:
-                                break;
+                                throw new InvalidEnumArgumentException("ex.ExceptionType", (int)ex.ExceptionType, typeof(SyntaxException.Type));
                         }
 
                         item.TextDisplay = sb.ToString();

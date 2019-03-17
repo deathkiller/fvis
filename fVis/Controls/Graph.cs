@@ -64,7 +64,7 @@ namespace fVis.Controls
 
         private HighlightDifferencesMode highlightDifferences;
 
-        private Font monospacedFont;
+        private readonly Font monospacedFont;
 
         private readonly Pen penAxis;
         private readonly Pen penSelection;
