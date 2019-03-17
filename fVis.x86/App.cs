@@ -13,7 +13,7 @@ using fVis.Native;
 namespace fVis.x86
 {
     [SuppressUnmanagedCodeSecurity]
-    internal class App
+    internal static class App
     {
         private static readonly BinaryFormatter formatter = new BinaryFormatter();
 
@@ -68,6 +68,8 @@ namespace fVis.x86
                                     case RemoteCallType.ResolveStringAnsi:
                                         ResolveStringAnsi(data, pipe);
                                         break;
+                                    default:
+                                        break;
                                 }
 
                                 data = (RemoteCall)formatter.Deserialize(pipe);
@@ -111,7 +113,8 @@ namespace fVis.x86
             try {
                 Delegate method;
                 if (!delegateCache.TryGetValue(data.Name, out method)) {
-                    delegateCache.Add(data.Name, method = library.Resolve(data.Name, data.Delegate));
+                    method = library.Resolve(data.Name, data.Delegate);
+                    delegateCache.Add(data.Name, method);
                 }
 
                 // Invoke requested method

@@ -73,7 +73,7 @@ namespace fVis.Callbacks
 
         private static double AbsF(double x)
         {
-            return (float)Math.Abs((float)x);
+            return Math.Abs((float)x);
         }
 
         private static double SqrtF(double x)

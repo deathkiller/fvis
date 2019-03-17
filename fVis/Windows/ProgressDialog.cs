@@ -12,13 +12,13 @@ namespace fVis.Windows
     /// </summary>
     public partial class ProgressDialog : Form
     {
-        private Font mainInstructionFont;
-        private Timer animationTimer;
+        private readonly Font mainInstructionFont;
+        private readonly Timer animationTimer;
         private int animationTime, animationValue;
 
         private string mainInstruction;
-        private FormattedTextBlock line1 = new FormattedTextBlock();
-        private FormattedTextBlock line2 = new FormattedTextBlock();
+        private readonly FormattedTextBlock line1 = new FormattedTextBlock();
+        private readonly FormattedTextBlock line2 = new FormattedTextBlock();
         private bool isCancelled, canClose;
 
         public string MainInstruction
@@ -26,8 +26,9 @@ namespace fVis.Windows
             get { return mainInstruction; }
             set
             {
-                if (mainInstruction == value)
+                if (mainInstruction == value) {
                     return;
+                }
 
                 mainInstruction = value;
                 Invalidate();
@@ -39,8 +40,9 @@ namespace fVis.Windows
             get { return line1.Text; }
             set
             {
-                if (line1.Text == value)
+                if (line1.Text == value) {
                     return;
+                }
 
                 line1.Text = value;
                 Invalidate();
@@ -52,8 +54,9 @@ namespace fVis.Windows
             get { return line2.Text; }
             set
             {
-                if (line2.Text == value)
+                if (line2.Text == value) {
                     return;
+                }
 
                 line2.Text = value;
                 Invalidate();

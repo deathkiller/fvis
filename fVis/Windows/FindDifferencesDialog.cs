@@ -12,6 +12,7 @@ using fVis.Extensions;
 using fVis.NumericValueSources;
 using Unclassified.TxLib;
 using ListView = fVis.Controls.ListView;
+using Timer = System.Windows.Forms.Timer;
 
 namespace fVis.Windows
 {
@@ -26,7 +27,7 @@ namespace fVis.Windows
         private TimeSpan estimatedTime;
         private long distance;
 
-        private System.Windows.Forms.Timer refreshTimer;
+        private readonly Timer refreshTimer;
         private bool refreshNeeded;
 
         public FindDifferencesDialog(Graph graph, IList<ListView.Item> items, double start, double end)
@@ -57,7 +58,7 @@ namespace fVis.Windows
 
             EstimateTime(true);
 
-            refreshTimer = new System.Windows.Forms.Timer();
+            refreshTimer = new Timer();
             refreshTimer.Tick += OnRefreshTimer;
             refreshTimer.Interval = 4000;
         }
@@ -98,8 +99,9 @@ namespace fVis.Windows
 
             int count = 0;
             foreach (ListView.Item item in listView.Items) {
-                if (item.NumericValueSource == null || item.CheckState != CheckState.Checked)
+                if (item.NumericValueSource == null || item.CheckState != CheckState.Checked) {
                     continue;
+                }
 
                 count++;
 
@@ -286,7 +288,8 @@ namespace fVis.Windows
 
                         if (isFirst) {
                             isFirst = false;
-                            computedMinY = computedMaxY = y;
+                            computedMinY = y;
+                            computedMaxY = y;
                         } else {
                             if (y > computedMaxY) {
                                 computedMaxY = y;

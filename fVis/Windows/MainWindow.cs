@@ -46,7 +46,9 @@ namespace fVis.Windows
             foreach (CultureInfo culture in Tx.AvailableCultures) {
                 ToolStripMenuItem item = new ToolStripMenuItem(culture.DisplayName, null, OnLanguageMenuItemClick);
                 item.Tag = culture.Name;
-                if (culture.Name == currentCulture) item.Checked = true;
+                if (culture.Name == currentCulture) {
+                    item.Checked = true;
+                }
                 langMenuItem.DropDownItems.Add(item);
             }
 
@@ -317,8 +319,9 @@ namespace fVis.Windows
                         sb.Append("\f[0x8b0000]");
 
                         int length = ex.Input.IndexOf('#');
-                        if (length == -1)
+                        if (length == -1) {
                             length = ex.Input.Length;
+                        }
 
                         if (length < 3) {
                             sb.Append(ex.Input);
@@ -363,6 +366,8 @@ namespace fVis.Windows
                             case SyntaxException.Type.ParenthesesCountMismatch:
                                 sb.Append("      \f[-]\f[image:warning]  \f[0xaa6400]\f[I]");
                                 sb.Append(Tx.T("expression.errors.parentheses count mismatch"));
+                                break;
+                            default:
                                 break;
                         }
 
@@ -414,8 +419,9 @@ namespace fVis.Windows
                 return;
 
             ArithmeticExpression ae = item.NumericValueSource as ArithmeticExpression;
-            if (ae == null)
+            if (ae == null) {
                 return;
+            }
 
             bool isFirst = true;
             bool iconAppended = false;
@@ -518,14 +524,12 @@ namespace fVis.Windows
             return Color.Black;
         }
 
-        private Image OnImageResourceCallback(string resourceName)
+        private static Image OnImageResourceCallback(string resourceName)
         {
-            switch (resourceName)
-            {
-                case "warning":
-                    return Properties.Resources.Warning;
-                default:
-                    return null;
+            if (resourceName == "warning") {
+                return Properties.Resources.Warning;
+            } else {
+                return null;
             }
         }
 
@@ -796,8 +800,9 @@ namespace fVis.Windows
                 dialog.RestoreDirectory = true;
                 dialog.Title = Tx.T("dataset.load");
 
-                if (dialog.ShowDialog(this) != DialogResult.OK)
+                if (dialog.ShowDialog(this) != DialogResult.OK) {
                     return;
+                }
 
                 string filename = dialog.FileName;
                 using (FileStream s = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -952,8 +957,9 @@ namespace fVis.Windows
 
                 dialog.FileName = filename + ext;
 
-                if (dialog.ShowDialog(this) != DialogResult.OK)
+                if (dialog.ShowDialog(this) != DialogResult.OK) {
                     return;
+                }
 
                 filename = dialog.FileName;
 
@@ -1081,9 +1087,6 @@ namespace fVis.Windows
 
         private void OnAboutMenuItemClick(object sender, EventArgs e)
         {
-            //MessageBox.Show(this, Tx.T("main.about.description", App.AssemblyTitle, App.AssemblyCopyright, "https://github.com/deathkiller/fvis"),
-            //    Tx.T("main.about"), MessageBoxButtons.OK, MessageBoxIcon.None);
-
             using (AboutDialog dialog = new AboutDialog()) {
                 dialog.ShowDialog(this);
             }

@@ -43,12 +43,15 @@ namespace fVis.Extensions
         /// <returns>Exact value string</returns>
         public static unsafe string ToExactString(this double x)
         {
-            if (double.IsNaN(x))
+            if (double.IsNaN(x)) {
                 return "NaN";
-            if (double.IsPositiveInfinity(x))
+            }
+            if (double.IsPositiveInfinity(x)) {
                 return "+∞";
-            if (double.IsNegativeInfinity(x))
+            }
+            if (double.IsNegativeInfinity(x)) {
                 return "-∞";
+            }
 
             // Cast double to long (64-bit) and extract all parts
             long bits = *(long*)&x;

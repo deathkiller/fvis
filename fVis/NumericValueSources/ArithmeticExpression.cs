@@ -33,7 +33,7 @@ namespace fVis.NumericValueSources
         private string variableName;
         private OperatorCallbacks callbacks = new DotNetOperatorCallbacks();
 
-        private HashSet<string> usedCallbacks = new HashSet<string>();
+        private readonly HashSet<string> usedCallbacks = new HashSet<string>();
 
         /// <summary>
         /// Callbacks used to compute value of the expression
@@ -86,10 +86,8 @@ namespace fVis.NumericValueSources
                     int i2 = FindFirstUsableIndex(copy, i);
                     int i1 = FindFirstUsableIndex(copy, i2);
 
-                    // Already validated
-                    //if (i1 == -1 || i2 == -1)
-                    //    throw new FormatException();
-
+                    // (i1 == -1 || i2 == -1) is already validated
+                    
                     double value1 = GetValue(copy[i1], x);
                     double value2 = GetValue(copy[i2], x);
 
@@ -104,9 +102,7 @@ namespace fVis.NumericValueSources
                 } else if ((opu = copy[i] as OperatorUnary) != null) {
                     int i1 = FindFirstUsableIndex(copy, i);
 
-                    // Already validated
-                    //if (i1 == -1)
-                    //    throw new FormatException();
+                    // (i1 == -1) is already validated
 
                     double value1 = GetValue(copy[i1], x);
 
@@ -202,8 +198,9 @@ namespace fVis.NumericValueSources
                     if (char.IsDigit(ptr[i]) || ptr[i] == '.' ||
                         ((preceding == PrecedingItem.Operator || preceding == PrecedingItem.ParenthesesStart) && (ptr[i] == '-' || ptr[i] == '+'))) {
                         // Number
-                        if (preceding == PrecedingItem.Number || preceding == PrecedingItem.OperatorUnary || preceding == PrecedingItem.ParenthesesEnd)
+                        if (preceding == PrecedingItem.Number || preceding == PrecedingItem.OperatorUnary || preceding == PrecedingItem.ParenthesesEnd) {
                             throw new SyntaxException(input, i, SyntaxException.Type.Unknown);
+                        }
 
                         double number = ExtractNumber(ptr, length, ref i);
                         if (double.IsNaN(number)) {

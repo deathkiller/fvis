@@ -16,10 +16,9 @@ namespace fVis.Extensions
             }
         }
 
-        public static double SubtractDivideLossless(this int x, /*double*/long subtract, double divide)
+        public static double SubtractDivideLossless(this int x, long subtract, double divide)
         {
             using (mpf_t x_ = new mpf_t(x))
-            //using (mpf_t subtract_ = new mpf_t(subtract))
             using (mpf_t subtract_ = new mpf_t(subtract.ToString(CultureInfo.InvariantCulture)))
             using (mpf_t divide_ = new mpf_t(divide))
             using (mpf_t result_ = mpf_t.init2(DefaultPrecision)) {
@@ -29,11 +28,10 @@ namespace fVis.Extensions
             }
         }
 
-        public static int MultiplyAddLosslessToInt(this double x, double multiply, /*double*/long add)
+        public static int MultiplyAddLosslessToInt(this double x, double multiply, long add)
         {
             using (mpf_t x_ = new mpf_t(x))
             using (mpf_t multiply_ = new mpf_t(multiply))
-            //using (mpf_t add_ = new mpf_t(add))
             using (mpf_t add_ = new mpf_t(add.ToString(CultureInfo.InvariantCulture)))
             using (mpf_t result_ = mpf_t.init2(DefaultPrecision)) {
                 mpir.mpf_mul(result_, x_, multiply_);       // result = (x * multiply) + add
@@ -42,11 +40,10 @@ namespace fVis.Extensions
             }
         }
 
-        public static double NegMultiplyAddLossless(this double x, double multiply, /*double*/long add)
+        public static double NegMultiplyAddLossless(this double x, double multiply, long add)
         {
             using (mpf_t x_ = new mpf_t(x))
             using (mpf_t multiply_ = new mpf_t(multiply))
-            //using (mpf_t add_ = new mpf_t(add))
             using (mpf_t add_ = new mpf_t(add.ToString(CultureInfo.InvariantCulture)))
             using (mpf_t result_ = mpf_t.init2(DefaultPrecision)) {
                 mpir.mpf_neg(result_, x_);
@@ -56,11 +53,10 @@ namespace fVis.Extensions
             }
         }
 
-        public static int NegMultiplyAddLosslessToInt(this double x, double multiply, /*double*/long add)
+        public static int NegMultiplyAddLosslessToInt(this double x, double multiply, long add)
         {
             using (mpf_t x_ = new mpf_t(x))
             using (mpf_t multiply_ = new mpf_t(multiply))
-            //using (mpf_t add_ = new mpf_t(add))
             using (mpf_t add_ = new mpf_t(add.ToString(CultureInfo.InvariantCulture)))
             using (mpf_t result_ = mpf_t.init2(DefaultPrecision)) {
                 mpir.mpf_neg(result_, x_);

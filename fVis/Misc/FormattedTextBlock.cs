@@ -61,8 +61,9 @@ namespace fVis.Misc
             }
             set
             {
-                if (defaultColor == value)
+                if (defaultColor == value) {
                     return;
+                }
 
                 defaultColor = value;
                 parts = null;
@@ -80,11 +81,12 @@ namespace fVis.Misc
             }
             set
             {
-                if (font == value)
+                if (font == value) {
                     return;
-
-                if (value == null)
+                }
+                if (value == null) {
                     throw new ArgumentNullException(nameof(Font));
+                }
 
                 font = value;
                 parts = null;
@@ -99,8 +101,9 @@ namespace fVis.Misc
             get { return imageResourceCallback; }
             set
             {
-                if (imageResourceCallback == value)
+                if (imageResourceCallback == value) {
                     return;
+                }
 
                 imageResourceCallback = value;
                 parts = null;
@@ -118,11 +121,12 @@ namespace fVis.Misc
             }
             set
             {
-                if (proposedWidth == value)
+                if (proposedWidth == value) {
                     return;
-
-                if (value <= 0)
+                }
+                if (value <= 0) {
                     throw new ArgumentOutOfRangeException(nameof(ProposedWidth));
+                }
 
                 proposedWidth = value;
                 parts = null;
@@ -140,11 +144,9 @@ namespace fVis.Misc
             }
             set
             {
-                if (text == value)
+                if (text == value) {
                     return;
-
-                //if (value == null)
-                //    throw new ArgumentNullException(nameof(Value));
+                }
 
                 text = value;
                 parts = null;
@@ -157,8 +159,9 @@ namespace fVis.Misc
 
         public FormattedTextBlock(string text, Font font)
         {
-            if (font == null)
+            if (font == null) {
                 throw new ArgumentNullException(nameof(Font));
+            }
 
             this.text = text;
             this.font = font;
@@ -188,8 +191,9 @@ namespace fVis.Misc
                     continue;
                 }
 
-                if (currentPart.Text.Location.Y + currentPart.Text.Height > bounds.Height)
+                if (currentPart.Text.Location.Y + currentPart.Text.Height > bounds.Height) {
                     break;
+                }
 
                 Point p = currentPart.Text.Location;
                 p.X += bounds.X;
@@ -215,10 +219,12 @@ namespace fVis.Misc
         /// <returns>Height</returns>
         public int MeasureHeight(GdiGraphics g)
         {
-            if (parts == null)
+            if (parts == null) {
                 RecreateCache(g);
-            if (parts.Length == 0)
+            }
+            if (parts.Length == 0) {
                 return 0;
+            }
 
             Part lastPart = parts[parts.Length - 1];
             return lastPart.Text.Location.Y + lastPart.Text.Height;
@@ -231,10 +237,12 @@ namespace fVis.Misc
         /// <returns>Height</returns>
         public int MeasureHeight(Lazy<GdiGraphics> g)
         {
-            if (parts == null)
+            if (parts == null) {
                 RecreateCache(g.Value);
-            if (parts.Length == 0)
+            }
+            if (parts.Length == 0) {
                 return 0;
+            }
 
             Part lastPart = parts[parts.Length - 1];
             return lastPart.Text.Location.Y + lastPart.Text.Height;
@@ -246,8 +254,9 @@ namespace fVis.Misc
         /// <param name="g">Graphic context</param>
         private void RecreateCache(GdiGraphics g)
         {
-            if (text == null)
+            if (text == null) {
                 return;
+            }
 
             List<Part> processedParts = new List<Part>();
 
@@ -268,8 +277,9 @@ namespace fVis.Misc
                 int formatIndex = unprocessedText.IndexOf("\f[", StringComparison.Ordinal);
                 while (formatIndex == 0) {
                     int formatIndexEnd = unprocessedText.IndexOf(']', formatIndex + 2);
-                    if (formatIndexEnd == -1)
+                    if (formatIndexEnd == -1) {
                         throw new InvalidDataException("Missing closing format bracket");
+                    }
 
                     string formatString = unprocessedText.Substring(formatIndex + 2, formatIndexEnd - (formatIndex + 2));
                     switch (formatString) {
@@ -312,16 +322,18 @@ namespace fVis.Misc
                             if (formatString.StartsWith("image:", StringComparison.Ordinal)) {
                                 string resourceName = formatString.Substring(6);
 
-                                if (imageResourceCallback == null)
+                                if (imageResourceCallback == null) {
                                     throw new NotSupportedException("ImageResourceCallback is not specified");
+                                }
 
                                 Image image = imageResourceCallback(resourceName);
-                                if (image == null)
+                                if (image == null) {
                                     throw new InvalidDataException("Resource \"" + resourceName + "\" not found");
+                                }
 
                                 if (currentLocation.X + image.Width > proposedWidth) {
                                     PerformVerticalAlignment(processedParts, firstPartOfLine);
-                                    goto END;
+                                    goto End;
                                 }
 
                                 part = default(Part);
@@ -341,8 +353,9 @@ namespace fVis.Misc
                                 }
 
                                 uint color;
-                                if (!uint.TryParse(formatString, styles, NumberFormatInfo.CurrentInfo, out color))
+                                if (!uint.TryParse(formatString, styles, NumberFormatInfo.CurrentInfo, out color)) {
                                     throw new InvalidDataException("Unknown format descriptor \"" + formatString + "\"");
+                                }
 
                                 currentColor = Color.FromArgb((int)color);
                             }
@@ -461,7 +474,7 @@ namespace fVis.Misc
                 }
             }
 
-        END:
+        End:
             if (processedParts.Count > 0) {
                 int last = processedParts.Count - 1;
                 if (processedParts[last].Flags == PartFlags.Alignment) {
@@ -483,8 +496,9 @@ namespace fVis.Misc
             int maxHeight = -1;
 
             for (int i = firstPartOfLine; i < processedParts.Count; i++) {
-                if (processedParts[i].Flags == PartFlags.Alignment)
+                if (processedParts[i].Flags == PartFlags.Alignment) {
                     continue;
+                }
 
                 maxHeight = Math.Max(maxHeight, processedParts[i].Text.Height);
             }
@@ -492,8 +506,9 @@ namespace fVis.Misc
             for (int i = firstPartOfLine; i < processedParts.Count; i++) {
                 Part lastPart = processedParts[i];
 
-                if (lastPart.Flags == PartFlags.Alignment)
+                if (lastPart.Flags == PartFlags.Alignment) {
                     continue;
+                }
 
                 if (lastPart.Text.Height != maxHeight) {
                     int diff = (maxHeight - lastPart.Text.Height) >> 1;

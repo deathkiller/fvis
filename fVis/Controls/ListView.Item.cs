@@ -24,8 +24,9 @@ namespace fVis.Controls
                 get { return numericValueSource; }
                 set
                 {
-                    if (Equals(value, numericValueSource))
+                    if (Equals(value, numericValueSource)) {
                         return;
+                    }
 
                     numericValueSource = value;
                     OnPropertyChanged();
@@ -37,8 +38,9 @@ namespace fVis.Controls
                 get { return operatorCallbacks; }
                 set
                 {
-                    if (Equals(value, operatorCallbacks))
+                    if (Equals(value, operatorCallbacks)) {
                         return;
+                    }
 
                     operatorCallbacks = value;
                     OnPropertyChanged();
@@ -50,8 +52,9 @@ namespace fVis.Controls
                 get { return color; }
                 set
                 {
-                    if (value.Equals(color))
+                    if (value.Equals(color)) {
                         return;
+                    }
 
                     color = value;
                     OnPropertyChanged();
@@ -63,8 +66,9 @@ namespace fVis.Controls
                 get { return text; }
                 set
                 {
-                    if (value == text)
+                    if (value == text) {
                         return;
+                    }
 
                     text = value;
                     OnPropertyChanged();
@@ -76,8 +80,9 @@ namespace fVis.Controls
                 get { return textDisplay.Text; }
                 set
                 {
-                    if (value == textDisplay.Text)
+                    if (value == textDisplay.Text) {
                         return;
+                    }
 
                     textDisplay.Text = value;
                     OnPropertyChanged();
@@ -89,7 +94,10 @@ namespace fVis.Controls
                 get { return description; }
                 set
                 {
-                    if (value == description) return;
+                    if (value == description) {
+                        return;
+                    }
+
                     description = value;
                     OnPropertyChanged();
                 }
@@ -100,8 +108,9 @@ namespace fVis.Controls
                 get { return checkState; }
                 set
                 {
-                    if (value == checkState)
+                    if (value == checkState) {
                         return;
+                    }
 
                     checkState = value;
                     OnPropertyChanged();

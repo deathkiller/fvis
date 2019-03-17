@@ -9,9 +9,9 @@ namespace fVis.Windows
 {
     public partial class AboutDialog : Form
     {
-        private Font mainInstructionFont;
-        private Font subtitleFont;
-        private Timer animationTimer;
+        private readonly Font mainInstructionFont;
+        private readonly Font subtitleFont;
+        private readonly Timer animationTimer;
         private int animationValue;
 
         public AboutDialog()

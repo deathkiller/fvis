@@ -23,20 +23,27 @@ namespace fVis.NumericValueSources
         /// <returns>Precedence value</returns>
         private static int GetPrecedence(string a)
         {
-            if (a == "+")
+            if (a == "+") {
                 return 1;
-            if (a == "-")
+            }
+            if (a == "-") {
                 return 1;
-            if (a == "*")
+            }
+            if (a == "*") {
                 return 2;
-            if (a == "/" || a == "%")
+            }
+            if (a == "/" || a == "%") {
                 return 2;
-            if (a == "^")
+            }
+            if (a == "^") {
                 return 3;
-            if (char.IsLetter(a[0])) // Unary
+            }
+            if (char.IsLetter(a[0])) { // Unary
                 return 4;
-            if (a == "(" || a == ")")
+            }
+            if (a == "(" || a == ")") {
                 return 5;
+            }
 
             return 0;
         }

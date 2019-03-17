@@ -66,9 +66,9 @@ namespace fVis.Controls
 
         private Font monospacedFont;
 
-        private Pen penAxis;
-        private Pen penSelection;
-        private Brush brushSelectionFill;
+        private readonly Pen penAxis;
+        private readonly Pen penSelection;
+        private readonly Brush brushSelectionFill;
 
         private long cachedDifferencesCount;
         private Dictionary<double, Difference> cachedDifferences;
@@ -117,8 +117,9 @@ namespace fVis.Controls
             get { return dataSource; }
             set
             {
-                if (dataSource == value)
+                if (dataSource == value) {
                     return;
+                }
 
                 BindDataSource(value);
 
@@ -135,8 +136,9 @@ namespace fVis.Controls
             get { return highlightDifferences; }
             set
             {
-                if (highlightDifferences == value)
+                if (highlightDifferences == value) {
                     return;
+                }
 
                 highlightDifferences = value;
                 Invalidate();
@@ -162,8 +164,9 @@ namespace fVis.Controls
             {
                 double factor = Math.Max(value, MinScaleFactor);
 
-                if (scaleFactor == factor)
+                if (scaleFactor == factor) {
                     return;
+                }
 
                 Size clientSize = ClientSize;
                 ZoomToPoint(new Point(clientSize.Width / 2, clientSize.Height / 2), factor);
@@ -226,11 +229,12 @@ namespace fVis.Controls
             long axisX = offsetPxX + (clientSize.Width / 2);
             long axisY = offsetPxY + (clientSize.Height / 2);
 
-            if (axisX >= 0 && axisX < clientSize.Width)
+            if (axisX >= 0 && axisX < clientSize.Width) {
                 e.Graphics.DrawLine(penAxis, (int)axisX, 0, (int)axisX, clientSize.Height);
-
-            if (axisY >= 0 && axisY < clientSize.Height)
+            }
+            if (axisY >= 0 && axisY < clientSize.Height) {
                 e.Graphics.DrawLine(penAxis, 0, (int)axisY, clientSize.Width, (int)axisY);
+            }
 
             // Graph
             if (dataSource != null) {
@@ -342,8 +346,9 @@ namespace fVis.Controls
 
                         if (highlightDifferences == HighlightDifferencesMode.None) {
                             foreach (ListView.Item item in dataSource) {
-                                if (item.NumericValueSource == null || item.CheckState != CheckState.Checked)
+                                if (item.NumericValueSource == null || item.CheckState != CheckState.Checked) {
                                     continue;
+                                }
 
                                 double resultY = item.NumericValueSource.Evaluate(mouseX);
                                 TextRenderer.DrawText(e.Graphics, "■:", monospacedFont, new Point(5, y), item.Color,
@@ -359,8 +364,9 @@ namespace fVis.Controls
                             List<string> bitsList = new List<string>();
 
                             foreach (ListView.Item item in dataSource) {
-                                if (item.NumericValueSource == null || item.CheckState != CheckState.Checked)
+                                if (item.NumericValueSource == null || item.CheckState != CheckState.Checked) {
                                     continue;
+                                }
 
                                 double resultY = item.NumericValueSource.Evaluate(mouseX);
                                 string bits = resultY.ToBits();
@@ -440,20 +446,24 @@ namespace fVis.Controls
                 double x2 = (x2i - axisX) / scaleFactor;
 
                 bool isFirst = true;
-                double computedMinY = double.MaxValue, computedMaxY = double.MinValue;
+                double computedMinY = double.MaxValue;
+                double computedMaxY = double.MinValue;
 
                 foreach (ListView.Item item in dataSource) {
-                    if (item.NumericValueSource == null || item.CheckState != CheckState.Checked)
+                    if (item.NumericValueSource == null || item.CheckState != CheckState.Checked) {
                         continue;
+                    }
 
                     double y1_ = item.NumericValueSource.Evaluate(x1);
                     double y2_ = item.NumericValueSource.Evaluate(x2);
-                    if (double.IsNaN(y1_) || double.IsNaN(y2_) || double.IsInfinity(y1_) || double.IsInfinity(y2_))
+                    if (double.IsNaN(y1_) || double.IsNaN(y2_) || double.IsInfinity(y1_) || double.IsInfinity(y2_)) {
                         continue;
+                    }
 
                     if (isFirst) {
                         isFirst = false;
-                        computedMinY = computedMaxY = y2_;
+                        computedMinY = y2_;
+                        computedMaxY = y2_;
                     } else {
                         if (y2_ > computedMaxY) {
                             computedMaxY = y2_;
@@ -465,15 +475,15 @@ namespace fVis.Controls
                     if (highlightDifferences != HighlightDifferencesMode.Average) {
                         float y1i = (float)((-y1_ * scaleFactor) + axisY);
                         float y2i = (float)((-y2_ * scaleFactor) + axisY);
-                        if (y1i < -32000 || y1i >= 32000 || y2i < -32000 || y2i >= 32000)
+                        if (y1i < -32000 || y1i >= 32000 || y2i < -32000 || y2i >= 32000) {
                             continue;
+                        }
 
                         try {
                             using (Pen pen = new Pen(item.Color)) {
                                 e.Graphics.DrawLine(pen, x1i, y1i, x2i, y2i);
                             }
                         } catch {
-                            //Debug.WriteLine("Render overflow detected!");
                             item.CheckState = CheckState.Indeterminate;
                         }
                     }
@@ -630,28 +640,34 @@ namespace fVis.Controls
                     int x2i = x2_.MultiplyAddLosslessToInt(scaleFactor, axisX);
 
                     bool isFirst = true;
-                    double computedMinY = double.MaxValue, computedMaxY = double.MinValue;
-                    int viewMinY = int.MaxValue, viewMaxY = int.MinValue;
+                    double computedMinY = double.MaxValue;
+                    double computedMaxY = double.MinValue;
+                    int viewMinY = int.MaxValue;
+                    int viewMaxY = int.MinValue;
 
                     // Draw line separating "x" values
                     e.Graphics.DrawLine(penLine, x2i, 0, x2i, clientSize.Height);
 
                     foreach (ListView.Item item in dataSource) {
-                        if (item.NumericValueSource == null || item.CheckState != CheckState.Checked)
+                        if (item.NumericValueSource == null || item.CheckState != CheckState.Checked) {
                             continue;
+                        }
 
                         double y1_ = item.NumericValueSource.Evaluate(x1_);
                         double y2_ = item.NumericValueSource.Evaluate(x2_);
-                        if (double.IsNaN(y1_) || double.IsNaN(y2_) || double.IsInfinity(y1_) || double.IsInfinity(y2_))
+                        if (double.IsNaN(y1_) || double.IsNaN(y2_) || double.IsInfinity(y1_) || double.IsInfinity(y2_)) {
                             continue;
+                        }
 
                         int y1i = y1_.NegMultiplyAddLosslessToInt(scaleFactor, axisY);
                         int y2i = y2_.NegMultiplyAddLosslessToInt(scaleFactor, axisY);
 
                         if (isFirst) {
                             isFirst = false;
-                            computedMinY = computedMaxY = y1_;
-                            viewMinY = viewMaxY = y1i;
+                            computedMinY = y1_;
+                            computedMaxY = y1_;
+                            viewMinY = y1i;
+                            viewMaxY = y1i;
                         } else {
                             if (y1_ > computedMaxY) {
                                 computedMaxY = y1_;
@@ -662,8 +678,9 @@ namespace fVis.Controls
                             }
                         }
 
-                        if (y1i < -32000 || y1i >= 32000 || y2i < -32000 || y2i >= 32000)
+                        if (y1i < -32000 || y1i >= 32000 || y2i < -32000 || y2i >= 32000) {
                             continue;
+                        }
 
                         try {
                             using (Pen pen = new Pen(item.Color)) {
@@ -671,7 +688,6 @@ namespace fVis.Controls
                                 e.Graphics.DrawLine(pen, x2i, y1i, x2i, y2i);
                             }
                         } catch {
-                            //Debug.WriteLine("Render overflow detected!");
                             item.CheckState = CheckState.Indeterminate;
                         }
                     }
@@ -882,8 +898,6 @@ namespace fVis.Controls
             }
 
             if (newScale >= MinScaleFactor) {
-                //ZoomToPoint(e.Location, newScale);
-
                 // Lower mouse sensitivity
                 Size clientSize = ClientSize;
                 Size clientSizeHalf = new Size(clientSize.Width / 2, clientSize.Height / 2);

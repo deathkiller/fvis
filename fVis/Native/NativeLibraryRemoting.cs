@@ -150,14 +150,6 @@ namespace fVis.Native
         /// <returns>Return value</returns>
         public TResult Invoke<T, TResult>(string procedureName, ref object[] args) where T : class
         {
-            //if (IsDisposed) {
-            //    throw new ObjectDisposedException(nameof(NativeLibraryRemoting));
-            //}
-
-            //if (!typeof(T).IsSubclassOf(typeof(Delegate))) {
-            //    throw new ArgumentException("Supplied type must be a delegate type", nameof(T));
-            //}
-
             RemoteCall info = new RemoteCall {
                 Type = RemoteCallType.InvokeWithRef,
                 Name = procedureName,
@@ -183,9 +175,6 @@ namespace fVis.Native
                 throw new InvalidDataException("Returned parameters differ in length from passed parameters");
             }
 
-            //for (int i = 0; i < args.Length; i++) {
-            //    args[i] = callResult.Parameters[i];
-            //}
             args = callResult.Parameters;
 
             return (TResult)callResult.Result;
@@ -198,10 +187,6 @@ namespace fVis.Native
         /// <returns>Returns true if exists; false, otherwise</returns>
         public bool ProcedureExists(string procedureName)
         {
-            //if (IsDisposed) {
-            //    throw new ObjectDisposedException(nameof(NativeLibraryRemoting));
-            //}
-
             RemoteCall info = new RemoteCall {
                 Type = RemoteCallType.ProcedureExists,
                 Name = procedureName
@@ -230,10 +215,6 @@ namespace fVis.Native
         /// <returns>String</returns>
         public string ResolveStringAnsi(IntPtr ptr)
         {
-            //if (IsDisposed) {
-            //    throw new ObjectDisposedException(nameof(NativeLibraryRemoting));
-            //}
-
             RemoteCall info = new RemoteCall {
                 Type = RemoteCallType.ResolveStringAnsi,
                 Parameters = new object[] { ptr }

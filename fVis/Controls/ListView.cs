@@ -47,8 +47,8 @@ namespace fVis.Controls
         private int columnSizingOffset;
 
         private int descriptionWidth = 160;
-        private int descriptionMinWidth = 20;
-        private int descriptionMaxWidth = 250;
+        private const int descriptionMinWidth = 20;
+        private const int descriptionMaxWidth = 250;
 
         private bool stateSelectedItem;
 
@@ -76,8 +76,9 @@ namespace fVis.Controls
             get { return emptyText; }
             set
             {
-                if (emptyText == value)
+                if (emptyText == value) {
                     return;
+                }
 
                 emptyText = value;
                 Invalidate();
@@ -317,20 +318,21 @@ namespace fVis.Controls
                             using (Brush brush = new SolidBrush(i.Color)) {
                                 e.Graphics.FillRectangle(brush, boundsIcon);
 
-                                using (Pen pen = new Pen(Color.FromArgb(0x66000000)))
+                                using (Pen pen = new Pen(Color.FromArgb(0x66000000))) {
                                     e.Graphics.DrawRectangle(pen,
                                         new Rectangle(boundsIcon.X - 1, boundsIcon.Y - 1, boundsIcon.Width + 1,
                                             boundsIcon.Height + 1));
-
-                                using (Pen pen = new Pen(Color.FromArgb(0x16000000)))
+                                }
+                                using (Pen pen = new Pen(Color.FromArgb(0x16000000))) {
                                     e.Graphics.DrawRectangle(pen,
                                         new Rectangle(boundsIcon.X - 2, boundsIcon.Y - 2, boundsIcon.Width + 3,
                                             boundsIcon.Height + 3));
-
-                                using (Pen pen = new Pen(Color.FromArgb(0x26ffffff)))
+                                }
+                                using (Pen pen = new Pen(Color.FromArgb(0x26ffffff))) {
                                     e.Graphics.DrawRectangle(pen,
                                         new Rectangle(boundsIcon.X, boundsIcon.Y, boundsIcon.Width - 1,
                                             boundsIcon.Height - 1));
+                                }
                             }
                         }
 
@@ -610,8 +612,9 @@ namespace fVis.Controls
                         stateFocusedItem = items[stateFocusedItem.Index - 1];
                         stateSelectedItem = true;
 
-                        if (!EnsureVisible(stateFocusedItem))
+                        if (!EnsureVisible(stateFocusedItem)) {
                             Invalidate();
+                        }
 
                         OnItemSelectionChanged();
                     }
@@ -622,8 +625,9 @@ namespace fVis.Controls
                         stateFocusedItem = items[stateFocusedItem.Index + 1];
                         stateSelectedItem = true;
 
-                        if (!EnsureVisible(stateFocusedItem))
+                        if (!EnsureVisible(stateFocusedItem)) {
                             Invalidate();
+                        }
 
                         OnItemSelectionChanged();
                     }
@@ -634,8 +638,9 @@ namespace fVis.Controls
                         stateFocusedItem = items[0];
                         stateSelectedItem = true;
 
-                        if (!EnsureVisible(stateFocusedItem))
+                        if (!EnsureVisible(stateFocusedItem)) {
                             Invalidate();
+                        }
 
                         OnItemSelectionChanged();
                     }
@@ -646,8 +651,9 @@ namespace fVis.Controls
                         stateFocusedItem = items[items.Count - 1];
                         stateSelectedItem = true;
 
-                        if (!EnsureVisible(stateFocusedItem))
+                        if (!EnsureVisible(stateFocusedItem)) {
                             Invalidate();
+                        }
 
                         OnItemSelectionChanged();
                     }
@@ -660,8 +666,9 @@ namespace fVis.Controls
                         stateFocusedItem = items[index];
                         stateSelectedItem = true;
 
-                        if (!EnsureVisible(stateFocusedItem))
+                        if (!EnsureVisible(stateFocusedItem)) {
                             Invalidate();
+                        }
 
                         OnItemSelectionChanged();
                     }
@@ -674,15 +681,17 @@ namespace fVis.Controls
                         stateFocusedItem = items[index];
                         stateSelectedItem = true;
 
-                        if (!EnsureVisible(stateFocusedItem))
+                        if (!EnsureVisible(stateFocusedItem)) {
                             Invalidate();
+                        }
 
                         OnItemSelectionChanged();
                     }
                     return true;
+                    
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
             }
-
-            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void OnScrollBarScroll(object sender, EventArgs e)
@@ -776,7 +785,6 @@ namespace fVis.Controls
                 return false;
             }
 
-            //Rectangle bounds = item.BoundsSelection;
             Rectangle bounds = new Rectangle(ClientRectangleInner.Left + 1, -vScrollBar.Value + ClientRectangleInner.Top + 1 + (rowHeight - 1) * item.Index, ClientRectangleInner.Width - 2, rowHeight);
             if (bounds.Width <= 0 || bounds.Height <= 0) {
                 return false;
@@ -833,8 +841,9 @@ namespace fVis.Controls
         private void PrepareVisualElements()
         {
             bool isSupported = VisualStyleRenderer.IsSupported;
-            if (cachedUseRenderers == isSupported)
+            if (cachedUseRenderers == isSupported) {
                 return;
+            }
 
             cachedUseRenderers = isSupported;
 
@@ -842,32 +851,33 @@ namespace fVis.Controls
                 VisualStyleElement e;
 
                 e = VisualStyleElement.CreateElement("Explorer::ListView", 1, 2);
-                if (VisualStyleRenderer.IsElementDefined(e))
+                if (VisualStyleRenderer.IsElementDefined(e)) {
                     itemHotRenderer = new VisualStyleRenderer(e);
-
+                }
                 e = VisualStyleElement.CreateElement("ItemsView", 3, 1);
-                if (VisualStyleRenderer.IsElementDefined(e))
+                if (VisualStyleRenderer.IsElementDefined(e)) {
                     itemFocusedRenderer = new VisualStyleRenderer(e);
-
+                }
                 e = VisualStyleElement.CreateElement("ItemsView", 3, 2);
-                if (VisualStyleRenderer.IsElementDefined(e))
+                if (VisualStyleRenderer.IsElementDefined(e)) {
                     itemHotFocusedRenderer = new VisualStyleRenderer(e);
-
+                }
                 e = VisualStyleElement.CreateElement("Explorer::ListView", 1, 3);
-                if (VisualStyleRenderer.IsElementDefined(e))
+                if (VisualStyleRenderer.IsElementDefined(e)) {
                     itemSelectedRenderer = new VisualStyleRenderer(e);
-
+                }
                 e = VisualStyleElement.CreateElement("Explorer::ListView", 1, 6);
-                if (VisualStyleRenderer.IsElementDefined(e))
+                if (VisualStyleRenderer.IsElementDefined(e)) {
                     itemHotSelectedRenderer = new VisualStyleRenderer(e);
-
+                }
                 e = VisualStyleElement.CreateElement("Explorer::ListView", 1, 5);
-                if (VisualStyleRenderer.IsElementDefined(e))
+                if (VisualStyleRenderer.IsElementDefined(e)) {
                     itemDisabledRenderer = new VisualStyleRenderer(e);
-
+                }
                 e = VisualStyleElement.CreateElement("Explorer::ListView", 10, 1);
-                if (VisualStyleRenderer.IsElementDefined(e))
+                if (VisualStyleRenderer.IsElementDefined(e)) {
                     columnLineRenderer = new VisualStyleRenderer(e);
+                }
             } else {
                 itemHotRenderer = null;
                 itemFocusedRenderer = null;
@@ -887,21 +897,25 @@ namespace fVis.Controls
 
         public void BeginEdit()
         {
-            if (stateFocusedItem == null || stateEditItem != null)
+            if (stateFocusedItem == null || stateEditItem != null) {
                 return;
+            }
 
-            if (stateFocusedItem.BoundsText.Width <= 0 || stateFocusedItem.BoundsText.Height <= 0)
+            if (stateFocusedItem.BoundsText.Width <= 0 || stateFocusedItem.BoundsText.Height <= 0) {
                 return;
+            }
 
             CancelEventArgs args = new CancelEventArgs();
             BeforeEdit?.Invoke(stateFocusedItem, args);
-            if (args.Cancel)
+            if (args.Cancel) {
                 return;
+            }
 
             stateEditItem = stateFocusedItem;
 
-            if (EnsureVisible(stateEditItem))
+            if (EnsureVisible(stateEditItem)) {
                 Update();
+            }
 
             labelEdit.Text = stateEditItem.Text;
             labelEdit.Bounds = new Rectangle(stateEditItem.BoundsText.X, stateEditItem.BoundsText.Y + 1,
@@ -915,11 +929,13 @@ namespace fVis.Controls
 
         public void EndEdit(bool acceptChanges = true)
         {
-            if (stateEditItem == null)
+            if (stateEditItem == null) {
                 return;
+            }
 
-            if (acceptChanges)
+            if (acceptChanges) {
                 stateEditItem.Text = labelEdit.Text;
+            }
 
             stateEditItem = null;
 
