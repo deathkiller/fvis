@@ -90,7 +90,8 @@ namespace fVis.x86
             try {
                 Delegate method;
                 if (!delegateCache.TryGetValue(data.Name, out method)) {
-                    delegateCache.Add(data.Name, method = library.Resolve(data.Name, data.Delegate));
+                    method = library.Resolve(data.Name, data.Delegate);
+                    delegateCache.Add(data.Name, method);
                 }
 
                 // Invoke requested method

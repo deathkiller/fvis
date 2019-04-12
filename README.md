@@ -14,14 +14,13 @@
 <hr/>
 
 [![Build Status](https://img.shields.io/appveyor/ci/deathkiller/fvis.svg?logo=visual-studio-code&logoColor=ffffff)](https://ci.appveyor.com/project/deathkiller/fvis)
-[![Tests](https://img.shields.io/appveyor/tests/deathkiller/fvis.svg)](https://ci.appveyor.com/project/deathkiller/fvis/build/tests)
+[![Tests](https://img.shields.io/appveyor/tests/deathkiller/fvis.svg?compact_message)](https://ci.appveyor.com/project/deathkiller/fvis/build/tests)
 [![Coverage](https://img.shields.io/codecov/c/github/deathkiller/fvis.svg)](https://codecov.io/gh/deathkiller/fvis)
 [![Code Quality](https://img.shields.io/codacy/grade/5eac2aa64dfa4e91ab8c3144e290783a.svg)](https://www.codacy.com/app/deathkiller/fvis)
 [![License](https://img.shields.io/github/license/deathkiller/fvis.svg)](https://github.com/deathkiller/fvis/blob/master/LICENSE)
-[![Lines of Code](https://img.shields.io/badge/lines%20of%20code-17.7k-blue.svg)](https://github.com/deathkiller/fvis/graphs/code-frequency)
+[![Lines of Code](https://img.shields.io/badge/lines%20of%20code-18k-blue.svg)](https://github.com/deathkiller/fvis/graphs/code-frequency)
 
 
-## Abstract
 The purpose of this thesis is to visually investigate precision of various 
 implementations of mathematic functions from math.h. This thesis deals with 
 parsing of arithmetic expressions and its visualization. The application 
@@ -33,7 +32,7 @@ library for high-precision computation. The application is written in C#
 programming language and uses .NET Framework.
 
 
-## Anotace
+##
 Tato práce se zabývá porovnáváním přesností různých implementací 
 matematických funkcí math.h, zpracováním aritmetických výrazů a jejich 
 vizualizací. Vytvořená aplikace umožňuje vizualizovat i složitější 

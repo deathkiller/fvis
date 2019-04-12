@@ -415,9 +415,9 @@ namespace fVis.Windows
         /// <param name="text">String builder to append warings to</param>
         private void CheckCallbacks(ListView.Item item, StringBuilder text)
         {
-            if (item?.OperatorCallbacks == null)
+            if (item?.OperatorCallbacks == null) {
                 return;
-
+            }
             ArithmeticExpression ae = item.NumericValueSource as ArithmeticExpression;
             if (ae == null) {
                 return;
@@ -633,8 +633,9 @@ namespace fVis.Windows
                 dialog.RestoreDirectory = true;
                 dialog.Title = Tx.T("mathlib.load");
 
-                if (dialog.ShowDialog(this) != DialogResult.OK)
+                if (dialog.ShowDialog(this) != DialogResult.OK) {
                     return;
+                }
 
                 string filename = dialog.FileName;
 
