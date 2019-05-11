@@ -21,26 +21,19 @@
 [![Lines of Code](https://img.shields.io/badge/lines%20of%20code-18k-blue.svg)](https://github.com/deathkiller/fvis/graphs/code-frequency)
 
 
-The purpose of this thesis is to visually investigate precision of various 
-implementations of mathematic functions from math.h. This thesis deals with 
-parsing of arithmetic expressions and its visualization. The application 
-allows visualizing even complicated arithmetic expressions. It can also 
-compare results of the same arithmetic expressions using different 
-implementation of math.h for computation. Arithmetic expressions are parsed 
-using the shunting-yard algorithm. In addition, the visualization uses MPIR 
-library for high-precision computation. The application is written in C# 
-programming language and uses .NET Framework.
+The purpose of this thesis is to visually investigate precision of various implementations of mathematic functions from math.h. This thesis deals with parsing of arithmetic expressions and its visualization.
+
+The application allows visualizing even complicated arithmetic expressions. It can also compare results of the same arithmetic expressions using different implementation of math.h for computation.
+
+Arithmetic expressions are parsed using the shunting-yard algorithm. In addition, the visualization uses MPIR library for high-precision computation. The application is written in C# programming language and uses .NET Framework.
 
 
-##
-Tato práce se zabývá porovnáváním přesností různých implementací 
-matematických funkcí math.h, zpracováním aritmetických výrazů a jejich 
-vizualizací. Vytvořená aplikace umožňuje vizualizovat i složitější 
-matematické funkce. Dále umožnuje porovnávat výsledky stejných funkcí, které 
-jsou spočítané různými algoritmy. Aritmetické výrazy jsou zpracovány pomocí 
-algoritmu shunting-yard. Vizualizace využívá knihovnu MPIR pro výpočty s 
-vysokou přesností. Aplikace je napsaná v jazyce C# a využívá technologii 
-.NET Framework.
+#### *In Czech*
+Tato práce se zabývá porovnáváním přesností různých implementací matematických funkcí math.h, zpracováním aritmetických výrazů a jejich vizualizací.
+
+Vytvořená aplikace umožňuje vizualizovat i složitější matematické funkce. Dále umožnuje porovnávat výsledky stejných funkcí, které jsou spočítané různými algoritmy.
+
+Aritmetické výrazy jsou zpracovány pomocí algoritmu shunting-yard. Vizualizace využívá knihovnu MPIR pro výpočty s vysokou přesností. Aplikace je napsaná v jazyce C# a využívá technologii .NET Framework.
 
 
 ## License
