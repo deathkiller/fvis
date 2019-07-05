@@ -13,7 +13,7 @@
 </div>
 <hr/>
 
-[![Build Status](https://img.shields.io/appveyor/ci/deathkiller/fvis.svg?logo=visual-studio-code&logoColor=ffffff)](https://ci.appveyor.com/project/deathkiller/fvis)
+[![Build Status](https://img.shields.io/appveyor/ci/deathkiller/fvis/master.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTI0IDIuNXYxOUwxOCAyNCAwIDE4LjV2LS41NjFsMTggMS41NDVWMHpNMSAxMy4xMTFMNC4zODUgMTAgMSA2Ljg4OWwxLjQxOC0uODI3TDUuODUzIDguNjUgMTIgM2wzIDEuNDU2djExLjA4OEwxMiAxN2wtNi4xNDctNS42NS0zLjQzNCAyLjU4OXpNNy42NDQgMTBMMTIgMTMuMjgzVjYuNzE3eiI+PC9wYXRoPjwvc3ZnPg==)](https://ci.appveyor.com/project/deathkiller/fvis)
 [![Tests](https://img.shields.io/appveyor/tests/deathkiller/fvis.svg?compact_message)](https://ci.appveyor.com/project/deathkiller/fvis/build/tests)
 [![Coverage](https://img.shields.io/codecov/c/github/deathkiller/fvis.svg)](https://codecov.io/gh/deathkiller/fvis)
 [![Code Quality](https://img.shields.io/codacy/grade/5eac2aa64dfa4e91ab8c3144e290783a.svg)](https://www.codacy.com/app/deathkiller/fvis)
